@@ -6,34 +6,21 @@ import com.thecodest.slack.holidayreminder.calamari.remote.api.EmployeesApi;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeesOut;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetBalanceOfEmployeeAndAbsenceType;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEmployeesIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.ApiClient;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
+import lombok.RequiredArgsConstructor;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
+@RequiredArgsConstructor(onConstructor_ = {@Inject})
 class SimpleCalamariApi implements CalamariApi {
 
 	private final EmployeesApi employeesApi;
 	private final AbsenceTypeApi absenceTypeApi;
-
-	@Inject
-	SimpleCalamariApi(
-			@Named("calamari-username") String username,
-			@Named("calamari-password") String passwword
-	) {
-		var apiClient = new ApiClient();
-		apiClient.setUsername(username);
-		apiClient.setPassword(passwword);
-
-		this.employeesApi = new EmployeesApi(apiClient);
-		this.absenceTypeApi = new AbsenceTypeApi(apiClient);
-	}
 
 	@Override
 	public List<Employee> employeesWithToMuchFreeDays(int limit) {

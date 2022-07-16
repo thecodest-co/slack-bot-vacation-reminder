@@ -26,11 +26,10 @@ class VacationReminder implements Runnable {
 
 	@Override
 	public void run() {
-		if(!runningCalculator.shouldItRun()) {
-			log.info("Not today");
-			return;
-		}
-
+//		if(!runningCalculator.shouldItRun()) {
+//			log.info("Not today");
+//			return;
+//		}
 		sendMessage();
 	}
 
