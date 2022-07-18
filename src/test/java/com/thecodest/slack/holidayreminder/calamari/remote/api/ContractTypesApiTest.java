@@ -23,7 +23,7 @@ import java.util.List;
  * API tests for ContractTypesApi
  */
 @Disabled
-public class ContractTypesApiTest {
+class ContractTypesApiTest {
 
 	private final ContractTypesApi api = new ContractTypesApi();
 
@@ -35,7 +35,7 @@ public class ContractTypesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getTeamsTest() throws Exception {
+	void getTeamsTest() throws Exception {
 		List<ContractTypeOut> response = api.getTeams();
 
 		// TODO: test validations

@@ -24,19 +24,19 @@ import java.util.List;
  * API tests for HolidaysApi
  */
 @Disabled
-public class HolidaysApiTest {
+class HolidaysApiTest {
 
 	private final HolidaysApi api = new HolidaysApi();
 
 	/**
-	 * Find public holidays for employee in dates range.
+	 * Find holidays for employee in dates range.
 	 * <p>
-	 * Find public holidays for employee in dates range.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;/ol&gt;
+	 * Find holidays for employee in dates range.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void findTest() throws Exception {
+	void findTest() throws Exception {
 		FindHolidaysInRangeIn body = null;
 		List<HolidayOut> response = api.find(body);
 

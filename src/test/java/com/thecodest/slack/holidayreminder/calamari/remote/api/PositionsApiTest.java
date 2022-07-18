@@ -25,7 +25,7 @@ import java.util.List;
  * API tests for PositionsApi
  */
 @Disabled
-public class PositionsApiTest {
+class PositionsApiTest {
 
 	private final PositionsApi api = new PositionsApi();
 
@@ -37,7 +37,7 @@ public class PositionsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void createPositionTest() throws Exception {
+	void createPositionTest() throws Exception {
 		CreatePositionIn body = null;
 		CreatePositionOut response = api.createPosition(body);
 
@@ -52,7 +52,7 @@ public class PositionsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getPositionsTest() throws Exception {
+	void getPositionsTest() throws Exception {
 		List<PositionDto> response = api.getPositions();
 
 		// TODO: test validations

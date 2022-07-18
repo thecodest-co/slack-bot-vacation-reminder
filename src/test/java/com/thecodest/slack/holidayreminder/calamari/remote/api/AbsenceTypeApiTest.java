@@ -12,13 +12,7 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.BalanceOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateBalanceIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeeBalanceOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetAbsenceTypeOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetBalanceOfEmployeeAndAbsenceType;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetEmployeesBalancesIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.ModifyBalanceOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +23,7 @@ import java.util.List;
  * API tests for AbsenceTypeApi
  */
 @Disabled
-public class AbsenceTypeApiTest {
+class AbsenceTypeApiTest {
 
 	private final AbsenceTypeApi api = new AbsenceTypeApi();
 
@@ -41,7 +35,7 @@ public class AbsenceTypeApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getAbsenceTypesTest() throws Exception {
+	void getAbsenceTypesTest() throws Exception {
 		List<GetAbsenceTypeOut> response = api.getAbsenceTypes();
 
 		// TODO: test validations
@@ -55,7 +49,7 @@ public class AbsenceTypeApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getEntitlementBalanceTest() throws Exception {
+	void getEntitlementBalanceTest() throws Exception {
 		GetBalanceOfEmployeeAndAbsenceType body = null;
 		BalanceOut response = api.getEntitlementBalance(body);
 
@@ -70,7 +64,7 @@ public class AbsenceTypeApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getEntitlementBalancesTest() throws Exception {
+	void getEntitlementBalancesTest() throws Exception {
 		GetEmployeesBalancesIn body = null;
 		List<EmployeeBalanceOut> response = api.getEntitlementBalances(body);
 
@@ -85,7 +79,7 @@ public class AbsenceTypeApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void manualCreateEntitlementBalanceTest() throws Exception {
+	void manualCreateEntitlementBalanceTest() throws Exception {
 		CreateBalanceIn body = null;
 		ModifyBalanceOut response = api.manualCreateEntitlementBalance(body);
 

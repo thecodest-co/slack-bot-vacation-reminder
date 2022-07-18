@@ -25,7 +25,7 @@ import java.util.List;
  * API tests for ProjectsApi
  */
 @Disabled
-public class ProjectsApiTest {
+class ProjectsApiTest {
 
 	private final ProjectsApi api = new ProjectsApi();
 
@@ -37,7 +37,7 @@ public class ProjectsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void archiveProjectTypeTest() throws Exception {
+	void archiveProjectTypeTest() throws Exception {
 		ProjectOut response = api.archiveProjectType();
 
 		// TODO: test validations
@@ -51,7 +51,7 @@ public class ProjectsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void createProjectTypeTest() throws Exception {
+	void createProjectTypeTest() throws Exception {
 		ProjectOutWithAssignedEmployeesTeams response = api.createProjectType();
 
 		// TODO: test validations
@@ -65,7 +65,7 @@ public class ProjectsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getProjectForEmployeeTest() throws Exception {
+	void getProjectForEmployeeTest() throws Exception {
 		PersonForProjects body = null;
 		List<ProjectOut> response = api.getProjectForEmployee(body);
 
@@ -80,7 +80,7 @@ public class ProjectsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getProjectsTest() throws Exception {
+	void getProjectsTest() throws Exception {
 		List<ProjectOut> response = api.getProjects();
 
 		// TODO: test validations
@@ -94,7 +94,7 @@ public class ProjectsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void updateProjectTypeTest() throws Exception {
+	void updateProjectTypeTest() throws Exception {
 		ProjectOutWithAssignedEmployeesTeams response = api.updateProjectType();
 
 		// TODO: test validations

@@ -26,7 +26,7 @@ import java.util.List;
  * API tests for CurrentShiftStatusApi
  */
 @Disabled
-public class CurrentShiftStatusApiTest {
+class CurrentShiftStatusApiTest {
 
 	private final CurrentShiftStatusApi api = new CurrentShiftStatusApi();
 
@@ -38,7 +38,7 @@ public class CurrentShiftStatusApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getCurrentShiftStatusForAllTest() throws Exception {
+	void getCurrentShiftStatusForAllTest() throws Exception {
 		List<CurrentShiftStatus> response = api.getCurrentShiftStatusForAll();
 
 		// TODO: test validations
@@ -52,7 +52,7 @@ public class CurrentShiftStatusApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getCurrentShiftStatusForOnePersonTest() throws Exception {
+	void getCurrentShiftStatusForOnePersonTest() throws Exception {
 		ShiftStatusRequest body = null;
 		CurrentShiftStatus response = api.getCurrentShiftStatusForOnePerson(body);
 
@@ -67,7 +67,7 @@ public class CurrentShiftStatusApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getPresenceReportTest() throws Exception {
+	void getPresenceReportTest() throws Exception {
 		GetPresenceReportRequest body = null;
 		List<DailyPresenceReport> response = api.getPresenceReport(body);
 

@@ -23,13 +23,14 @@ class VacationReminder implements Runnable {
 	private final SlackClient slackClient;
 	private final CalamariApi calamariApi;
 	private final RunningCalculator runningCalculator;
+	private final Configuration configuration;
 
 	@Override
 	public void run() {
-//		if(!runningCalculator.shouldItRun()) {
-//			log.info("Not today");
-//			return;
-//		}
+		if(!runningCalculator.shouldItRun()) {
+			log.info("Not today");
+			return;
+		}
 		sendMessage();
 	}
 
@@ -42,7 +43,7 @@ class VacationReminder implements Runnable {
 						Coder::new
 				)
 				.using(streamAdapter())
-				.assemble(calamariApi.employeesWithToMuchFreeDays(5))
+				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))
 				.filter(coder -> coder.slackUser() != null)
 				.toList()
 				.stream()

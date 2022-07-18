@@ -25,7 +25,7 @@ import java.util.List;
  * API tests for TeamsApi
  */
 @Disabled
-public class TeamsApiTest {
+class TeamsApiTest {
 
 	private final TeamsApi api = new TeamsApi();
 
@@ -37,7 +37,7 @@ public class TeamsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void createTeamTest() throws Exception {
+	void createTeamTest() throws Exception {
 		CreateTeamIn body = null;
 		CreateTeamOut response = api.createTeam(body);
 
@@ -52,7 +52,7 @@ public class TeamsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getTeamsTest() throws Exception {
+	void getTeamsTest() throws Exception {
 		List<TeamOut> response = api.getTeams();
 
 		// TODO: test validations

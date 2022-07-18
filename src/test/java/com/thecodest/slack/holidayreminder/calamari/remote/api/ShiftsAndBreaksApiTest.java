@@ -12,13 +12,7 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.BreakIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.BreakOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetBreakTypeOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PersonForBreakTypes;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PunchClockIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PunchClockOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PunchOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +23,7 @@ import java.util.List;
  * API tests for ShiftsAndBreaksApi
  */
 @Disabled
-public class ShiftsAndBreaksApiTest {
+class ShiftsAndBreaksApiTest {
 
 	private final ShiftsAndBreaksApi api = new ShiftsAndBreaksApi();
 
@@ -41,7 +35,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void breakStartTest() throws Exception {
+	void breakStartTest() throws Exception {
 		BreakIn body = null;
 		BreakOut response = api.breakStart(body);
 
@@ -56,7 +50,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void breakStopTest() throws Exception {
+	void breakStopTest() throws Exception {
 		BreakIn body = null;
 		BreakOut response = api.breakStop(body);
 
@@ -71,7 +65,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void clockInTest() throws Exception {
+	void clockInTest() throws Exception {
 		PunchClockIn body = null;
 		PunchOut response = api.clockIn(body);
 
@@ -86,7 +80,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void clockOutTest() throws Exception {
+	void clockOutTest() throws Exception {
 		PunchClockOut body = null;
 		PunchOut response = api.clockOut(body);
 
@@ -101,7 +95,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getBreakTypesTest() throws Exception {
+	void getBreakTypesTest() throws Exception {
 		List<GetBreakTypeOut> response = api.getBreakTypes();
 
 		// TODO: test validations
@@ -115,7 +109,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getBreakTypesForEmployeeTest() throws Exception {
+	void getBreakTypesForEmployeeTest() throws Exception {
 		PersonForBreakTypes body = null;
 		List<GetBreakTypeOut> response = api.getBreakTypesForEmployee(body);
 
@@ -130,7 +124,7 @@ public class ShiftsAndBreaksApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void punchTest() throws Exception {
+	void punchTest() throws Exception {
 		PunchClockIn body = null;
 		PunchOut response = api.punch(body);
 

@@ -7,6 +7,7 @@ import com.thecodest.slack.holidayreminder.calamari.remote.api.model.BalanceOut;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeeFullOut;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeesOut;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetBalanceOfEmployeeAndAbsenceType;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -41,15 +42,10 @@ class SimpleCalamariApiTest {
 		when(absenceTypeApi.getEntitlementBalance(any())).thenAnswer(
 				invocationOnMock -> {
 					var arg = (GetBalanceOfEmployeeAndAbsenceType) (invocationOnMock.getArguments()[0]);
-					var employee = arg.getEmployee();
-					if(employee.equals("e2@codest.com")) {
-						var balance = new BalanceOut();
-						balance.setAmount(4);
-						return balance;
+					if(arg.getEmployee().equals("e2@codest.com")) {
+						return buildBalanceOut(4);
 					}
-					var balance = new BalanceOut();
-					balance.setAmount(6);
-					return balance;
+					return buildBalanceOut(6);
 				}
 		);
 
@@ -60,6 +56,13 @@ class SimpleCalamariApiTest {
 						new Employee("e3", "e3@codest.com", 6)
 						);
 
+	}
+
+	@NotNull
+	private Object buildBalanceOut(int amount) {
+		var balance = new BalanceOut();
+		balance.setAmount(amount);
+		return balance;
 	}
 
 	private EmployeeFullOut buildEFO(String id) {

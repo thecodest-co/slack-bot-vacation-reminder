@@ -22,10 +22,14 @@ class VacationReminderTest {
 	private Message message;
 	@Spy
 	private RunningCalculator runningCalculator;
+
 	@Mock
 	private SlackClient slackClient;
 	@Mock
 	private CalamariApi calamariApi;
+
+	@Mock
+	private Configuration configuration;
 
 	@InjectMocks
 	private VacationReminder vacationReminder;
@@ -40,6 +44,7 @@ class VacationReminderTest {
 
 		when(calamariApi.employeesWithToMuchFreeDays(5)).thenReturn(of(e1, e2, e3));
 		when(slackClient.getUsersByEmails(of(e1.email(), e2.email(), e3.email()))).thenReturn(of(s1, s3));
+		when(configuration.daysLimit()).thenReturn(5);
 
 		vacationReminder.sendMessage();
 

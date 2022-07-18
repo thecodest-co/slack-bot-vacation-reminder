@@ -8,7 +8,7 @@ import com.thecodest.slack.holidayreminder.slack.SlackModule;
 public class App {
 
 	public static void main(String[] args) {
-		var injector = Guice.createInjector(new AuthViaEnvModule(), new SlackModule(), new CalamariModule());
+		var injector = Guice.createInjector(new MasterModule(), new AuthViaEnvModule(), new SlackModule(), new CalamariModule());
 		var app = injector.getInstance(VacationReminder.class);
 		app.run();
 	}

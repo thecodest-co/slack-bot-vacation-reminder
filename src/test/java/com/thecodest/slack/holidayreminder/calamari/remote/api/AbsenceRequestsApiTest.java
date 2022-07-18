@@ -12,14 +12,7 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.AbsenceDto;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.AbsenceDtoExtended;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.AbsenceRequestId;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.Comment;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CommentOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateAbsenceRequestForParticularEmployee;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.FindAbsencesAdvancedIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.FindAbsencesInRangeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +23,7 @@ import java.util.List;
  * API tests for AbsenceRequestsApi
  */
 @Disabled
-public class AbsenceRequestsApiTest {
+class AbsenceRequestsApiTest {
 
 	private final AbsenceRequestsApi api = new AbsenceRequestsApi();
 
@@ -42,7 +35,7 @@ public class AbsenceRequestsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void createAbsenceRequestTest() throws Exception {
+	void createAbsenceRequestTest() throws Exception {
 		CreateAbsenceRequestForParticularEmployee body = null;
 		AbsenceRequestId response = api.createAbsenceRequest(body);
 
@@ -57,7 +50,7 @@ public class AbsenceRequestsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void createCommentTest() throws Exception {
+	void createCommentTest() throws Exception {
 		Comment body = null;
 		List<CommentOut> response = api.createComment(body);
 
@@ -72,7 +65,7 @@ public class AbsenceRequestsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void findTest() throws Exception {
+	void findTest() throws Exception {
 		FindAbsencesInRangeIn body = null;
 		List<AbsenceDto> response = api.find(body);
 
@@ -87,7 +80,7 @@ public class AbsenceRequestsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void findExtendedTest() throws Exception {
+	void findExtendedTest() throws Exception {
 		FindAbsencesAdvancedIn body = null;
 		List<AbsenceDtoExtended> response = api.findExtended(body);
 
@@ -102,7 +95,7 @@ public class AbsenceRequestsApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void removeRequestTest() throws Exception {
+	void removeRequestTest() throws Exception {
 		AbsenceRequestId body = null;
 		api.removeRequest(body);
 

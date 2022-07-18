@@ -12,15 +12,7 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.BalanceEntryOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateTimesheetEntryIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.DeleteTimesheetEntryById;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EditTimesheetEntryIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.FilterBalanceEntriesIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.FilterTimesheetEntriesIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PersonForProjects;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.ProjectOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.TimesheetEntryOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +23,7 @@ import java.util.List;
  * API tests for TimesheetEntriesApi
  */
 @Disabled
-public class TimesheetEntriesApiTest {
+class TimesheetEntriesApiTest {
 
 	private final TimesheetEntriesApi api = new TimesheetEntriesApi();
 
@@ -43,7 +35,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void addTimeEntryTest() throws Exception {
+	void addTimeEntryTest() throws Exception {
 		CreateTimesheetEntryIn body = null;
 		TimesheetEntryOut response = api.addTimeEntry(body);
 
@@ -58,7 +50,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void deleteTimesheetEntryByIdTest() throws Exception {
+	void deleteTimesheetEntryByIdTest() throws Exception {
 		DeleteTimesheetEntryById body = null;
 		api.deleteTimesheetEntryById(body);
 
@@ -73,7 +65,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void findTimeEntriesTest() throws Exception {
+	void findTimeEntriesTest() throws Exception {
 		FilterBalanceEntriesIn body = null;
 		List<BalanceEntryOut> response = api.findTimeEntries(body);
 
@@ -88,7 +80,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void findTimeEntries_0Test() throws Exception {
+	void findTimeEntries_0Test() throws Exception {
 		FilterTimesheetEntriesIn body = null;
 		List<TimesheetEntryOut> response = api.findTimeEntries_0(body);
 
@@ -103,7 +95,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getProjectTypesTest() throws Exception {
+	void getProjectTypesTest() throws Exception {
 		List<ProjectOut> response = api.getProjectTypes();
 
 		// TODO: test validations
@@ -117,7 +109,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getProjectTypesForEmployeeTest() throws Exception {
+	void getProjectTypesForEmployeeTest() throws Exception {
 		PersonForProjects body = null;
 		List<ProjectOut> response = api.getProjectTypesForEmployee(body);
 
@@ -132,7 +124,7 @@ public class TimesheetEntriesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void updateTimeEntryTest() throws Exception {
+	void updateTimeEntryTest() throws Exception {
 		EditTimesheetEntryIn body = null;
 		TimesheetEntryOut response = api.updateTimeEntry(body);
 

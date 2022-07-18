@@ -12,14 +12,7 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateEmployeeOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeesOut;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.InvitationEmployeeIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicArchiveEmployeeIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicCreateEmployeeIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEditEmployeeIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEmployeesIn;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicSearchEmployeesIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +21,7 @@ import org.junit.jupiter.api.Test;
  * API tests for EmployeesApi
  */
 @Disabled
-public class EmployeesApiTest {
+class EmployeesApiTest {
 
 	private final EmployeesApi api = new EmployeesApi();
 
@@ -40,7 +33,7 @@ public class EmployeesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void createEmployeeTest() throws Exception {
+	void createEmployeeTest() throws Exception {
 		PublicCreateEmployeeIn body = null;
 		CreateEmployeeOut response = api.createEmployee(body);
 
@@ -55,7 +48,7 @@ public class EmployeesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void editEmployeeTest() throws Exception {
+	void editEmployeeTest() throws Exception {
 		PublicEditEmployeeIn body = null;
 		CreateEmployeeOut response = api.editEmployee(body);
 
@@ -70,7 +63,7 @@ public class EmployeesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getEmployeesTest() throws Exception {
+	void getEmployeesTest() throws Exception {
 		PublicEmployeesIn body = null;
 		EmployeesOut response = api.getEmployees(body);
 
@@ -85,7 +78,7 @@ public class EmployeesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void inviteEmployeeTest() throws Exception {
+	void inviteEmployeeTest() throws Exception {
 		InvitationEmployeeIn body = null;
 		api.inviteEmployee(body);
 
@@ -100,7 +93,7 @@ public class EmployeesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void markEmployeeAsArchivedTest() throws Exception {
+	void markEmployeeAsArchivedTest() throws Exception {
 		PublicArchiveEmployeeIn body = null;
 		api.markEmployeeAsArchived(body);
 
@@ -115,7 +108,7 @@ public class EmployeesApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void searchEmployeesTest() throws Exception {
+	void searchEmployeesTest() throws Exception {
 		PublicSearchEmployeesIn body = null;
 		EmployeesOut response = api.searchEmployees(body);
 

@@ -23,7 +23,7 @@ import java.util.List;
  * API tests for WorkingWeekApi
  */
 @Disabled
-public class WorkingWeekApiTest {
+class WorkingWeekApiTest {
 
 	private final WorkingWeekApi api = new WorkingWeekApi();
 
@@ -35,7 +35,7 @@ public class WorkingWeekApiTest {
 	 * @throws Exception if the Api call fails
 	 */
 	@Test
-	public void getWorkingWeeksTest() throws Exception {
+	void getWorkingWeeksTest() throws Exception {
 		List<WorkingWeekOut> response = api.getWorkingWeeks();
 
 		// TODO: test validations
