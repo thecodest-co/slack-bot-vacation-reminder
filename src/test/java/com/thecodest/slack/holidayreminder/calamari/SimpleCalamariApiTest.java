@@ -54,7 +54,7 @@ class SimpleCalamariApiTest {
 				.contains(
 						new Employee("e1", "e1@codest.com", 6),
 						new Employee("e3", "e3@codest.com", 6)
-						);
+				);
 
 	}
 

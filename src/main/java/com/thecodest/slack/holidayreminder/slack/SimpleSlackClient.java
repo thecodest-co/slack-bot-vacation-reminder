@@ -17,7 +17,7 @@ class SimpleSlackClient implements SlackClient {
 	private final MethodsClient methods;
 
 	@Inject
-	SimpleSlackClient(@Named("slack-token")  String token) {
+	SimpleSlackClient(@Named("slack-token") String token) {
 		this.methods = Slack.getInstance().methods(token);
 	}
 

@@ -9,7 +9,7 @@ class MasterModule extends AbstractModule {
 	protected void configure() {
 		bind(Integer.class)
 				.annotatedWith(Names.named("days-limit"))
-				.toInstance(Integer.valueOf(System.getenv("DAYS-LIMIT")));
+				.toInstance(Integer.valueOf(System.getenv("DAYS_LIMIT")));
 
 		bind(Configuration.class);
 	}

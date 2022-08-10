@@ -20,20 +20,21 @@ public class CalamariModule extends AbstractModule {
 	@Singleton
 	public ApiClient apiClient(@Named("calamari-username") String username,
 	                           @Named("calamari-password") String password) {
-		 var apiClient = new ApiClient();
-		 apiClient.setUsername(username);
-		 apiClient.setPassword(password);
-		 return apiClient;
+		var apiClient = new ApiClient();
+		apiClient.setUsername(username);
+		apiClient.setPassword(password);
+		return apiClient;
 	}
 
 	@Provides
 	@Singleton
-	public EmployeesApi employeesApi(ApiClient apiClient){
+	public EmployeesApi employeesApi(ApiClient apiClient) {
 		return new EmployeesApi(apiClient);
 	}
+
 	@Provides
 	@Singleton
-	public AbsenceTypeApi absenceTypeApi(ApiClient apiClient){
+	public AbsenceTypeApi absenceTypeApi(ApiClient apiClient) {
 		return new AbsenceTypeApi(apiClient);
 	}
 

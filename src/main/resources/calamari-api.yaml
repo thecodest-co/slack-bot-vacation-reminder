@@ -51,8 +51,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/projects/v1/create:
     post:
       tags:
@@ -81,8 +81,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/projects/v1/get-projects:
     post:
       tags:
@@ -111,8 +111,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/projects/v1/get-projects-for-person:
     post:
       tags:
@@ -148,8 +148,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/projects/v1/update:
     post:
       tags:
@@ -178,8 +178,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/shift/status/v1/get-current:
     post:
       tags:
@@ -214,8 +214,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/shift/status/v1/get-current-for-all:
     post:
       tags:
@@ -244,8 +244,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/shift/status/v1/presence/report:
     post:
       tags:
@@ -285,8 +285,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/break-start:
     post:
       tags:
@@ -331,8 +331,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/break-stop:
     post:
       tags:
@@ -378,8 +378,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/clock-in:
     post:
       tags:
@@ -425,8 +425,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/clock-out:
     post:
       tags:
@@ -471,8 +471,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/get-break-types:
     post:
       tags:
@@ -501,8 +501,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/get-break-types-for-person:
     post:
       tags:
@@ -538,8 +538,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/terminal/v1/punch-clock:
     post:
       tags:
@@ -584,8 +584,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/balance:
     post:
       tags:
@@ -636,8 +636,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/create:
     post:
       tags:
@@ -695,8 +695,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/delete:
     post:
       tags:
@@ -724,8 +724,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/find:
     post:
       tags:
@@ -774,8 +774,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/get-projects:
     post:
       tags:
@@ -804,8 +804,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/get-projects-for-person:
     post:
       tags:
@@ -841,8 +841,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /clockin/timesheetentries/v1/update:
     post:
       tags:
@@ -900,8 +900,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /contract-types/v1/all:
     post:
       tags:
@@ -931,8 +931,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /employees/v1/archive:
     post:
       tags:
@@ -960,8 +960,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /employees/v1/create:
     post:
       tags:
@@ -1008,8 +1008,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /employees/v1/edit:
     post:
       tags:
@@ -1058,8 +1058,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /employees/v1/invite:
     post:
       tags:
@@ -1087,8 +1087,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /employees/v1/list:
     post:
       tags:
@@ -1122,8 +1122,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /employees/v1/search:
     post:
       tags:
@@ -1157,8 +1157,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /holiday/v1/find:
     post:
       tags:
@@ -1197,8 +1197,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/request/v1/create:
     post:
       tags:
@@ -1241,8 +1241,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/request/v1/create-comment:
     post:
       tags:
@@ -1280,8 +1280,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/request/v1/find:
     post:
       tags:
@@ -1320,8 +1320,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/request/v1/find-advanced:
     post:
       tags:
@@ -1374,8 +1374,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/request/v1/remove:
     post:
       tags:
@@ -1405,8 +1405,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/v1/entitlement-balance/create:
     post:
       tags:
@@ -1447,8 +1447,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/v1/entitlement-balance/get:
     post:
       tags:
@@ -1487,8 +1487,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/v1/entitlement-balance/get-advanced:
     post:
       tags:
@@ -1530,8 +1530,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /leave/v1/get-absence-types:
     post:
       tags:
@@ -1561,8 +1561,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /positions/v1/all:
     post:
       tags:
@@ -1587,8 +1587,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /positions/v1/create:
     post:
       tags:
@@ -1622,8 +1622,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /teams/v1/all:
     post:
       tags:
@@ -1653,8 +1653,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /teams/v1/create:
     post:
       tags:
@@ -1688,8 +1688,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
   /working-week/v1/all:
     post:
       tags:
@@ -1712,8 +1712,8 @@ paths:
         '429':
           description: Too many requests per second or quota exceeded
       security:
-        - basicAuth: []
-        - basicAuth: []
+        - basicAuth: [ ]
+        - basicAuth: [ ]
 securityDefinitions:
   basicAuth:
     type: basic

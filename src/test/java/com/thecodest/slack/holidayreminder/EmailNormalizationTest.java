@@ -138,7 +138,7 @@ class NormalizedEmailAssert extends AbstractAssert<NormalizedEmailAssert, Normal
 		isNotNull();
 		Assertions.assertThat(actual)
 				.isNotNull()
-				.matches(ne-> ne.strictEquals(expected), "NormalizedEmails are not strict equals");
+				.matches(ne -> ne.strictEquals(expected), "NormalizedEmails are not strict equals");
 		return this;
 	}
 }

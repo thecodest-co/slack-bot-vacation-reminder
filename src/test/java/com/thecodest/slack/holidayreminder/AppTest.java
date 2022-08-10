@@ -13,10 +13,10 @@ class AppTest {
 	public void shouldAnswerWithTrue() {
 
 		var props = Map.of(
-				"SLACK-TOKEN", "SLACK-TOKEN",
-				"CALAMARI-USERNAME", "CALAMARI-USERNAME",
-				"CALAMARI-PASSWORD", "CALAMARI-PASSWORD",
-				"DAYS-LIMIT", "5"
+				"SLACK_TOKEN", "SLACK-TOKEN",
+				"CALAMARI_USERNAME", "CALAMARI-USERNAME",
+				"CALAMARI_PASSWORD", "CALAMARI-PASSWORD",
+				"DAYS_LIMIT", "5"
 		);
 
 		EnvironmentVariables env = new EnvironmentVariables(props);
