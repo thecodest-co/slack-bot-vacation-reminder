@@ -63,7 +63,7 @@ jobs:
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
-          role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
+          role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].RoleName' --output text)
           aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image > /dev/null
           aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression 'rate(1 day)' > /dev/null
           rule_arn=$(aws events list-rules --query 'Rules[?Name == `$IMAGE_TAG-trigger`].Arn' --output text)
