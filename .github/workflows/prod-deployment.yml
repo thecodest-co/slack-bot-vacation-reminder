@@ -67,7 +67,7 @@ jobs:
           aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image > /dev/null
       - name: Update Lambda function
         id: update-lambda
-        if: !endsWith(${{ steps.function-state.outputs.fun-exist }}, 'x-')
+        if: ! endsWith(${{ steps.function-state.outputs.fun-exist }}, 'x-')
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
