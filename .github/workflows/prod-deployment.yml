@@ -73,5 +73,5 @@ jobs:
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
-          fun-arn=$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionArn' --output text)
-          aws lambda update-function-code --function-name $fun-arn --image-uri $IMAGE_URI > /dev/null
+          fun_arn=$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionArn' --output text)
+          aws lambda update-function-code --function-name $fun_arn --image-uri $IMAGE_URI > /dev/null
