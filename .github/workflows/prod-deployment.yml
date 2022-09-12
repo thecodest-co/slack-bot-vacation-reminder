@@ -71,6 +71,7 @@ jobs:
           aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression 'rate(1 day)' 
           rule_arn=$(aws events list-rules --query 'Rules[?Name == `$IMAGE_TAG-trigger`].Arn' --output text)
           aws lambda add-permission --function-name $IMAGE_TAG --statement-id $IMAGE_TAG-trigger --action 'lambda:InvokeFunction' --principal events.amazonaws.com --source-arn $rule_arn
+          aws lambda publish-function --function-name $IMAGE_TAG
       - name: Update Lambda function
         id: update-lambda
         if: steps.function-state.outputs.fun-exist != 'x-'
@@ -80,3 +81,4 @@ jobs:
           fun_arn=$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionArn' --output text)
           aws lambda update-function-code --function-name $fun_arn --image-uri $IMAGE_URI > /dev/null
           aws lambda update-function-configuration --function-name $fun_arn --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT}" > /dev/null
+          aws lambda publish-function --function-name $IMAGE_TAG
