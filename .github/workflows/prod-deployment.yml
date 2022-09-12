@@ -46,7 +46,6 @@ jobs:
         id: role-state
         run: |
           status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
-          echo "$status"
           echo "::set-output name=role-exist::$status"
       - name: Create role if not exist
         id: create-role
@@ -57,7 +56,6 @@ jobs:
         id: function-state
         run: |
           status=x-$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionName' --output text)
-          echo "$status"
           echo "::set-output name=fun-exist::$status"
       - name: Create Lambda function
         id: create-lambda
@@ -67,6 +65,9 @@ jobs:
         run: |
           role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
           aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image > /dev/null
+          aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression 'rate(1 day)' > /dev/null
+          rule_arn=$(aws events list-rules --query 'Rules[?Name == `$IMAGE_TAG-trigger`].Arn' --output text)
+          aws lambda add-permission --function-name $IMAGE_TAG --statement-id $IMAGE_TAG-trigger --action 'lambda:InvokeFunction' --principal events.amazonaws.com --source-arn $rule_arn
       - name: Update Lambda function
         id: update-lambda
         if: steps.function-state.outputs.fun-exist != 'x-'
