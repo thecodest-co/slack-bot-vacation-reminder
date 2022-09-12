@@ -56,10 +56,11 @@ jobs:
         id: function-state
         run: |
           status=x-$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionName' --output text)
+          echo "$status"
           echo "::set-output name=fun-exist::$status"
       - name: Create Lambda function
         id: create-lambda
-        if: endsWith(${{ steps.function-state.outputs.fun-exist }}, 'x-')
+        if: ${{ steps.function-state.outputs.fun-exist }} == 'x-'
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
@@ -67,7 +68,7 @@ jobs:
           aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image > /dev/null
       - name: Update Lambda function
         id: update-lambda
-        if: ! endsWith(${{ steps.function-state.outputs.fun-exist }}, 'x-')
+        if: ${{ steps.function-state.outputs.fun-exist }} != 'x-'
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
