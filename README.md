@@ -24,6 +24,8 @@ this will build application and docker image that can be pushed to repository li
 
 ## Running
 
+By default this app works as AWS Lambda function and all deployment to AWS is handled by github actions.
+
 ### As jar
 
 You need set up environment properties mentioned above and then:
@@ -45,14 +47,36 @@ docker run --rm -e SLACK_TOKEN=<SLACK_TOKEN> \
   -it holiday-reminder:latest
 ```
 
-### As Lambda function 
+## AWS Configuration – requirements and deployment
 
-First you need to push image to Elastic Container Repository and then run on lambda as common docker image. 
-Remember to configure parameters!
+Before you start you need to prepare your AWS services.
+
+### Github
+
+You need to set up some secrets:
+
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- AWS_FUNCTION_ARN
+
+### ECR 
+
+Go to AWS ECR and create new repository:
+
+```bash
+aws ecr create-repository \
+    --repository-name codest \
+    --image-tag-mutability MUTABLE
+```
+
+Repository name should be the same as name in env var `ECR_REPOSITORY` in GH action file. 
+Flag `MUTABLE` gives possibility to redeploy image with the same TAG.
+
+Now you can run 
 
 ## TODO
 
-* AWS integration
-* Optional integration with abstractapi.com to extends our working day calculation.
-* Some clean up
-* Configure GH workflows.
+- [x] AWS integration
+- [ ] Optional integration with abstractapi.com to extends our working day calculation.
+- [ ] Some clean up
+- [x] Configure GH workflows.

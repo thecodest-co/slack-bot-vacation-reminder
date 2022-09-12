@@ -5,11 +5,16 @@ on:
   push:
     branches: [ master ]
 
+env:
+  ECR_REPOSITORY: codest
+  IMAGE_TAG: holiday-reminder
+  FUNCTION_NAME: ${{ secrets.AWS_FUNCTION_ARN }}
+
 jobs:
   build:
-    name: Build & Deploy
+    name: Build & Deploy to prod
     runs-on: ubuntu-latest
-    environment: staging
+    environment: prod
 
     steps:
       - uses: actions/checkout@v3
@@ -19,7 +24,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
+        run: mvn --batch-mode --update-snapshots verify
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
@@ -33,16 +38,38 @@ jobs:
         id: build-push-ecr
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: codest
-          IMAGE_TAG: holiday-reminder
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-      - name: Update Lambda function
-        id: update-lambda
+      - name: Check role state
+        id: role-state
+        run: |
+          status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
+          echo "::set-output name=role-exist::$status"
+      - name: Create role if not exist
+        id: create-role
+        if: ${{ steps.role-state.outputs.role-exist }} == 'x-'
+        run: |
+          aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
+      - name: Check function state
+        id: function-state
+        run: |
+          status=x-$(aws lambda list-functions --query 'Functions[?starts_with(FunctionName, `holiday`) == `true`].FunctionName' --output text)
+          echo "::set-output name=fun-exist::$status"
+      - name: Create Lambda function
+        id: create-lambda
+        if: ${{ steps.function-state.outputs.fun-exist }} == 'x-'
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
-          FUNCTION_NAME: ${{ secrets.AWS_FUNCTION_ARN }}
         run: |
-          aws lambda update-function-code --function-name $FUNCTION_NAME --image-uri $IMAGE_URI > /dev/null
+          role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
+          aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image > /dev/null
+      - name: Update Lambda function
+        id: update-lambda
+        if: ${{ steps.function-state.outputs.fun-exist }} != 'x-'
+        env:
+          IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
+        run: |
+          fun-arn=$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionArn' --output text)
+          aws lambda update-function-code --function-name $fun-arn --image-uri $IMAGE_URI > /dev/null
