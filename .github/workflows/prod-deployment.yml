@@ -79,3 +79,4 @@ jobs:
         run: |
           fun_arn=$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionArn' --output text)
           aws lambda update-function-code --function-name $fun_arn --image-uri $IMAGE_URI > /dev/null
+          aws lambda update-function-configuration --function-name $fun_arn --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT}" > /dev/null
