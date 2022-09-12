@@ -55,7 +55,7 @@ jobs:
       - name: Check function state
         id: function-state
         run: |
-          status=x-$(aws lambda list-functions --query 'Functions[?starts_with(FunctionName, `holiday`) == `true`].FunctionName' --output text)
+          status=x-$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionName' --output text)
           echo "::set-output name=fun-exist::$status"
       - name: Create Lambda function
         id: create-lambda
