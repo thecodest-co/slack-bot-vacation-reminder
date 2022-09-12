@@ -50,7 +50,7 @@ jobs:
           echo "::set-output name=role-exist::$status"
       - name: Create role if not exist
         id: create-role
-        if: ${{ steps.role-state.outputs.role-exist }} == 'x-'
+        if: steps.role-state.outputs.role-exist == 'x-'
         run: |
           aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
       - name: Check function state
@@ -61,7 +61,7 @@ jobs:
           echo "::set-output name=fun-exist::$status"
       - name: Create Lambda function
         id: create-lambda
-        if: ${{ steps.function-state.outputs.fun-exist }} == 'x-'
+        if: steps.function-state.outputs.fun-exist == 'x-'
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
@@ -69,7 +69,7 @@ jobs:
           aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image > /dev/null
       - name: Update Lambda function
         id: update-lambda
-        if: ${{ steps.function-state.outputs.fun-exist }} != 'x-'
+        if: steps.function-state.outputs.fun-exist != 'x-'
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
