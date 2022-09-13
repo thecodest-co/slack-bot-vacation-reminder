@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    name: Build & Deploy to prod
+    name: Build & Deploy pages
     runs-on: ubuntu-latest
     environment: prod
 
