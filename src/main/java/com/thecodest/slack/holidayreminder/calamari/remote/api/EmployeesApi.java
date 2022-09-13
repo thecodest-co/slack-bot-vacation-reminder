@@ -13,9 +13,22 @@
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
 import com.google.gson.reflect.TypeToken;
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
-import com.thecodest.slack.holidayreminder.calamari.remote.*;
-
+import com.thecodest.slack.holidayreminder.calamari.remote.ApiCallback;
+import com.thecodest.slack.holidayreminder.calamari.remote.ApiClient;
+import com.thecodest.slack.holidayreminder.calamari.remote.ApiException;
+import com.thecodest.slack.holidayreminder.calamari.remote.ApiResponse;
+import com.thecodest.slack.holidayreminder.calamari.remote.Configuration;
+import com.thecodest.slack.holidayreminder.calamari.remote.Pair;
+import com.thecodest.slack.holidayreminder.calamari.remote.ProgressRequestBody;
+import com.thecodest.slack.holidayreminder.calamari.remote.ProgressResponseBody;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateEmployeeOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeesOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.InvitationEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicArchiveEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicCreateEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEditEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEmployeesIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicSearchEmployeesIn;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -12,11 +12,16 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.BalanceOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateBalanceIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeeBalanceOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetAbsenceTypeOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetBalanceOfEmployeeAndAbsenceType;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetEmployeesBalancesIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.ModifyBalanceOut;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 
 /**

@@ -5,20 +5,28 @@ import java.util.Objects;
 
 /**
  * PoC of email normalization tool.
- * <p>
- * Normalization mean:
+ *
+ * <p>Normalization mean:
  *
  * <ul>
  *     <li>trim all whitespaces and other blanks around address</li>
  *     <li>domain part (after @) to lowercase</li>
  *     <li>local part cleansed from aliases – everything between + and @</li>
- *     <li>local part to lowercase – this is not valid against RFC but most of software tread local part as case insensitive</li>
+ *     <li>local part to lowercase – this is not valid against RFC but most of
+ *     software tread local part as case insensitive</li>
  * </ul>
- * <p>
- * Product of normalization is @NormalizedEmail class.
+ *
+ * <p>Product of normalization is @NormalizedEmail class.
  */
 public class EmailNormalization {
 
+	/**
+	 * Normalize given email address.
+	 *
+	 * @param email raw address.
+	 * @return Normalized address.
+	 * @throws ParseException when #email is not correct email address.
+	 */
 	public static NormalizedEmail normalize(String email) throws ParseException {
 		Objects.requireNonNull(email);
 		final int domainIndex = email.lastIndexOf('@');
@@ -36,18 +44,27 @@ public class EmailNormalization {
 
 		final String normalizedLocalPart = localPartMaybeWithAliases.toLowerCase();
 
-		return new NormalizedEmail(normalizedLocalPart + "@" + domain, email.trim(), normalizedLocalPart, domain, localPartMaybeWithAliases);
+		return new NormalizedEmail(normalizedLocalPart + "@" + domain, email.trim(),
+				normalizedLocalPart, domain, localPartMaybeWithAliases);
 	}
 
-	private static NormalizedEmail processAlias(String localPartMaybeWithAliases, int aliasIndex, String domain, String email) {
+	private static NormalizedEmail processAlias(String localPartMaybeWithAliases,
+	                                            int aliasIndex, String domain, String email) {
 		final String localPart = localPartMaybeWithAliases.substring(0, aliasIndex);
 		final String normalizedLocalPart = localPart.toLowerCase();
-		return new NormalizedEmail(normalizedLocalPart + "@" + domain, email.trim(), normalizedLocalPart, domain, localPartMaybeWithAliases);
+		return new NormalizedEmail(normalizedLocalPart + "@" + domain, email.trim(),
+				normalizedLocalPart, domain, localPartMaybeWithAliases);
 	}
 
 	/**
 	 * Email after normalization. Two emails are equal in meaning of {@link #equals(Object)} method,
 	 * when they normal forms are equal.
+	 *
+	 * @param normalForm normal form of address without aliases.
+	 * @param commonForm raw form.
+	 * @param localPart local part of email address (before @ symbol) without aliases.
+	 * @param domainPart domain part of email (after @ symbol).
+	 * @param localPartWithAliases local part of email address (before @ symbol) with all aliases.
 	 */
 	public record NormalizedEmail(String normalForm, String commonForm,
 	                              String localPart, String domainPart,
@@ -66,15 +83,17 @@ public class EmailNormalization {
 		/**
 		 * Check equality of objects based on {@link #normalForm}.
 		 *
-		 * @param o
+		 * @param o another object.
 		 * @return true when {@link #normalForm}s are equal. Otherwise, return false.
 		 */
 		@Override
 		public boolean equals(Object o) {
-			if(this == o)
+			if(this == o) {
 				return true;
-			if(o == null || getClass() != o.getClass())
+			}
+			if(o == null || getClass() != o.getClass()) {
 				return false;
+			}
 			NormalizedEmail that = (NormalizedEmail) o;
 			return normalForm.equals(that.normalForm);
 		}

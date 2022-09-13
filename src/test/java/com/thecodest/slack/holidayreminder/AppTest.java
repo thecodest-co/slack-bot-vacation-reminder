@@ -1,11 +1,10 @@
 package com.thecodest.slack.holidayreminder;
 
-import org.junit.jupiter.api.Test;
-import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import org.junit.jupiter.api.Test;
+import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
 
 class AppTest {
 

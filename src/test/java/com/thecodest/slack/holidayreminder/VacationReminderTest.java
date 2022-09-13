@@ -1,7 +1,11 @@
 package com.thecodest.slack.holidayreminder;
 
+import static java.util.List.of;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.thecodest.slack.holidayreminder.calamari.CalamariApi;
-import com.thecodest.slack.holidayreminder.calamari.Employee;
+import com.thecodest.slack.holidayreminder.calamari.CalamariEmployee;
 import com.thecodest.slack.holidayreminder.slack.SlackClient;
 import com.thecodest.slack.holidayreminder.slack.SlackUser;
 import org.junit.jupiter.api.Test;
@@ -10,10 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static java.util.List.of;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class VacationReminderTest {
@@ -36,9 +36,9 @@ class VacationReminderTest {
 
 	@Test
 	void shouldSendMessageOnlyToPeopleWithMoreThan5Days() {
-		var e1 = new Employee("E1", "e1@codest.com", 10);
-		var e2 = new Employee("E2", "e2@notcodest.com", 5);
-		var e3 = new Employee("E3", "e3@codest.com", 7);
+		var e1 = new CalamariEmployee("E1", "e1@codest.com", 10);
+		var e2 = new CalamariEmployee("E2", "e2@notcodest.com", 5);
+		var e3 = new CalamariEmployee("E3", "e3@codest.com", 7);
 		var s1 = new SlackUser("E1", "E1", "e1@codest.com");
 		var s3 = new SlackUser("E3", "E3", "e3@codest.com");
 

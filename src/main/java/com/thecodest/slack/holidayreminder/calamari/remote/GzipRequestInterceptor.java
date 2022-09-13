@@ -12,13 +12,16 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote;
 
-import com.squareup.okhttp.*;
+import com.squareup.okhttp.Interceptor;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+import java.io.IOException;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.GzipSink;
 import okio.Okio;
-
-import java.io.IOException;
 
 /**
  * Encodes request bodies using gzip.

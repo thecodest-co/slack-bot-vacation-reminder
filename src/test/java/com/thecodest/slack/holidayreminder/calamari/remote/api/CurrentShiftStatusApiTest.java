@@ -16,10 +16,9 @@ import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CurrentShif
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.DailyPresenceReport;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.GetPresenceReportRequest;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.ShiftStatusRequest;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 
 /**

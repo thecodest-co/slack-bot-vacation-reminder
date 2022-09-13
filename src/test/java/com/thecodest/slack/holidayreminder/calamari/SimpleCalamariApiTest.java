@@ -1,5 +1,10 @@
 package com.thecodest.slack.holidayreminder.calamari;
 
+import static java.util.List.of;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 import com.thecodest.slack.holidayreminder.calamari.remote.ApiException;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.AbsenceTypeApi;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.EmployeesApi;
@@ -13,11 +18,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static java.util.List.of;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SimpleCalamariApiTest {
@@ -34,14 +34,15 @@ class SimpleCalamariApiTest {
 	void shouldReturnOnlyEmployeesThatHave5OrMoreVacationDaysLeft() throws ApiException {
 		var employeesApiResponse = new EmployeesOut();
 		employeesApiResponse.employees(of(
-				buildEFO("e1"),
-				buildEFO("e2"),
-				buildEFO("e3")
+				buildEmployeeFullOut("e1"),
+				buildEmployeeFullOut("e2"),
+				buildEmployeeFullOut("e3")
 		));
 		when(employeesApi.getEmployees(any())).thenReturn(employeesApiResponse);
 		when(absenceTypeApi.getEntitlementBalance(any())).thenAnswer(
 				invocationOnMock -> {
-					var arg = (GetBalanceOfEmployeeAndAbsenceType) (invocationOnMock.getArguments()[0]);
+					var arg = (GetBalanceOfEmployeeAndAbsenceType)
+							(invocationOnMock.getArguments()[0]);
 					if(arg.getEmployee().equals("e2@codest.com")) {
 						return buildBalanceOut(4);
 					}
@@ -52,9 +53,8 @@ class SimpleCalamariApiTest {
 		var employees = simpleCalamariApi.employeesWithToMuchFreeDays(5);
 		assertThat(employees).hasSize(2)
 				.contains(
-						new Employee("e1", "e1@codest.com", 6),
-						new Employee("e3", "e3@codest.com", 6)
-				);
+						new CalamariEmployee("e1", "e1@codest.com", 6),
+						new CalamariEmployee("e3", "e3@codest.com", 6));
 
 	}
 
@@ -65,7 +65,7 @@ class SimpleCalamariApiTest {
 		return balance;
 	}
 
-	private EmployeeFullOut buildEFO(String id) {
+	private EmployeeFullOut buildEmployeeFullOut(String id) {
 		EmployeeFullOut employeeFullOut = new EmployeeFullOut();
 		employeeFullOut.setFirstName(id);
 		employeeFullOut.setEmail(id + "@codest.com");

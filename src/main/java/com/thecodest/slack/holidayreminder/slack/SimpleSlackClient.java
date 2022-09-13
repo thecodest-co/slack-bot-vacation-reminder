@@ -6,11 +6,10 @@ import com.slack.api.methods.request.users.UsersListRequest;
 import com.slack.api.methods.response.chat.ChatPostMessageResponse;
 import com.slack.api.methods.response.users.UsersListResponse;
 import io.vavr.control.Try;
-
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Collections;
 import java.util.List;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 class SimpleSlackClient implements SlackClient {
 

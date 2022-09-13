@@ -14,7 +14,6 @@ package com.thecodest.slack.holidayreminder.calamari.remote.auth;
 
 import com.squareup.okhttp.Credentials;
 import com.thecodest.slack.holidayreminder.calamari.remote.Pair;
-
 import java.util.List;
 import java.util.Map;
 

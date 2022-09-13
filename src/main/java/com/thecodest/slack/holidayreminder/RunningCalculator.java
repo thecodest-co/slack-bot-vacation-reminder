@@ -1,11 +1,5 @@
 package com.thecodest.slack.holidayreminder;
 
-import com.google.common.annotations.VisibleForTesting;
-
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.Month;
-
 import static java.time.DayOfWeek.MONDAY;
 import static java.time.DayOfWeek.SATURDAY;
 import static java.time.DayOfWeek.SUNDAY;
@@ -15,10 +9,15 @@ import static java.time.Month.JANUARY;
 import static java.time.Month.JULY;
 import static java.time.Month.OCTOBER;
 
+import com.google.common.annotations.VisibleForTesting;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+
 /**
  * For requirement, run on second working day of first month of each quarter.
- * <p>
- * This is very tricky and impossible to implement without complex calendar support. So, let's make some assumptions.
+ *
+ * <p>This is very tricky and impossible to implement without complex calendar support. So, let's make some assumptions.
  *
  * <ul>
  *     <li>We omit all midweek holidays » to implement that feature we need to know holiday calendar
@@ -26,8 +25,8 @@ import static java.time.Month.OCTOBER;
  *     <li>We use Gregorian Calendar with saturday and sunday as days off » other week model need to implement
  *     different calendar support.</li>
  * </ul>
- * <p>
- * Based on that we can define some rules.
+ *
+ * <p>Based on that we can define some rules.
  *
  * <ul>
  *     <li>Only valid „run months” are January, April, July and October.</li>
@@ -37,8 +36,8 @@ import static java.time.Month.OCTOBER;
  *     <li>4th is valid only if it is Monday or Tuesday</li>
  *     <li>All other days are „invalid”.</li>
  * </ul>
- * <p>
- * Example dates that match cases above:
+ *
+ * <p>Example dates that match cases above:
  *
  * <ul>
  *     <li>January 2019 – 2nd is Wednesday</li>

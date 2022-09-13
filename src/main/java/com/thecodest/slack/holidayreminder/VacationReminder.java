@@ -1,18 +1,18 @@
 package com.thecodest.slack.holidayreminder;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.thecodest.slack.holidayreminder.calamari.CalamariApi;
-import com.thecodest.slack.holidayreminder.calamari.Employee;
-import com.thecodest.slack.holidayreminder.slack.SlackClient;
-import com.thecodest.slack.holidayreminder.slack.SlackUser;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
-
-import javax.inject.Inject;
-
 import static io.github.pellse.assembler.AssemblerBuilder.assemblerOf;
 import static io.github.pellse.assembler.stream.StreamAdapter.streamAdapter;
 import static io.github.pellse.util.query.MapperUtils.oneToOne;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.slack.api.methods.response.chat.ChatPostMessageResponse;
+import com.thecodest.slack.holidayreminder.calamari.CalamariApi;
+import com.thecodest.slack.holidayreminder.calamari.CalamariEmployee;
+import com.thecodest.slack.holidayreminder.slack.SlackClient;
+import com.thecodest.slack.holidayreminder.slack.SlackUser;
+import javax.inject.Inject;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 
 
 @Log
@@ -37,9 +37,9 @@ class VacationReminder implements Runnable {
 	@VisibleForTesting
 	void sendMessage() {
 		assemblerOf(Coder.class)
-				.withIdExtractor(Employee::email)
+				.withIdExtractor(CalamariEmployee::email)
 				.withAssemblerRules(
-						oneToOne(slackClient::getUsersByEmails, SlackUser::email),
+						oneToOne(slackClient::getUsersByEmails, SlackUser::normalizedEmail),
 						Coder::new
 				)
 				.using(streamAdapter())
@@ -47,9 +47,11 @@ class VacationReminder implements Runnable {
 				.filter(coder -> coder.slackUser() != null)
 				.toList()
 				.stream()
-				.map(coder ->
-						slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.employee()))
-				)
+				.map(this::sendMessage)
 				.forEach(c -> log.info(String.valueOf(c)));
+	}
+
+	private ChatPostMessageResponse sendMessage(Coder coder) {
+		return slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));
 	}
 }

@@ -1,15 +1,11 @@
 package com.thecodest.slack.holidayreminder;
 
-import com.thecodest.slack.holidayreminder.EmailNormalization.NormalizedEmail;
-import org.assertj.core.api.AbstractAssert;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.text.ParseException;
-
 import static com.thecodest.slack.holidayreminder.EmailNormalization.normalize;
 import static com.thecodest.slack.holidayreminder.NormalizedEmailAssert.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.text.ParseException;
+import org.junit.jupiter.api.Test;
 
 class EmailNormalizationTest {
 
@@ -72,7 +68,7 @@ class EmailNormalizationTest {
 	}
 
 	@Test
-	void shouldThrowNPE() {
+	void shouldThrowNullPointer() {
 		assertThatThrownBy(() -> normalize(null)).isInstanceOf(NullPointerException.class);
 	}
 
@@ -84,61 +80,3 @@ class EmailNormalizationTest {
 	}
 }
 
-class NormalizedEmailAssert extends AbstractAssert<NormalizedEmailAssert, NormalizedEmail> {
-
-	protected NormalizedEmailAssert(NormalizedEmail emailNormalization) {
-		super(emailNormalization, NormalizedEmailAssert.class);
-	}
-
-	public static NormalizedEmailAssert assertThat(NormalizedEmail emailNormalization) {
-		return new NormalizedEmailAssert(emailNormalization);
-	}
-
-	public NormalizedEmailAssert hasNormalForm(String expected) {
-		isNotNull();
-		Assertions.assertThat(actual.normalForm())
-				.isNotNull()
-				.isEqualTo(expected);
-		return this;
-	}
-
-	public NormalizedEmailAssert hasCommonForm(String expected) {
-		isNotNull();
-		Assertions.assertThat(actual.commonForm())
-				.isNotNull()
-				.isEqualTo(expected);
-		return this;
-	}
-
-	public NormalizedEmailAssert hasLocalPart(String expected) {
-		isNotNull();
-		Assertions.assertThat(actual.localPart())
-				.isNotNull()
-				.isEqualTo(expected);
-		return this;
-	}
-
-	public NormalizedEmailAssert hasDomainPart(String expected) {
-		isNotNull();
-		Assertions.assertThat(actual.domainPart())
-				.isNotNull()
-				.isEqualTo(expected);
-		return this;
-	}
-
-	public NormalizedEmailAssert hasLocalPartWithAliases(String expected) {
-		isNotNull();
-		Assertions.assertThat(actual.localPartWithAliases())
-				.isNotNull()
-				.isEqualTo(expected);
-		return this;
-	}
-
-	public NormalizedEmailAssert areStrictEquals(NormalizedEmail expected) {
-		isNotNull();
-		Assertions.assertThat(actual)
-				.isNotNull()
-				.matches(ne -> ne.strictEquals(expected), "NormalizedEmails are not strict equals");
-		return this;
-	}
-}

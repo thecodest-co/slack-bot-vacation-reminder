@@ -15,10 +15,9 @@ package com.thecodest.slack.holidayreminder.calamari.remote.api;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateTeamIn;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateTeamOut;
 import com.thecodest.slack.holidayreminder.calamari.remote.api.model.TeamOut;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 
 /**

@@ -12,7 +12,14 @@
 
 package com.thecodest.slack.holidayreminder.calamari.remote.api;
 
-import com.thecodest.slack.holidayreminder.calamari.remote.api.model.*;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.CreateEmployeeOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.EmployeesOut;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.InvitationEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicArchiveEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicCreateEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEditEmployeeIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicEmployeesIn;
+import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicSearchEmployeesIn;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
