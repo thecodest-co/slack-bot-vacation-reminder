@@ -21,3 +21,5 @@ target
 build
 .idea/
 *.iml
+
+dependency-reduced-pom.xml
