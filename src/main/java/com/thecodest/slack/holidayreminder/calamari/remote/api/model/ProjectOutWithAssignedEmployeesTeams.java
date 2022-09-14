@@ -80,7 +80,7 @@ public class ProjectOutWithAssignedEmployeesTeams {
 	}
 
 	public ProjectOutWithAssignedEmployeesTeams addEmployeesItem(EmployeeSimpleOut employeesItem) {
-		if(this.employees == null) {
+		if (this.employees == null) {
 			this.employees = new ArrayList<>();
 		}
 		this.employees.add(employeesItem);
@@ -107,7 +107,7 @@ public class ProjectOutWithAssignedEmployeesTeams {
 	}
 
 	public ProjectOutWithAssignedEmployeesTeams addTeamsItem(TeamOut teamsItem) {
-		if(this.teams == null) {
+		if (this.teams == null) {
 			this.teams = new ArrayList<>();
 		}
 		this.teams.add(teamsItem);
@@ -130,14 +130,17 @@ public class ProjectOutWithAssignedEmployeesTeams {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		ProjectOutWithAssignedEmployeesTeams projectOutWithAssignedEmployeesTeams = (ProjectOutWithAssignedEmployeesTeams) o;
-		return Objects.equals(this.id, projectOutWithAssignedEmployeesTeams.id) && Objects.equals(this.name, projectOutWithAssignedEmployeesTeams.name) && Objects.equals(this.employees, projectOutWithAssignedEmployeesTeams.employees) && Objects.equals(this.teams, projectOutWithAssignedEmployeesTeams.teams);
+		return Objects.equals(this.id, projectOutWithAssignedEmployeesTeams.id)
+				&& Objects.equals(this.name, projectOutWithAssignedEmployeesTeams.name)
+				&& Objects.equals(this.employees, projectOutWithAssignedEmployeesTeams.employees)
+				&& Objects.equals(this.teams, projectOutWithAssignedEmployeesTeams.teams);
 	}
 
 	@Override
@@ -163,7 +166,7 @@ public class ProjectOutWithAssignedEmployeesTeams {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

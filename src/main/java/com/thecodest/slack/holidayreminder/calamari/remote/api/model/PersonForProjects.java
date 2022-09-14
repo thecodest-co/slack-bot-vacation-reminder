@@ -31,7 +31,8 @@ public class PersonForProjects {
 	}
 
 	/**
-	 * Employee identifier. You can use e-mail or external identifier in format (externalNumber:ABC123)
+	 * Employee identifier. You can use e-mail or external identifier in format
+	 * (externalNumber:ABC123)
 	 *
 	 * @return person
 	 **/
@@ -46,10 +47,10 @@ public class PersonForProjects {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		PersonForProjects personForProjects = (PersonForProjects) o;
@@ -76,7 +77,7 @@ public class PersonForProjects {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

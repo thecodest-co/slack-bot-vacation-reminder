@@ -53,7 +53,8 @@ public class CreateAbsenceRequestForParticularEmployee {
 	}
 
 	/**
-	 * Employee e-mail or login. Absence request will be created for the chosen employee. Chosen employee will be also a creator of request.
+	 * Employee e-mail or login. Absence request will be created for the chosen
+	 * employee. Chosen employee will be also a creator of request.
 	 *
 	 * @return employee
 	 **/
@@ -72,7 +73,8 @@ public class CreateAbsenceRequestForParticularEmployee {
 	}
 
 	/**
-	 * Time part value for absence start. Allowed values are based on minimal duration of absence request in absence type configuration.
+	 * Time part value for absence start. Allowed values are based on minimal
+	 * duration of absence request in absence type configuration.
 	 *
 	 * @return fromPart
 	 **/
@@ -91,7 +93,8 @@ public class CreateAbsenceRequestForParticularEmployee {
 	}
 
 	/**
-	 * Time part value for absence end. Allowed values are based on minimal duration of absence request in absence type configuration.
+	 * Time part value for absence end. Allowed values are based on minimal duration
+	 * of absence request in absence type configuration.
 	 *
 	 * @return toPart
 	 **/
@@ -220,14 +223,22 @@ public class CreateAbsenceRequestForParticularEmployee {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		CreateAbsenceRequestForParticularEmployee createAbsenceRequestForParticularEmployee = (CreateAbsenceRequestForParticularEmployee) o;
-		return Objects.equals(this.employee, createAbsenceRequestForParticularEmployee.employee) && Objects.equals(this.fromPart, createAbsenceRequestForParticularEmployee.fromPart) && Objects.equals(this.toPart, createAbsenceRequestForParticularEmployee.toPart) && Objects.equals(this.absenceTypeId, createAbsenceRequestForParticularEmployee.absenceTypeId) && Objects.equals(this.reason, createAbsenceRequestForParticularEmployee.reason) && Objects.equals(this.substitute, createAbsenceRequestForParticularEmployee.substitute) && Objects.equals(this.comment, createAbsenceRequestForParticularEmployee.comment) && Objects.equals(this.dateFrom, createAbsenceRequestForParticularEmployee.dateFrom) && Objects.equals(this.dateTo, createAbsenceRequestForParticularEmployee.dateTo);
+		return Objects.equals(this.employee, createAbsenceRequestForParticularEmployee.employee)
+				&& Objects.equals(this.fromPart, createAbsenceRequestForParticularEmployee.fromPart)
+				&& Objects.equals(this.toPart, createAbsenceRequestForParticularEmployee.toPart)
+				&& Objects.equals(this.absenceTypeId, createAbsenceRequestForParticularEmployee.absenceTypeId)
+				&& Objects.equals(this.reason, createAbsenceRequestForParticularEmployee.reason)
+				&& Objects.equals(this.substitute, createAbsenceRequestForParticularEmployee.substitute)
+				&& Objects.equals(this.comment, createAbsenceRequestForParticularEmployee.comment)
+				&& Objects.equals(this.dateFrom, createAbsenceRequestForParticularEmployee.dateFrom)
+				&& Objects.equals(this.dateTo, createAbsenceRequestForParticularEmployee.dateTo);
 	}
 
 	@Override
@@ -258,18 +269,20 @@ public class CreateAbsenceRequestForParticularEmployee {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
 	}
 
 	/**
-	 * Time part value for absence start. Allowed values are based on minimal duration of absence request in absence type configuration.
+	 * Time part value for absence start. Allowed values are based on minimal
+	 * duration of absence request in absence type configuration.
 	 */
 	@JsonAdapter(FromPartEnum.Adapter.class)
 	public enum FromPartEnum {
-		MORNING("MORNING"), AFTERNOON("AFTERNOON"), END_OF_DAY_AND_HOUR_BASED_HH_MM_("END_OF_DAY and hour based(HH:mm)");
+		MORNING("MORNING"), AFTERNOON("AFTERNOON"), END_OF_DAY_AND_HOUR_BASED_HH_MM_(
+				"END_OF_DAY and hour based(HH:mm)");
 
 		private String value;
 
@@ -278,8 +291,8 @@ public class CreateAbsenceRequestForParticularEmployee {
 		}
 
 		public static FromPartEnum fromValue(String input) {
-			for(FromPartEnum b : FromPartEnum.values()) {
-				if(b.value.equals(input)) {
+			for (FromPartEnum b : FromPartEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}
@@ -310,11 +323,13 @@ public class CreateAbsenceRequestForParticularEmployee {
 	}
 
 	/**
-	 * Time part value for absence end. Allowed values are based on minimal duration of absence request in absence type configuration.
+	 * Time part value for absence end. Allowed values are based on minimal duration
+	 * of absence request in absence type configuration.
 	 */
 	@JsonAdapter(ToPartEnum.Adapter.class)
 	public enum ToPartEnum {
-		MORNING("MORNING"), AFTERNOON("AFTERNOON"), END_OF_DAY_AND_HOUR_BASED_HH_MM_("END_OF_DAY and hour based(HH:mm)");
+		MORNING("MORNING"), AFTERNOON("AFTERNOON"), END_OF_DAY_AND_HOUR_BASED_HH_MM_(
+				"END_OF_DAY and hour based(HH:mm)");
 
 		private String value;
 
@@ -323,8 +338,8 @@ public class CreateAbsenceRequestForParticularEmployee {
 		}
 
 		public static ToPartEnum fromValue(String input) {
-			for(ToPartEnum b : ToPartEnum.values()) {
-				if(b.value.equals(input)) {
+			for (ToPartEnum b : ToPartEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

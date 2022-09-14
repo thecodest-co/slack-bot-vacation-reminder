@@ -90,14 +90,16 @@ public class DateTimeFieldType {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		DateTimeFieldType dateTimeFieldType = (DateTimeFieldType) o;
-		return Objects.equals(this.name, dateTimeFieldType.name) && Objects.equals(this.durationType, dateTimeFieldType.durationType) && Objects.equals(this.rangeDurationType, dateTimeFieldType.rangeDurationType);
+		return Objects.equals(this.name, dateTimeFieldType.name)
+				&& Objects.equals(this.durationType, dateTimeFieldType.durationType)
+				&& Objects.equals(this.rangeDurationType, dateTimeFieldType.rangeDurationType);
 	}
 
 	@Override
@@ -122,7 +124,7 @@ public class DateTimeFieldType {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

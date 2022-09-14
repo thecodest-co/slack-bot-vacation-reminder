@@ -68,7 +68,7 @@ public class GetEmployeesBalancesIn {
 	}
 
 	public GetEmployeesBalancesIn addTeamsItem(String teamsItem) {
-		if(this.teams == null) {
+		if (this.teams == null) {
 			this.teams = new ArrayList<>();
 		}
 		this.teams.add(teamsItem);
@@ -76,7 +76,10 @@ public class GetEmployeesBalancesIn {
 	}
 
 	/**
-	 * List of teams names or identifiers to search. As a result there will be balances of employees who are members of at least one of provided teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;, \&quot;Third Team\&quot;]
+	 * List of teams names or identifiers to search. As a result there will be
+	 * balances of employees who are members of at least one of provided teams.
+	 * Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;, \&quot;Third
+	 * Team\&quot;]
 	 *
 	 * @return teams
 	 **/
@@ -95,7 +98,7 @@ public class GetEmployeesBalancesIn {
 	}
 
 	public GetEmployeesBalancesIn addPositionsItem(String positionsItem) {
-		if(this.positions == null) {
+		if (this.positions == null) {
 			this.positions = new ArrayList<>();
 		}
 		this.positions.add(positionsItem);
@@ -103,7 +106,9 @@ public class GetEmployeesBalancesIn {
 	}
 
 	/**
-	 * List of positions names or identifiers to search. As a result there will be balances of employees who have one of provided positions. Example: [\&quot;Developer\&quot;, \&quot;Support\&quot;, \&quot;Architect\&quot;]
+	 * List of positions names or identifiers to search. As a result there will be
+	 * balances of employees who have one of provided positions. Example:
+	 * [\&quot;Developer\&quot;, \&quot;Support\&quot;, \&quot;Architect\&quot;]
 	 *
 	 * @return positions
 	 **/
@@ -122,7 +127,7 @@ public class GetEmployeesBalancesIn {
 	}
 
 	public GetEmployeesBalancesIn addContractTypesItem(String contractTypesItem) {
-		if(this.contractTypes == null) {
+		if (this.contractTypes == null) {
 			this.contractTypes = new ArrayList<>();
 		}
 		this.contractTypes.add(contractTypesItem);
@@ -130,7 +135,9 @@ public class GetEmployeesBalancesIn {
 	}
 
 	/**
-	 * List of contract types names or identifiers to search. As a result there will be balances of employees who have one of contract type. Example: [\&quot;firstContract\&quot;, \&quot;secondContract\&quot;]
+	 * List of contract types names or identifiers to search. As a result there will
+	 * be balances of employees who have one of contract type. Example:
+	 * [\&quot;firstContract\&quot;, \&quot;secondContract\&quot;]
 	 *
 	 * @return contractTypes
 	 **/
@@ -149,7 +156,7 @@ public class GetEmployeesBalancesIn {
 	}
 
 	public GetEmployeesBalancesIn addEmployeesItem(String employeesItem) {
-		if(this.employees == null) {
+		if (this.employees == null) {
 			this.employees = new ArrayList<>();
 		}
 		this.employees.add(employeesItem);
@@ -157,7 +164,8 @@ public class GetEmployeesBalancesIn {
 	}
 
 	/**
-	 * List of employees e-mails or logins. Example: [\&quot;john.smith@domain.com\&quot;, \&quot;mark.small@domain.com\&quot;]
+	 * List of employees e-mails or logins. Example:
+	 * [\&quot;john.smith@domain.com\&quot;, \&quot;mark.small@domain.com\&quot;]
 	 *
 	 * @return employees
 	 **/
@@ -191,14 +199,19 @@ public class GetEmployeesBalancesIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		GetEmployeesBalancesIn getEmployeesBalancesIn = (GetEmployeesBalancesIn) o;
-		return Objects.equals(this.absenceTypeId, getEmployeesBalancesIn.absenceTypeId) && Objects.equals(this.teams, getEmployeesBalancesIn.teams) && Objects.equals(this.positions, getEmployeesBalancesIn.positions) && Objects.equals(this.contractTypes, getEmployeesBalancesIn.contractTypes) && Objects.equals(this.employees, getEmployeesBalancesIn.employees) && Objects.equals(this.date, getEmployeesBalancesIn.date);
+		return Objects.equals(this.absenceTypeId, getEmployeesBalancesIn.absenceTypeId)
+				&& Objects.equals(this.teams, getEmployeesBalancesIn.teams)
+				&& Objects.equals(this.positions, getEmployeesBalancesIn.positions)
+				&& Objects.equals(this.contractTypes, getEmployeesBalancesIn.contractTypes)
+				&& Objects.equals(this.employees, getEmployeesBalancesIn.employees)
+				&& Objects.equals(this.date, getEmployeesBalancesIn.date);
 	}
 
 	@Override
@@ -226,7 +239,7 @@ public class GetEmployeesBalancesIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -19,7 +19,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for PositionsApi
  */
@@ -33,7 +32,8 @@ class PositionsApiTest {
 	 * <p>
 	 * Create a position.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void createPositionTest() throws Exception {
@@ -48,7 +48,8 @@ class PositionsApiTest {
 	 * <p>
 	 * Get all positions.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getPositionsTest() throws Exception {

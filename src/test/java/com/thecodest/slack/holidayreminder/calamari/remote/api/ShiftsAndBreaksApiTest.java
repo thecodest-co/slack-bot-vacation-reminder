@@ -23,7 +23,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for ShiftsAndBreaksApi
  */
@@ -35,9 +34,25 @@ class ShiftsAndBreaksApiTest {
 	/**
 	 * Start employee break.
 	 * <p>
-	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void breakStartTest() throws Exception {
@@ -50,9 +65,26 @@ class ShiftsAndBreaksApiTest {
 	/**
 	 * Stop employee break.
 	 * <p>
-	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find properly break type ID &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id provided. You should use get-break-types method
+	 * to find properly break type ID
+	 * &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void breakStopTest() throws Exception {
@@ -65,9 +97,25 @@ class ShiftsAndBreaksApiTest {
 	/**
 	 * Start employees shift.
 	 * <p>
-	 * Start employee shift. If the employee shift has already been started via web browser, mobile app or any other terminal, the request is ignored and the method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee shift. If the employee shift has already been started via web
+	 * browser, mobile app or any other terminal, the request is ignored and the
+	 * method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should
+	 * send request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void clockInTest() throws Exception {
@@ -80,9 +128,24 @@ class ShiftsAndBreaksApiTest {
 	/**
 	 * Finish employees shift.
 	 * <p>
-	 * Stop employee shift. If employee shift is not started in moment of request the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee shift. If employee shift is not started in moment of request
+	 * the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void clockOutTest() throws Exception {
@@ -97,7 +160,8 @@ class ShiftsAndBreaksApiTest {
 	 * <p>
 	 * Get break types. &lt;br /&gt;&lt;br /&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getBreakTypesTest() throws Exception {
@@ -109,9 +173,12 @@ class ShiftsAndBreaksApiTest {
 	/**
 	 * Get break types for one person.
 	 * <p>
-	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getBreakTypesForEmployeeTest() throws Exception {
@@ -124,9 +191,25 @@ class ShiftsAndBreaksApiTest {
 	/**
 	 * Start or stop employee shift
 	 * <p>
-	 * Method indicates employee go through company&#x27;s doors. Starts shift if it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Method indicates employee go through company&#x27;s doors. Starts shift if
+	 * it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client
+	 * application should send request immediately when event occurs. If there is
+	 * any problem with connection or access to API event should be queued in
+	 * clients side and then sent in order of occurence.&lt;br /&gt;&lt;br
+	 * /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure
+	 * &#x27;API Terminal&#x27; in Calamari Clockin configuration
+	 * panel&lt;/li&gt;&lt;li&gt;Make sure API access is
+	 * enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void punchTest() throws Exception {

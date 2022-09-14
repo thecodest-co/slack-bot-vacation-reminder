@@ -134,14 +134,17 @@ public class DurationField {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		DurationField durationField = (DurationField) o;
-		return Objects.equals(this.name, durationField.name) && Objects.equals(this.type, durationField.type) && Objects.equals(this.supported, durationField.supported) && Objects.equals(this.precise, durationField.precise) && Objects.equals(this.unitMillis, durationField.unitMillis);
+		return Objects.equals(this.name, durationField.name) && Objects.equals(this.type, durationField.type)
+				&& Objects.equals(this.supported, durationField.supported)
+				&& Objects.equals(this.precise, durationField.precise)
+				&& Objects.equals(this.unitMillis, durationField.unitMillis);
 	}
 
 	@Override
@@ -168,7 +171,7 @@ public class DurationField {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

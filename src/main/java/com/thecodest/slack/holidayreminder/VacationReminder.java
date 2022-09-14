@@ -14,7 +14,6 @@ import javax.inject.Inject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
-
 @Log
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 class VacationReminder implements Runnable {
@@ -27,7 +26,7 @@ class VacationReminder implements Runnable {
 
 	@Override
 	public void run() {
-		if(!runningCalculator.shouldItRun()) {
+		if (!runningCalculator.shouldItRun()) {
 			log.info("Not today");
 			return;
 		}
@@ -40,8 +39,7 @@ class VacationReminder implements Runnable {
 				.withIdExtractor(CalamariEmployee::email)
 				.withAssemblerRules(
 						oneToOne(slackClient::getUsersByEmails, SlackUser::normalizedEmail),
-						Coder::new
-				)
+						Coder::new)
 				.using(streamAdapter())
 				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))
 				.filter(coder -> coder.slackUser() != null)

@@ -19,7 +19,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for ProjectsApi
  */
@@ -31,9 +30,12 @@ class ProjectsApiTest {
 	/**
 	 * Archive project type.
 	 * <p>
-	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; - provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; -
+	 * provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void archiveProjectTypeTest() throws Exception {
@@ -45,9 +47,14 @@ class ProjectsApiTest {
 	/**
 	 * Create project type.
 	 * <p>
-	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void createProjectTypeTest() throws Exception {
@@ -59,9 +66,12 @@ class ProjectsApiTest {
 	/**
 	 * Get project types for one person.
 	 * <p>
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getProjectForEmployeeTest() throws Exception {
@@ -76,7 +86,8 @@ class ProjectsApiTest {
 	 * <p>
 	 * Get project types.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getProjectsTest() throws Exception {
@@ -88,9 +99,14 @@ class ProjectsApiTest {
 	/**
 	 * Update project type.
 	 * <p>
-	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void updateProjectTypeTest() throws Exception {

@@ -45,7 +45,8 @@ public class CreateTimesheetEntryIn {
 	}
 
 	/**
-	 * Employee identifier. You can use e-mail or external identifier in format (externalNumber:ABC123)
+	 * Employee identifier. You can use e-mail or external identifier in format
+	 * (externalNumber:ABC123)
 	 *
 	 * @return person
 	 **/
@@ -102,7 +103,7 @@ public class CreateTimesheetEntryIn {
 	}
 
 	public CreateTimesheetEntryIn addBreaksItem(BreakDtoIn breaksItem) {
-		if(this.breaks == null) {
+		if (this.breaks == null) {
 			this.breaks = new ArrayList<>();
 		}
 		this.breaks.add(breaksItem);
@@ -129,7 +130,7 @@ public class CreateTimesheetEntryIn {
 	}
 
 	public CreateTimesheetEntryIn addProjectsItem(ProjectDtoIn projectsItem) {
-		if(this.projects == null) {
+		if (this.projects == null) {
 			this.projects = new ArrayList<>();
 		}
 		this.projects.add(projectsItem);
@@ -152,14 +153,18 @@ public class CreateTimesheetEntryIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		CreateTimesheetEntryIn createTimesheetEntryIn = (CreateTimesheetEntryIn) o;
-		return Objects.equals(this.person, createTimesheetEntryIn.person) && Objects.equals(this.shiftStart, createTimesheetEntryIn.shiftStart) && Objects.equals(this.shiftEnd, createTimesheetEntryIn.shiftEnd) && Objects.equals(this.breaks, createTimesheetEntryIn.breaks) && Objects.equals(this.projects, createTimesheetEntryIn.projects);
+		return Objects.equals(this.person, createTimesheetEntryIn.person)
+				&& Objects.equals(this.shiftStart, createTimesheetEntryIn.shiftStart)
+				&& Objects.equals(this.shiftEnd, createTimesheetEntryIn.shiftEnd)
+				&& Objects.equals(this.breaks, createTimesheetEntryIn.breaks)
+				&& Objects.equals(this.projects, createTimesheetEntryIn.projects);
 	}
 
 	@Override
@@ -186,7 +191,7 @@ public class CreateTimesheetEntryIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

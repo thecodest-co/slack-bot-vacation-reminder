@@ -139,14 +139,16 @@ public class HolidayOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		HolidayOut holidayOut = (HolidayOut) o;
-		return Objects.equals(this.name, holidayOut.name) && Objects.equals(this.start, holidayOut.start) && Objects.equals(this.end, holidayOut.end) && Objects.equals(this.halfDay, holidayOut.halfDay) && Objects.equals(this.halfdayPeriod, holidayOut.halfdayPeriod);
+		return Objects.equals(this.name, holidayOut.name) && Objects.equals(this.start, holidayOut.start)
+				&& Objects.equals(this.end, holidayOut.end) && Objects.equals(this.halfDay, holidayOut.halfDay)
+				&& Objects.equals(this.halfdayPeriod, holidayOut.halfdayPeriod);
 	}
 
 	@Override
@@ -173,7 +175,7 @@ public class HolidayOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -193,8 +195,8 @@ public class HolidayOut {
 		}
 
 		public static HalfdayPeriodEnum fromValue(String input) {
-			for(HalfdayPeriodEnum b : HalfdayPeriodEnum.values()) {
-				if(b.value.equals(input)) {
+			for (HalfdayPeriodEnum b : HalfdayPeriodEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

@@ -18,6 +18,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.Answer;
 
 @ExtendWith(MockitoExtension.class)
 class SimpleCalamariApiTest {
@@ -36,19 +37,9 @@ class SimpleCalamariApiTest {
 		employeesApiResponse.employees(of(
 				buildEmployeeFullOut("e1"),
 				buildEmployeeFullOut("e2"),
-				buildEmployeeFullOut("e3")
-		));
+				buildEmployeeFullOut("e3")));
 		when(employeesApi.getEmployees(any())).thenReturn(employeesApiResponse);
-		when(absenceTypeApi.getEntitlementBalance(any())).thenAnswer(
-				invocationOnMock -> {
-					var arg = (GetBalanceOfEmployeeAndAbsenceType)
-							(invocationOnMock.getArguments()[0]);
-					if(arg.getEmployee().equals("e2@codest.com")) {
-						return buildBalanceOut(4);
-					}
-					return buildBalanceOut(6);
-				}
-		);
+		when(absenceTypeApi.getEntitlementBalance(any())).thenAnswer(prepareBalanceAnswer());
 
 		var employees = simpleCalamariApi.employeesWithToMuchFreeDays(5);
 		assertThat(employees).hasSize(2)
@@ -56,6 +47,17 @@ class SimpleCalamariApiTest {
 						new CalamariEmployee("e1", "e1@codest.com", 6),
 						new CalamariEmployee("e3", "e3@codest.com", 6));
 
+	}
+
+	@NotNull
+	private Answer<Object> prepareBalanceAnswer() {
+		return invocationOnMock -> {
+			var arg = (GetBalanceOfEmployeeAndAbsenceType) (invocationOnMock.getArguments()[0]);
+			if (arg.getEmployee().equals("e2@codest.com")) {
+				return buildBalanceOut(4);
+			}
+			return buildBalanceOut(6);
+		};
 	}
 
 	@NotNull

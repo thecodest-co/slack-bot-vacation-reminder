@@ -75,7 +75,8 @@ public class ErrorResponse {
 	}
 
 	/**
-	 * Which field of payload object caused error. NULL when error is not related to particular field
+	 * Which field of payload object caused error. NULL when error is not related to
+	 * particular field
 	 *
 	 * @return field
 	 **/
@@ -90,14 +91,15 @@ public class ErrorResponse {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		ErrorResponse errorResponse = (ErrorResponse) o;
-		return Objects.equals(this.message, errorResponse.message) && Objects.equals(this.code, errorResponse.code) && Objects.equals(this.field, errorResponse.field);
+		return Objects.equals(this.message, errorResponse.message) && Objects.equals(this.code, errorResponse.code)
+				&& Objects.equals(this.field, errorResponse.field);
 	}
 
 	@Override
@@ -122,7 +124,7 @@ public class ErrorResponse {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -222,19 +222,27 @@ public class DateTimeField {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		DateTimeField dateTimeField = (DateTimeField) o;
-		return Objects.equals(this.name, dateTimeField.name) && Objects.equals(this.type, dateTimeField.type) && Objects.equals(this.supported, dateTimeField.supported) && Objects.equals(this.lenient, dateTimeField.lenient) && Objects.equals(this.minimumValue, dateTimeField.minimumValue) && Objects.equals(this.maximumValue, dateTimeField.maximumValue) && Objects.equals(this.durationField, dateTimeField.durationField) && Objects.equals(this.rangeDurationField, dateTimeField.rangeDurationField) && Objects.equals(this.leapDurationField, dateTimeField.leapDurationField);
+		return Objects.equals(this.name, dateTimeField.name) && Objects.equals(this.type, dateTimeField.type)
+				&& Objects.equals(this.supported, dateTimeField.supported)
+				&& Objects.equals(this.lenient, dateTimeField.lenient)
+				&& Objects.equals(this.minimumValue, dateTimeField.minimumValue)
+				&& Objects.equals(this.maximumValue, dateTimeField.maximumValue)
+				&& Objects.equals(this.durationField, dateTimeField.durationField)
+				&& Objects.equals(this.rangeDurationField, dateTimeField.rangeDurationField)
+				&& Objects.equals(this.leapDurationField, dateTimeField.leapDurationField);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, type, supported, lenient, minimumValue, maximumValue, durationField, rangeDurationField, leapDurationField);
+		return Objects.hash(name, type, supported, lenient, minimumValue, maximumValue, durationField,
+				rangeDurationField, leapDurationField);
 	}
 
 	@Override
@@ -260,7 +268,7 @@ public class DateTimeField {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

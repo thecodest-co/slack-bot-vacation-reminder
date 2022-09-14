@@ -60,7 +60,8 @@ public class BreakDto {
 	}
 
 	/**
-	 * Date and time when break was finished. Has null value if break was not finished
+	 * Date and time when break was finished. Has null value if break was not
+	 * finished
 	 *
 	 * @return to
 	 **/
@@ -113,14 +114,16 @@ public class BreakDto {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		BreakDto breakDto = (BreakDto) o;
-		return Objects.equals(this.from, breakDto.from) && Objects.equals(this.to, breakDto.to) && Objects.equals(this.duration, breakDto.duration) && Objects.equals(this.breakType, breakDto.breakType);
+		return Objects.equals(this.from, breakDto.from) && Objects.equals(this.to, breakDto.to)
+				&& Objects.equals(this.duration, breakDto.duration)
+				&& Objects.equals(this.breakType, breakDto.breakType);
 	}
 
 	@Override
@@ -146,7 +149,7 @@ public class BreakDto {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

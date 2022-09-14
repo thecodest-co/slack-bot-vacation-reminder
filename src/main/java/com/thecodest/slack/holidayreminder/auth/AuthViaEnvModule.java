@@ -8,9 +8,9 @@ import com.google.inject.name.Names;
  *
  * <p>Looking for:
  * <ul>
- *     <li>SLACK_TOKEN</li>
- *     <li>CALAMARI_USERNAME</li>
- *     <li>CALAMARI_PASSWORD</li>
+ * <li>SLACK_TOKEN</li>
+ * <li>CALAMARI_USERNAME</li>
+ * <li>CALAMARI_PASSWORD</li>
  * </ul>>
  * Environment variables.
  */
@@ -19,9 +19,9 @@ public class AuthViaEnvModule extends AbstractModule {
 	/**
 	 * Read environment variables and set them into named Strings.
 	 * <ul>
-	 *     <li>SLACK_TOKEN » slack-token</li>
-	 *     <li>CALAMARI_USERNAME » calamari-username</li>
-	 *     <li>CALAMARI_PASSWORD » calamari-password</li>
+	 * <li>SLACK_TOKEN » slack-token</li>
+	 * <li>CALAMARI_USERNAME » calamari-username</li>
+	 * <li>CALAMARI_PASSWORD » calamari-password</li>
 	 * </ul>>
 	 */
 	@Override

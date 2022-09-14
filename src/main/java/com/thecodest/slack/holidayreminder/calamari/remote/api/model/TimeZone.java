@@ -112,14 +112,16 @@ public class TimeZone {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		TimeZone timeZone = (TimeZone) o;
-		return Objects.equals(this.displayName, timeZone.displayName) && Objects.equals(this.id, timeZone.id) && Objects.equals(this.dstsavings, timeZone.dstsavings) && Objects.equals(this.rawOffset, timeZone.rawOffset);
+		return Objects.equals(this.displayName, timeZone.displayName) && Objects.equals(this.id, timeZone.id)
+				&& Objects.equals(this.dstsavings, timeZone.dstsavings)
+				&& Objects.equals(this.rawOffset, timeZone.rawOffset);
 	}
 
 	@Override
@@ -145,7 +147,7 @@ public class TimeZone {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -41,8 +41,7 @@ class RunningCalculatorTest {
 				Arguments.of(APRIL, 2, FRIDAY),
 				Arguments.of(APRIL, 3, TUESDAY),
 				Arguments.of(OCTOBER, 4, MONDAY),
-				Arguments.of(JULY, 4, TUESDAY)
-		);
+				Arguments.of(JULY, 4, TUESDAY));
 	}
 
 	static Stream<Arguments> invalidDates() {
@@ -54,8 +53,7 @@ class RunningCalculatorTest {
 				Arguments.of(AUGUST, 3, TUESDAY),
 				Arguments.of(SEPTEMBER, 4, MONDAY),
 				Arguments.of(NOVEMBER, 4, TUESDAY),
-				Arguments.of(DECEMBER, 4, TUESDAY)
-		);
+				Arguments.of(DECEMBER, 4, TUESDAY));
 
 		var badDayOfWeek = Stream.of(
 				Arguments.of(JANUARY, 2, MONDAY),
@@ -67,8 +65,7 @@ class RunningCalculatorTest {
 				Arguments.of(OCTOBER, 4, THURSDAY),
 				Arguments.of(JULY, 4, FRIDAY),
 				Arguments.of(OCTOBER, 4, SATURDAY),
-				Arguments.of(JULY, 4, SUNDAY)
-		);
+				Arguments.of(JULY, 4, SUNDAY));
 
 		var badDayOfMonth = Stream.of(
 				Arguments.of(JANUARY, 5, TUESDAY),
@@ -97,8 +94,7 @@ class RunningCalculatorTest {
 				Arguments.of(JANUARY, 28, TUESDAY),
 				Arguments.of(JANUARY, 29, TUESDAY),
 				Arguments.of(JANUARY, 30, TUESDAY),
-				Arguments.of(JANUARY, 31, TUESDAY)
-		);
+				Arguments.of(JANUARY, 31, TUESDAY));
 
 		return concat(
 				concat(badMonths, badDayOfWeek), badDayOfMonth);

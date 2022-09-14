@@ -23,7 +23,6 @@ import com.thecodest.slack.holidayreminder.calamari.remote.api.model.PublicSearc
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for EmployeesApi
  */
@@ -35,9 +34,36 @@ class EmployeesApiTest {
 	/**
 	 * Create employee.
 	 * <p>
-	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when acceptance flow is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when holidays calendar is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when sex is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt; - when martial status is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; -
+	 * when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when acceptance flow is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when holidays calendar is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * sex is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt;
+	 * - when martial status is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void createEmployeeTest() throws Exception {
@@ -50,9 +76,40 @@ class EmployeesApiTest {
 	/**
 	 * Edit employee.
 	 * <p>
-	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when provided acceptance flow is is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when provided holidays calendar is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when provided sex is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt; - when provided marital status is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt; - when personal email is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt;
+	 * - when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when provided acceptance flow is is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when provided holidays calendar is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * provided sex is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt;
+	 * - when provided marital status is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt;
+	 * - when personal email is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void editEmployeeTest() throws Exception {
@@ -67,7 +124,8 @@ class EmployeesApiTest {
 	 * <p>
 	 * Get all employees.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getEmployeesTest() throws Exception {
@@ -82,7 +140,8 @@ class EmployeesApiTest {
 	 * <p>
 	 * Invite employee
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void inviteEmployeeTest() throws Exception {
@@ -97,7 +156,8 @@ class EmployeesApiTest {
 	 * <p>
 	 * Mark employee as archived.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void markEmployeeAsArchivedTest() throws Exception {
@@ -112,7 +172,8 @@ class EmployeesApiTest {
 	 * <p>
 	 * Get all employees.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void searchEmployeesTest() throws Exception {

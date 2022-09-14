@@ -87,7 +87,7 @@ public class FilterBalanceEntriesIn {
 	}
 
 	public FilterBalanceEntriesIn addTeamsItem(String teamsItem) {
-		if(this.teams == null) {
+		if (this.teams == null) {
 			this.teams = new ArrayList<>();
 		}
 		this.teams.add(teamsItem);
@@ -95,7 +95,10 @@ public class FilterBalanceEntriesIn {
 	}
 
 	/**
-	 * List of teams names or identifiers to search. As a result there will be absence requests of employees who are members of at least one of provided teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;, \&quot;Third Team\&quot;]
+	 * List of teams names or identifiers to search. As a result there will be
+	 * absence requests of employees who are members of at least one of provided
+	 * teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;,
+	 * \&quot;Third Team\&quot;]
 	 *
 	 * @return teams
 	 **/
@@ -114,7 +117,7 @@ public class FilterBalanceEntriesIn {
 	}
 
 	public FilterBalanceEntriesIn addPositionsItem(String positionsItem) {
-		if(this.positions == null) {
+		if (this.positions == null) {
 			this.positions = new ArrayList<>();
 		}
 		this.positions.add(positionsItem);
@@ -122,7 +125,9 @@ public class FilterBalanceEntriesIn {
 	}
 
 	/**
-	 * List of positions names or identifiers to search. As a result there will be absence requests of employees who have one of provided positions. Example: [\&quot;Developer\&quot;, \&quot;Support\&quot;, \&quot;Architect\&quot;]
+	 * List of positions names or identifiers to search. As a result there will be
+	 * absence requests of employees who have one of provided positions. Example:
+	 * [\&quot;Developer\&quot;, \&quot;Support\&quot;, \&quot;Architect\&quot;]
 	 *
 	 * @return positions
 	 **/
@@ -141,7 +146,7 @@ public class FilterBalanceEntriesIn {
 	}
 
 	public FilterBalanceEntriesIn addContractTypesItem(String contractTypesItem) {
-		if(this.contractTypes == null) {
+		if (this.contractTypes == null) {
 			this.contractTypes = new ArrayList<>();
 		}
 		this.contractTypes.add(contractTypesItem);
@@ -149,7 +154,9 @@ public class FilterBalanceEntriesIn {
 	}
 
 	/**
-	 * List of contract types names or identifiers to search. As a result there will be absence requests of employees who have one of contract type. Example: [\&quot;firstContract\&quot;, \&quot;secondContract\&quot;]
+	 * List of contract types names or identifiers to search. As a result there will
+	 * be absence requests of employees who have one of contract type. Example:
+	 * [\&quot;firstContract\&quot;, \&quot;secondContract\&quot;]
 	 *
 	 * @return contractTypes
 	 **/
@@ -168,7 +175,7 @@ public class FilterBalanceEntriesIn {
 	}
 
 	public FilterBalanceEntriesIn addEmployeesItem(String employeesItem) {
-		if(this.employees == null) {
+		if (this.employees == null) {
 			this.employees = new ArrayList<>();
 		}
 		this.employees.add(employeesItem);
@@ -176,7 +183,8 @@ public class FilterBalanceEntriesIn {
 	}
 
 	/**
-	 * List of employees e-mails or logins. Example: [\&quot;john.smith@domain.com\&quot;, \&quot;mark.small@domain.com\&quot;]
+	 * List of employees e-mails or logins. Example:
+	 * [\&quot;john.smith@domain.com\&quot;, \&quot;mark.small@domain.com\&quot;]
 	 *
 	 * @return employees
 	 **/
@@ -191,14 +199,19 @@ public class FilterBalanceEntriesIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		FilterBalanceEntriesIn filterBalanceEntriesIn = (FilterBalanceEntriesIn) o;
-		return Objects.equals(this.from, filterBalanceEntriesIn.from) && Objects.equals(this.to, filterBalanceEntriesIn.to) && Objects.equals(this.teams, filterBalanceEntriesIn.teams) && Objects.equals(this.positions, filterBalanceEntriesIn.positions) && Objects.equals(this.contractTypes, filterBalanceEntriesIn.contractTypes) && Objects.equals(this.employees, filterBalanceEntriesIn.employees);
+		return Objects.equals(this.from, filterBalanceEntriesIn.from)
+				&& Objects.equals(this.to, filterBalanceEntriesIn.to)
+				&& Objects.equals(this.teams, filterBalanceEntriesIn.teams)
+				&& Objects.equals(this.positions, filterBalanceEntriesIn.positions)
+				&& Objects.equals(this.contractTypes, filterBalanceEntriesIn.contractTypes)
+				&& Objects.equals(this.employees, filterBalanceEntriesIn.employees);
 	}
 
 	@Override
@@ -226,7 +239,7 @@ public class FilterBalanceEntriesIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -30,7 +30,8 @@ public class Configuration {
 	 * Set the default API client, which would be used when creating API
 	 * instances without providing an API client.
 	 *
-	 * @param apiClient API client
+	 * @param apiClient
+	 *            API client
 	 */
 	public static void setDefaultApiClient(ApiClient apiClient) {
 		defaultApiClient = apiClient;

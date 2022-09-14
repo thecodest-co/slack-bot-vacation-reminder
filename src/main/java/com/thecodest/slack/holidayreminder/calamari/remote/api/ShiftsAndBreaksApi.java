@@ -57,13 +57,19 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for breakStart
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call breakStartCall(BreakIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call breakStartCall(BreakIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -78,29 +84,34 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call breakStartValidateBeforeCall(BreakIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call breakStartValidateBeforeCall(BreakIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = breakStartCall(body, progressListener, progressRequestListener);
 		return call;
@@ -109,11 +120,29 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start employee break.
-	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return BreakOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public BreakOut breakStart(BreakIn body) throws ApiException {
 		ApiResponse<BreakOut> resp = breakStartWithHttpInfo(body);
@@ -122,11 +151,29 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start employee break.
-	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;BreakOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<BreakOut> breakStartWithHttpInfo(BreakIn body) throws ApiException {
 		com.squareup.okhttp.Call call = breakStartValidateBeforeCall(body, null, null);
@@ -137,19 +184,39 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start employee break. (asynchronously)
-	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call breakStartAsync(BreakIn body, final ApiCallback<BreakOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call breakStartAsync(BreakIn body, final ApiCallback<BreakOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -175,13 +242,19 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for breakStop
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call breakStopCall(BreakIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call breakStopCall(BreakIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -196,29 +269,34 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call breakStopValidateBeforeCall(BreakIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call breakStopValidateBeforeCall(BreakIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = breakStopCall(body, progressListener, progressRequestListener);
 		return call;
@@ -227,11 +305,30 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Stop employee break.
-	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find properly break type ID &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id provided. You should use get-break-types method
+	 * to find properly break type ID
+	 * &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return BreakOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public BreakOut breakStop(BreakIn body) throws ApiException {
 		ApiResponse<BreakOut> resp = breakStopWithHttpInfo(body);
@@ -240,11 +337,30 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Stop employee break.
-	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find properly break type ID &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id provided. You should use get-break-types method
+	 * to find properly break type ID
+	 * &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;BreakOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<BreakOut> breakStopWithHttpInfo(BreakIn body) throws ApiException {
 		com.squareup.okhttp.Call call = breakStopValidateBeforeCall(body, null, null);
@@ -255,19 +371,40 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Stop employee break. (asynchronously)
-	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find properly break type ID &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee break. &lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt;
+	 * - when invalid break type id provided. You should use get-break-types method
+	 * to find properly break type ID
+	 * &lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call breakStopAsync(BreakIn body, final ApiCallback<BreakOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call breakStopAsync(BreakIn body, final ApiCallback<BreakOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -293,13 +430,19 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for clockIn
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call clockInCall(PunchClockIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call clockInCall(PunchClockIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -314,29 +457,34 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call clockInValidateBeforeCall(PunchClockIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call clockInValidateBeforeCall(PunchClockIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = clockInCall(body, progressListener, progressRequestListener);
 		return call;
@@ -345,11 +493,29 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start employees shift.
-	 * Start employee shift. If the employee shift has already been started via web browser, mobile app or any other terminal, the request is ignored and the method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee shift. If the employee shift has already been started via web
+	 * browser, mobile app or any other terminal, the request is ignored and the
+	 * method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should
+	 * send request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return PunchOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public PunchOut clockIn(PunchClockIn body) throws ApiException {
 		ApiResponse<PunchOut> resp = clockInWithHttpInfo(body);
@@ -358,11 +524,29 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start employees shift.
-	 * Start employee shift. If the employee shift has already been started via web browser, mobile app or any other terminal, the request is ignored and the method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee shift. If the employee shift has already been started via web
+	 * browser, mobile app or any other terminal, the request is ignored and the
+	 * method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should
+	 * send request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;PunchOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<PunchOut> clockInWithHttpInfo(PunchClockIn body) throws ApiException {
 		com.squareup.okhttp.Call call = clockInValidateBeforeCall(body, null, null);
@@ -373,19 +557,39 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start employees shift. (asynchronously)
-	 * Start employee shift. If the employee shift has already been started via web browser, mobile app or any other terminal, the request is ignored and the method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Start employee shift. If the employee shift has already been started via web
+	 * browser, mobile app or any other terminal, the request is ignored and the
+	 * method returns status 200.&lt;br /&gt;&lt;br /&gt;Client application should
+	 * send request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call clockInAsync(PunchClockIn body, final ApiCallback<PunchOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call clockInAsync(PunchClockIn body, final ApiCallback<PunchOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -411,13 +615,19 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for clockOut
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call clockOutCall(PunchClockOut body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call clockOutCall(PunchClockOut body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -432,29 +642,34 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call clockOutValidateBeforeCall(PunchClockOut body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call clockOutValidateBeforeCall(PunchClockOut body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = clockOutCall(body, progressListener, progressRequestListener);
 		return call;
@@ -463,11 +678,28 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Finish employees shift.
-	 * Stop employee shift. If employee shift is not started in moment of request the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee shift. If employee shift is not started in moment of request
+	 * the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return PunchOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public PunchOut clockOut(PunchClockOut body) throws ApiException {
 		ApiResponse<PunchOut> resp = clockOutWithHttpInfo(body);
@@ -476,11 +708,28 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Finish employees shift.
-	 * Stop employee shift. If employee shift is not started in moment of request the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee shift. If employee shift is not started in moment of request
+	 * the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;PunchOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<PunchOut> clockOutWithHttpInfo(PunchClockOut body) throws ApiException {
 		com.squareup.okhttp.Call call = clockOutValidateBeforeCall(body, null, null);
@@ -491,19 +740,38 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Finish employees shift. (asynchronously)
-	 * Stop employee shift. If employee shift is not started in moment of request the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Stop employee shift. If employee shift is not started in moment of request
+	 * the request is ignored.&lt;br /&gt;&lt;br /&gt;Client application should send
+	 * request immediately when event occurs. If there is any problem with
+	 * connection or access to API event should be queued in clients side and then
+	 * sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this
+	 * method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in
+	 * Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access
+	 * is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call clockOutAsync(PunchClockOut body, final ApiCallback<PunchOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call clockOutAsync(PunchClockOut body, final ApiCallback<PunchOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -529,12 +797,16 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for getBreakTypes
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getBreakTypesCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getBreakTypesCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -549,7 +821,7 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -558,22 +830,27 @@ public class ShiftsAndBreaksApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getBreakTypesValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getBreakTypesValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getBreakTypesCall(progressListener, progressRequestListener);
 		return call;
@@ -585,7 +862,9 @@ public class ShiftsAndBreaksApi {
 	 * Get break types. &lt;br /&gt;&lt;br /&gt;
 	 *
 	 * @return List&lt;GetBreakTypeOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<GetBreakTypeOut> getBreakTypes() throws ApiException {
 		ApiResponse<List<GetBreakTypeOut>> resp = getBreakTypesWithHttpInfo();
@@ -597,7 +876,9 @@ public class ShiftsAndBreaksApi {
 	 * Get break types. &lt;br /&gt;&lt;br /&gt;
 	 *
 	 * @return ApiResponse&lt;List&lt;GetBreakTypeOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<List<GetBreakTypeOut>> getBreakTypesWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = getBreakTypesValidateBeforeCall(null, null);
@@ -610,16 +891,20 @@ public class ShiftsAndBreaksApi {
 	 * Get break types. (asynchronously)
 	 * Get break types. &lt;br /&gt;&lt;br /&gt;
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getBreakTypesAsync(final ApiCallback<List<GetBreakTypeOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call getBreakTypesAsync(final ApiCallback<List<GetBreakTypeOut>> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -645,13 +930,19 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for getBreakTypesForEmployee
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getBreakTypesForEmployeeCall(PersonForBreakTypes body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getBreakTypesForEmployeeCall(PersonForBreakTypes body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -666,29 +957,34 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getBreakTypesForEmployeeValidateBeforeCall(PersonForBreakTypes body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getBreakTypesForEmployeeValidateBeforeCall(PersonForBreakTypes body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getBreakTypesForEmployeeCall(body, progressListener, progressRequestListener);
 		return call;
@@ -697,11 +993,16 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Get break types for one person.
-	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return List&lt;GetBreakTypeOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<GetBreakTypeOut> getBreakTypesForEmployee(PersonForBreakTypes body) throws ApiException {
 		ApiResponse<List<GetBreakTypeOut>> resp = getBreakTypesForEmployeeWithHttpInfo(body);
@@ -710,13 +1011,19 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Get break types for one person.
-	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;List&lt;GetBreakTypeOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
-	public ApiResponse<List<GetBreakTypeOut>> getBreakTypesForEmployeeWithHttpInfo(PersonForBreakTypes body) throws ApiException {
+	public ApiResponse<List<GetBreakTypeOut>> getBreakTypesForEmployeeWithHttpInfo(PersonForBreakTypes body)
+			throws ApiException {
 		com.squareup.okhttp.Call call = getBreakTypesForEmployeeValidateBeforeCall(body, null, null);
 		Type localVarReturnType = new TypeToken<List<GetBreakTypeOut>>() {
 		}.getType();
@@ -725,19 +1032,26 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Get break types for one person. (asynchronously)
-	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get break types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getBreakTypesForEmployeeAsync(PersonForBreakTypes body, final ApiCallback<List<GetBreakTypeOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call getBreakTypesForEmployeeAsync(PersonForBreakTypes body,
+			final ApiCallback<List<GetBreakTypeOut>> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -753,7 +1067,8 @@ public class ShiftsAndBreaksApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = getBreakTypesForEmployeeValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = getBreakTypesForEmployeeValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<List<GetBreakTypeOut>>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -763,13 +1078,19 @@ public class ShiftsAndBreaksApi {
 	/**
 	 * Build call for punch
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call punchCall(PunchClockIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call punchCall(PunchClockIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -784,29 +1105,34 @@ public class ShiftsAndBreaksApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call punchValidateBeforeCall(PunchClockIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call punchValidateBeforeCall(PunchClockIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = punchCall(body, progressListener, progressRequestListener);
 		return call;
@@ -815,11 +1141,29 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start or stop employee shift
-	 * Method indicates employee go through company&#x27;s doors. Starts shift if it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Method indicates employee go through company&#x27;s doors. Starts shift if
+	 * it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client
+	 * application should send request immediately when event occurs. If there is
+	 * any problem with connection or access to API event should be queued in
+	 * clients side and then sent in order of occurence.&lt;br /&gt;&lt;br
+	 * /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure
+	 * &#x27;API Terminal&#x27; in Calamari Clockin configuration
+	 * panel&lt;/li&gt;&lt;li&gt;Make sure API access is
+	 * enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return PunchOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public PunchOut punch(PunchClockIn body) throws ApiException {
 		ApiResponse<PunchOut> resp = punchWithHttpInfo(body);
@@ -828,11 +1172,29 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start or stop employee shift
-	 * Method indicates employee go through company&#x27;s doors. Starts shift if it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Method indicates employee go through company&#x27;s doors. Starts shift if
+	 * it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client
+	 * application should send request immediately when event occurs. If there is
+	 * any problem with connection or access to API event should be queued in
+	 * clients side and then sent in order of occurence.&lt;br /&gt;&lt;br
+	 * /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure
+	 * &#x27;API Terminal&#x27; in Calamari Clockin configuration
+	 * panel&lt;/li&gt;&lt;li&gt;Make sure API access is
+	 * enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;PunchOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<PunchOut> punchWithHttpInfo(PunchClockIn body) throws ApiException {
 		com.squareup.okhttp.Call call = punchValidateBeforeCall(body, null, null);
@@ -843,19 +1205,39 @@ public class ShiftsAndBreaksApi {
 
 	/**
 	 * Start or stop employee shift (asynchronously)
-	 * Method indicates employee go through company&#x27;s doors. Starts shift if it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client application should send request immediately when event occurs. If there is any problem with connection or access to API event should be queued in clients side and then sent in order of occurence.&lt;br /&gt;&lt;br /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure &#x27;API Terminal&#x27; in Calamari Clockin configuration panel&lt;/li&gt;&lt;li&gt;Make sure API access is enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when invalid event time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt; - no API terminal configured or the employee doesn&#x27;t have access to this terminal&lt;/li&gt;&lt;/ol&gt;
+	 * Method indicates employee go through company&#x27;s doors. Starts shift if
+	 * it&#x27;s not started or stops it otherwise.&lt;br /&gt;&lt;br /&gt;Client
+	 * application should send request immediately when event occurs. If there is
+	 * any problem with connection or access to API event should be queued in
+	 * clients side and then sent in order of occurence.&lt;br /&gt;&lt;br
+	 * /&gt;Before you can use this method, please:&lt;ol&gt;&lt;li&gt;Configure
+	 * &#x27;API Terminal&#x27; in Calamari Clockin configuration
+	 * panel&lt;/li&gt;&lt;li&gt;Make sure API access is
+	 * enabled&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME&lt;/strong&gt; - when
+	 * invalid event time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;API_TERMINAL_NOT_AVAILABLE&lt;/strong&gt;
+	 * - no API terminal configured or the employee doesn&#x27;t have access to this
+	 * terminal&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call punchAsync(PunchClockIn body, final ApiCallback<PunchOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call punchAsync(PunchClockIn body, final ApiCallback<PunchOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {

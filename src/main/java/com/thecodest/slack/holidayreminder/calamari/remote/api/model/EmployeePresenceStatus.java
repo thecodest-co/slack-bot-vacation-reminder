@@ -68,14 +68,15 @@ public class EmployeePresenceStatus {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		EmployeePresenceStatus employeePresenceStatus = (EmployeePresenceStatus) o;
-		return Objects.equals(this.employee, employeePresenceStatus.employee) && Objects.equals(this.status, employeePresenceStatus.status);
+		return Objects.equals(this.employee, employeePresenceStatus.employee)
+				&& Objects.equals(this.status, employeePresenceStatus.status);
 	}
 
 	@Override
@@ -99,7 +100,7 @@ public class EmployeePresenceStatus {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

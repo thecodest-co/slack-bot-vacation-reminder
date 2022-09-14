@@ -171,7 +171,7 @@ public class LocalTime {
 	}
 
 	public LocalTime addFieldsItem(DateTimeField fieldsItem) {
-		if(this.fields == null) {
+		if (this.fields == null) {
 			this.fields = new ArrayList<>();
 		}
 		this.fields.add(fieldsItem);
@@ -198,7 +198,7 @@ public class LocalTime {
 	}
 
 	public LocalTime addValuesItem(Integer valuesItem) {
-		if(this.values == null) {
+		if (this.values == null) {
 			this.values = new ArrayList<>();
 		}
 		this.values.add(valuesItem);
@@ -225,7 +225,7 @@ public class LocalTime {
 	}
 
 	public LocalTime addFieldTypesItem(DateTimeFieldType fieldTypesItem) {
-		if(this.fieldTypes == null) {
+		if (this.fieldTypes == null) {
 			this.fieldTypes = new ArrayList<>();
 		}
 		this.fieldTypes.add(fieldTypesItem);
@@ -248,19 +248,27 @@ public class LocalTime {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		LocalTime localTime = (LocalTime) o;
-		return Objects.equals(this.chronology, localTime.chronology) && Objects.equals(this.millisOfDay, localTime.millisOfDay) && Objects.equals(this.hourOfDay, localTime.hourOfDay) && Objects.equals(this.minuteOfHour, localTime.minuteOfHour) && Objects.equals(this.secondOfMinute, localTime.secondOfMinute) && Objects.equals(this.millisOfSecond, localTime.millisOfSecond) && Objects.equals(this.fields, localTime.fields) && Objects.equals(this.values, localTime.values) && Objects.equals(this.fieldTypes, localTime.fieldTypes);
+		return Objects.equals(this.chronology, localTime.chronology)
+				&& Objects.equals(this.millisOfDay, localTime.millisOfDay)
+				&& Objects.equals(this.hourOfDay, localTime.hourOfDay)
+				&& Objects.equals(this.minuteOfHour, localTime.minuteOfHour)
+				&& Objects.equals(this.secondOfMinute, localTime.secondOfMinute)
+				&& Objects.equals(this.millisOfSecond, localTime.millisOfSecond)
+				&& Objects.equals(this.fields, localTime.fields) && Objects.equals(this.values, localTime.values)
+				&& Objects.equals(this.fieldTypes, localTime.fieldTypes);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(chronology, millisOfDay, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, fields, values, fieldTypes);
+		return Objects.hash(chronology, millisOfDay, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, fields,
+				values, fieldTypes);
 	}
 
 	@Override
@@ -286,7 +294,7 @@ public class LocalTime {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

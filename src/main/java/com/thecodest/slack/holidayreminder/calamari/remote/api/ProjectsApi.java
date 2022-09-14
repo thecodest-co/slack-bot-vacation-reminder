@@ -53,12 +53,16 @@ public class ProjectsApi {
 	/**
 	 * Build call for archiveProjectType
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call archiveProjectTypeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call archiveProjectTypeCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -73,7 +77,7 @@ public class ProjectsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -82,22 +86,27 @@ public class ProjectsApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call archiveProjectTypeValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call archiveProjectTypeValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = archiveProjectTypeCall(progressListener, progressRequestListener);
 		return call;
@@ -106,10 +115,14 @@ public class ProjectsApi {
 
 	/**
 	 * Archive project type.
-	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; - provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; -
+	 * provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @return ProjectOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ProjectOut archiveProjectType() throws ApiException {
 		ApiResponse<ProjectOut> resp = archiveProjectTypeWithHttpInfo();
@@ -118,10 +131,14 @@ public class ProjectsApi {
 
 	/**
 	 * Archive project type.
-	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; - provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; -
+	 * provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @return ApiResponse&lt;ProjectOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<ProjectOut> archiveProjectTypeWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = archiveProjectTypeValidateBeforeCall(null, null);
@@ -132,18 +149,24 @@ public class ProjectsApi {
 
 	/**
 	 * Archive project type. (asynchronously)
-	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; - provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Archive project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT&lt;/strong&gt; -
+	 * provided project id is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call archiveProjectTypeAsync(final ApiCallback<ProjectOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call archiveProjectTypeAsync(final ApiCallback<ProjectOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -169,12 +192,16 @@ public class ProjectsApi {
 	/**
 	 * Build call for createProjectType
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call createProjectTypeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call createProjectTypeCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -189,7 +216,7 @@ public class ProjectsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -198,22 +225,27 @@ public class ProjectsApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call createProjectTypeValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call createProjectTypeValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = createProjectTypeCall(progressListener, progressRequestListener);
 		return call;
@@ -222,10 +254,16 @@ public class ProjectsApi {
 
 	/**
 	 * Create project type.
-	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @return ProjectOutWithAssignedEmployeesTeams
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ProjectOutWithAssignedEmployeesTeams createProjectType() throws ApiException {
 		ApiResponse<ProjectOutWithAssignedEmployeesTeams> resp = createProjectTypeWithHttpInfo();
@@ -234,10 +272,16 @@ public class ProjectsApi {
 
 	/**
 	 * Create project type.
-	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @return ApiResponse&lt;ProjectOutWithAssignedEmployeesTeams&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<ProjectOutWithAssignedEmployeesTeams> createProjectTypeWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = createProjectTypeValidateBeforeCall(null, null);
@@ -248,18 +292,26 @@ public class ProjectsApi {
 
 	/**
 	 * Create project type. (asynchronously)
-	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Create project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call createProjectTypeAsync(final ApiCallback<ProjectOutWithAssignedEmployeesTeams> callback) throws ApiException {
+	public com.squareup.okhttp.Call createProjectTypeAsync(
+			final ApiCallback<ProjectOutWithAssignedEmployeesTeams> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -285,13 +337,19 @@ public class ProjectsApi {
 	/**
 	 * Build call for getProjectForEmployee
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getProjectForEmployeeCall(PersonForProjects body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getProjectForEmployeeCall(PersonForProjects body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -306,29 +364,34 @@ public class ProjectsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getProjectForEmployeeValidateBeforeCall(PersonForProjects body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getProjectForEmployeeValidateBeforeCall(PersonForProjects body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getProjectForEmployeeCall(body, progressListener, progressRequestListener);
 		return call;
@@ -337,11 +400,16 @@ public class ProjectsApi {
 
 	/**
 	 * Get project types for one person.
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return List&lt;ProjectOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<ProjectOut> getProjectForEmployee(PersonForProjects body) throws ApiException {
 		ApiResponse<List<ProjectOut>> resp = getProjectForEmployeeWithHttpInfo(body);
@@ -350,11 +418,16 @@ public class ProjectsApi {
 
 	/**
 	 * Get project types for one person.
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;List&lt;ProjectOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<List<ProjectOut>> getProjectForEmployeeWithHttpInfo(PersonForProjects body) throws ApiException {
 		com.squareup.okhttp.Call call = getProjectForEmployeeValidateBeforeCall(body, null, null);
@@ -365,19 +438,26 @@ public class ProjectsApi {
 
 	/**
 	 * Get project types for one person. (asynchronously)
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getProjectForEmployeeAsync(PersonForProjects body, final ApiCallback<List<ProjectOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call getProjectForEmployeeAsync(PersonForProjects body,
+			final ApiCallback<List<ProjectOut>> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -393,7 +473,8 @@ public class ProjectsApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = getProjectForEmployeeValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = getProjectForEmployeeValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<List<ProjectOut>>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -403,12 +484,16 @@ public class ProjectsApi {
 	/**
 	 * Build call for getProjects
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getProjectsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getProjectsCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -423,7 +508,7 @@ public class ProjectsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -432,22 +517,27 @@ public class ProjectsApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getProjectsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getProjectsValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getProjectsCall(progressListener, progressRequestListener);
 		return call;
@@ -459,7 +549,9 @@ public class ProjectsApi {
 	 * Get project types.
 	 *
 	 * @return List&lt;ProjectOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<ProjectOut> getProjects() throws ApiException {
 		ApiResponse<List<ProjectOut>> resp = getProjectsWithHttpInfo();
@@ -471,7 +563,9 @@ public class ProjectsApi {
 	 * Get project types.
 	 *
 	 * @return ApiResponse&lt;List&lt;ProjectOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<List<ProjectOut>> getProjectsWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = getProjectsValidateBeforeCall(null, null);
@@ -484,16 +578,19 @@ public class ProjectsApi {
 	 * Get project types. (asynchronously)
 	 * Get project types.
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
 	public com.squareup.okhttp.Call getProjectsAsync(final ApiCallback<List<ProjectOut>> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -519,12 +616,16 @@ public class ProjectsApi {
 	/**
 	 * Build call for updateProjectType
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call updateProjectTypeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call updateProjectTypeCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -539,7 +640,7 @@ public class ProjectsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -548,22 +649,27 @@ public class ProjectsApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call updateProjectTypeValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call updateProjectTypeValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = updateProjectTypeCall(progressListener, progressRequestListener);
 		return call;
@@ -572,10 +678,16 @@ public class ProjectsApi {
 
 	/**
 	 * Update project type.
-	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @return ProjectOutWithAssignedEmployeesTeams
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ProjectOutWithAssignedEmployeesTeams updateProjectType() throws ApiException {
 		ApiResponse<ProjectOutWithAssignedEmployeesTeams> resp = updateProjectTypeWithHttpInfo();
@@ -584,10 +696,16 @@ public class ProjectsApi {
 
 	/**
 	 * Update project type.
-	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
 	 * @return ApiResponse&lt;ProjectOutWithAssignedEmployeesTeams&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<ProjectOutWithAssignedEmployeesTeams> updateProjectTypeWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = updateProjectTypeValidateBeforeCall(null, null);
@@ -598,18 +716,26 @@ public class ProjectsApi {
 
 	/**
 	 * Update project type. (asynchronously)
-	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when one of provided persons is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Update project type.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSON&lt;/strong&gt; - when
+	 * one of provided persons is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call updateProjectTypeAsync(final ApiCallback<ProjectOutWithAssignedEmployeesTeams> callback) throws ApiException {
+	public com.squareup.okhttp.Call updateProjectTypeAsync(
+			final ApiCallback<ProjectOutWithAssignedEmployeesTeams> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {

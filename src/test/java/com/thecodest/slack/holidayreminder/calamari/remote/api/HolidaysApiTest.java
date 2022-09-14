@@ -18,7 +18,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for HolidaysApi
  */
@@ -30,9 +29,16 @@ class HolidaysApiTest {
 	/**
 	 * Find holidays for employee in dates range.
 	 * <p>
-	 * Find holidays for employee in dates range.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;/ol&gt;
+	 * Find holidays for employee in dates range.&lt;br /&gt;&lt;br /&gt;Expect
+	 * error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt;
+	 * - when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void findTest() throws Exception {

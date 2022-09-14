@@ -37,7 +37,8 @@ public class PunchClockIn {
 	}
 
 	/**
-	 * Employee identifier. You can use e-mail or external identifier in format (externalNumber:ABC123)
+	 * Employee identifier. You can use e-mail or external identifier in format
+	 * (externalNumber:ABC123)
 	 *
 	 * @return person
 	 **/
@@ -90,14 +91,15 @@ public class PunchClockIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		PunchClockIn punchClockIn = (PunchClockIn) o;
-		return Objects.equals(this.person, punchClockIn.person) && Objects.equals(this.time, punchClockIn.time) && Objects.equals(this.projectId, punchClockIn.projectId);
+		return Objects.equals(this.person, punchClockIn.person) && Objects.equals(this.time, punchClockIn.time)
+				&& Objects.equals(this.projectId, punchClockIn.projectId);
 	}
 
 	@Override
@@ -122,7 +124,7 @@ public class PunchClockIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

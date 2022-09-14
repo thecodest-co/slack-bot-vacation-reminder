@@ -17,7 +17,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for ContractTypesApi
  */
@@ -31,7 +30,8 @@ class ContractTypesApiTest {
 	 * <p>
 	 * Get all contract types.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getTeamsTest() throws Exception {

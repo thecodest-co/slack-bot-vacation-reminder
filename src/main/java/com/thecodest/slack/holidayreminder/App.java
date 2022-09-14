@@ -13,13 +13,13 @@ public class App {
 	/**
 	 * No params.
 	 *
-	 * @param args empty array
+	 * @param args
+	 *            empty array
 	 */
 	public static void main(String[] args) {
 		var injector = Guice.createInjector(
 				new MasterModule(), new AuthViaEnvModule(),
-				new SlackModule(), new CalamariModule()
-		);
+				new SlackModule(), new CalamariModule());
 		var app = injector.getInstance(VacationReminder.class);
 		app.run();
 	}

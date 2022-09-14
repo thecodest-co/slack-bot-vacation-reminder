@@ -58,13 +58,19 @@ public class EmployeesApi {
 	/**
 	 * Build call for createEmployee
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call createEmployeeCall(PublicCreateEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call createEmployeeCall(PublicCreateEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -79,29 +85,34 @@ public class EmployeesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call createEmployeeValidateBeforeCall(PublicCreateEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call createEmployeeValidateBeforeCall(PublicCreateEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = createEmployeeCall(body, progressListener, progressRequestListener);
 		return call;
@@ -110,11 +121,40 @@ public class EmployeesApi {
 
 	/**
 	 * Create employee.
-	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when acceptance flow is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when holidays calendar is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when sex is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt; - when martial status is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; -
+	 * when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when acceptance flow is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when holidays calendar is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * sex is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt;
+	 * - when martial status is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return CreateEmployeeOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public CreateEmployeeOut createEmployee(PublicCreateEmployeeIn body) throws ApiException {
 		ApiResponse<CreateEmployeeOut> resp = createEmployeeWithHttpInfo(body);
@@ -123,11 +163,40 @@ public class EmployeesApi {
 
 	/**
 	 * Create employee.
-	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when acceptance flow is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when holidays calendar is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when sex is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt; - when martial status is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; -
+	 * when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when acceptance flow is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when holidays calendar is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * sex is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt;
+	 * - when martial status is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;CreateEmployeeOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<CreateEmployeeOut> createEmployeeWithHttpInfo(PublicCreateEmployeeIn body) throws ApiException {
 		com.squareup.okhttp.Call call = createEmployeeValidateBeforeCall(body, null, null);
@@ -138,19 +207,50 @@ public class EmployeesApi {
 
 	/**
 	 * Create employee. (asynchronously)
-	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when acceptance flow is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when holidays calendar is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when sex is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt; - when martial status is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when working week is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; -
+	 * when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when acceptance flow is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when holidays calendar is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * sex is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARTIAL_STATUS&lt;/strong&gt;
+	 * - when martial status is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when working week is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager id is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call createEmployeeAsync(PublicCreateEmployeeIn body, final ApiCallback<CreateEmployeeOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call createEmployeeAsync(PublicCreateEmployeeIn body,
+			final ApiCallback<CreateEmployeeOut> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -166,7 +266,8 @@ public class EmployeesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = createEmployeeValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = createEmployeeValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<CreateEmployeeOut>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -176,13 +277,19 @@ public class EmployeesApi {
 	/**
 	 * Build call for editEmployee
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call editEmployeeCall(PublicEditEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call editEmployeeCall(PublicEditEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -197,29 +304,34 @@ public class EmployeesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call editEmployeeValidateBeforeCall(PublicEditEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call editEmployeeValidateBeforeCall(PublicEditEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = editEmployeeCall(body, progressListener, progressRequestListener);
 		return call;
@@ -228,11 +340,44 @@ public class EmployeesApi {
 
 	/**
 	 * Edit employee.
-	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when provided acceptance flow is is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when provided holidays calendar is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when provided sex is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt; - when provided marital status is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt; - when personal email is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt;
+	 * - when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when provided acceptance flow is is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when provided holidays calendar is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * provided sex is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt;
+	 * - when provided marital status is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt;
+	 * - when personal email is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return CreateEmployeeOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public CreateEmployeeOut editEmployee(PublicEditEmployeeIn body) throws ApiException {
 		ApiResponse<CreateEmployeeOut> resp = editEmployeeWithHttpInfo(body);
@@ -241,11 +386,44 @@ public class EmployeesApi {
 
 	/**
 	 * Edit employee.
-	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when provided acceptance flow is is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when provided holidays calendar is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when provided sex is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt; - when provided marital status is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt; - when personal email is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt;
+	 * - when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when provided acceptance flow is is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when provided holidays calendar is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * provided sex is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt;
+	 * - when provided marital status is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt;
+	 * - when personal email is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;CreateEmployeeOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<CreateEmployeeOut> editEmployeeWithHttpInfo(PublicEditEmployeeIn body) throws ApiException {
 		com.squareup.okhttp.Call call = editEmployeeValidateBeforeCall(body, null, null);
@@ -256,19 +434,54 @@ public class EmployeesApi {
 
 	/**
 	 * Edit employee. (asynchronously)
-	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt; - when first name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; - when last name is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when email is not provided or is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt; - when provided acceptance flow is is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt; - when provided holidays calendar is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when provided sex is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt; - when provided marital status is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt; - when provided working week is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when contract type is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt; - when personal email is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt; - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
+	 * Edit employee.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_FIRST_NAME&lt;/strong&gt;
+	 * - when first name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LAST_NAME&lt;/strong&gt; -
+	 * when last name is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMAIL&lt;/strong&gt; - when
+	 * email is not provided or is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ACCEPTANCE_FLOW&lt;/strong&gt;
+	 * - when provided acceptance flow is is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HOLIDAYS_CALENDAR&lt;/strong&gt;
+	 * - when provided holidays calendar is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SEX&lt;/strong&gt; - when
+	 * provided sex is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_MARITAL_STATUS&lt;/strong&gt;
+	 * - when provided marital status is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_WORKING_WEEK&lt;/strong&gt;
+	 * - when provided working week is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when contract type is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PERSONAL_EMAIL&lt;/strong&gt;
+	 * - when personal email is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DIRECT_MANAGER&lt;/strong&gt;
+	 * - when invalid direct manager is provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call editEmployeeAsync(PublicEditEmployeeIn body, final ApiCallback<CreateEmployeeOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call editEmployeeAsync(PublicEditEmployeeIn body,
+			final ApiCallback<CreateEmployeeOut> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -294,13 +507,19 @@ public class EmployeesApi {
 	/**
 	 * Build call for getEmployees
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getEmployeesCall(PublicEmployeesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getEmployeesCall(PublicEmployeesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -315,29 +534,34 @@ public class EmployeesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getEmployeesValidateBeforeCall(PublicEmployeesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getEmployeesValidateBeforeCall(PublicEmployeesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getEmployeesCall(body, progressListener, progressRequestListener);
 		return call;
@@ -348,9 +572,12 @@ public class EmployeesApi {
 	 * Get all employees.
 	 * Get all employees.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return EmployeesOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public EmployeesOut getEmployees(PublicEmployeesIn body) throws ApiException {
 		ApiResponse<EmployeesOut> resp = getEmployeesWithHttpInfo(body);
@@ -361,9 +588,12 @@ public class EmployeesApi {
 	 * Get all employees.
 	 * Get all employees.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;EmployeesOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<EmployeesOut> getEmployeesWithHttpInfo(PublicEmployeesIn body) throws ApiException {
 		com.squareup.okhttp.Call call = getEmployeesValidateBeforeCall(body, null, null);
@@ -376,17 +606,22 @@ public class EmployeesApi {
 	 * Get all employees. (asynchronously)
 	 * Get all employees.
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getEmployeesAsync(PublicEmployeesIn body, final ApiCallback<EmployeesOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call getEmployeesAsync(PublicEmployeesIn body, final ApiCallback<EmployeesOut> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -412,13 +647,19 @@ public class EmployeesApi {
 	/**
 	 * Build call for inviteEmployee
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call inviteEmployeeCall(InvitationEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call inviteEmployeeCall(InvitationEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -433,29 +674,34 @@ public class EmployeesApi {
 
 		final String[] localVarAccepts = {"*/*"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call inviteEmployeeValidateBeforeCall(InvitationEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call inviteEmployeeValidateBeforeCall(InvitationEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = inviteEmployeeCall(body, progressListener, progressRequestListener);
 		return call;
@@ -466,8 +712,11 @@ public class EmployeesApi {
 	 * Invite employee.
 	 * Invite employee
 	 *
-	 * @param body (optional)
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @param body
+	 *            (optional)
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public void inviteEmployee(InvitationEmployeeIn body) throws ApiException {
 		inviteEmployeeWithHttpInfo(body);
@@ -477,9 +726,12 @@ public class EmployeesApi {
 	 * Invite employee.
 	 * Invite employee
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;Void&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<Void> inviteEmployeeWithHttpInfo(InvitationEmployeeIn body) throws ApiException {
 		com.squareup.okhttp.Call call = inviteEmployeeValidateBeforeCall(body, null, null);
@@ -490,17 +742,22 @@ public class EmployeesApi {
 	 * Invite employee. (asynchronously)
 	 * Invite employee
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call inviteEmployeeAsync(InvitationEmployeeIn body, final ApiCallback<Void> callback) throws ApiException {
+	public com.squareup.okhttp.Call inviteEmployeeAsync(InvitationEmployeeIn body, final ApiCallback<Void> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -516,7 +773,8 @@ public class EmployeesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = inviteEmployeeValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = inviteEmployeeValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		apiClient.executeAsync(call, callback);
 		return call;
 	}
@@ -524,13 +782,19 @@ public class EmployeesApi {
 	/**
 	 * Build call for markEmployeeAsArchived
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call markEmployeeAsArchivedCall(PublicArchiveEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call markEmployeeAsArchivedCall(PublicArchiveEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -545,29 +809,34 @@ public class EmployeesApi {
 
 		final String[] localVarAccepts = {"*/*"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call markEmployeeAsArchivedValidateBeforeCall(PublicArchiveEmployeeIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call markEmployeeAsArchivedValidateBeforeCall(PublicArchiveEmployeeIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = markEmployeeAsArchivedCall(body, progressListener, progressRequestListener);
 		return call;
@@ -578,8 +847,11 @@ public class EmployeesApi {
 	 * Mark employee as archived.
 	 * Mark employee as archived.
 	 *
-	 * @param body (optional)
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @param body
+	 *            (optional)
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public void markEmployeeAsArchived(PublicArchiveEmployeeIn body) throws ApiException {
 		markEmployeeAsArchivedWithHttpInfo(body);
@@ -589,9 +861,12 @@ public class EmployeesApi {
 	 * Mark employee as archived.
 	 * Mark employee as archived.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;Void&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<Void> markEmployeeAsArchivedWithHttpInfo(PublicArchiveEmployeeIn body) throws ApiException {
 		com.squareup.okhttp.Call call = markEmployeeAsArchivedValidateBeforeCall(body, null, null);
@@ -602,17 +877,22 @@ public class EmployeesApi {
 	 * Mark employee as archived. (asynchronously)
 	 * Mark employee as archived.
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call markEmployeeAsArchivedAsync(PublicArchiveEmployeeIn body, final ApiCallback<Void> callback) throws ApiException {
+	public com.squareup.okhttp.Call markEmployeeAsArchivedAsync(PublicArchiveEmployeeIn body,
+			final ApiCallback<Void> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -628,7 +908,8 @@ public class EmployeesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = markEmployeeAsArchivedValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = markEmployeeAsArchivedValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		apiClient.executeAsync(call, callback);
 		return call;
 	}
@@ -636,13 +917,19 @@ public class EmployeesApi {
 	/**
 	 * Build call for searchEmployees
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call searchEmployeesCall(PublicSearchEmployeesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call searchEmployeesCall(PublicSearchEmployeesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -657,29 +944,34 @@ public class EmployeesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call searchEmployeesValidateBeforeCall(PublicSearchEmployeesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call searchEmployeesValidateBeforeCall(PublicSearchEmployeesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = searchEmployeesCall(body, progressListener, progressRequestListener);
 		return call;
@@ -690,9 +982,12 @@ public class EmployeesApi {
 	 * Get all employees.
 	 * Get all employees.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return EmployeesOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public EmployeesOut searchEmployees(PublicSearchEmployeesIn body) throws ApiException {
 		ApiResponse<EmployeesOut> resp = searchEmployeesWithHttpInfo(body);
@@ -703,9 +998,12 @@ public class EmployeesApi {
 	 * Get all employees.
 	 * Get all employees.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;EmployeesOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<EmployeesOut> searchEmployeesWithHttpInfo(PublicSearchEmployeesIn body) throws ApiException {
 		com.squareup.okhttp.Call call = searchEmployeesValidateBeforeCall(body, null, null);
@@ -718,17 +1016,22 @@ public class EmployeesApi {
 	 * Get all employees. (asynchronously)
 	 * Get all employees.
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call searchEmployeesAsync(PublicSearchEmployeesIn body, final ApiCallback<EmployeesOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call searchEmployeesAsync(PublicSearchEmployeesIn body,
+			final ApiCallback<EmployeesOut> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -744,7 +1047,8 @@ public class EmployeesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = searchEmployeesValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = searchEmployeesValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<EmployeesOut>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);

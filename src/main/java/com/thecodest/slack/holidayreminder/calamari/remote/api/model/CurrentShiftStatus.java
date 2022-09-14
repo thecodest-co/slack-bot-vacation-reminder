@@ -72,14 +72,15 @@ public class CurrentShiftStatus {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		CurrentShiftStatus currentShiftStatus = (CurrentShiftStatus) o;
-		return Objects.equals(this.person, currentShiftStatus.person) && Objects.equals(this.status, currentShiftStatus.status);
+		return Objects.equals(this.person, currentShiftStatus.person)
+				&& Objects.equals(this.status, currentShiftStatus.status);
 	}
 
 	@Override
@@ -103,7 +104,7 @@ public class CurrentShiftStatus {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -123,8 +124,8 @@ public class CurrentShiftStatus {
 		}
 
 		public static StatusEnum fromValue(String input) {
-			for(StatusEnum b : StatusEnum.values()) {
-				if(b.value.equals(input)) {
+			for (StatusEnum b : StatusEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

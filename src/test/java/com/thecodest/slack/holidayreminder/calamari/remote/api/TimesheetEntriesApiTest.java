@@ -25,7 +25,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for TimesheetEntriesApi
  */
@@ -37,9 +36,55 @@ class TimesheetEntriesApiTest {
 	/**
 	 * Add historical timesheet entry.
 	 * <p>
-	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void addTimeEntryTest() throws Exception {
@@ -54,7 +99,8 @@ class TimesheetEntriesApiTest {
 	 * <p>
 	 * Delete timesheet entry by id
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void deleteTimesheetEntryByIdTest() throws Exception {
@@ -65,11 +111,34 @@ class TimesheetEntriesApiTest {
 	}
 
 	/**
-	 * Find employees working time balances with advanced filtering by several parameters.
+	 * Find employees working time balances with advanced filtering by several
+	 * parameters.
 	 * <p>
-	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br
+	 * /&gt;If you provide more than one value in one filter attribute there is OR
+	 * relation between them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br
+	 * /&gt;When you fill more than one attribute in filter all conditions have to
+	 * be fulfilled. There is AND relation between attributes. For instance: if you
+	 * provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams:
+	 * [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and
+	 * Full-time&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void findTimeEntriesTest() throws Exception {
@@ -82,9 +151,32 @@ class TimesheetEntriesApiTest {
 	/**
 	 * Find timesheet entries with advanced filtering by several parameters.
 	 * <p>
-	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide
+	 * more than one value in one filter attribute there is OR relation between
+	 * them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br
+	 * /&gt;&lt;br /&gt;When you fill more than one attribute in filter all
+	 * conditions have to be fulfilled. There is AND relation between attributes.
+	 * For instance: if you provide in filter {contractTypes:
+	 * [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet
+	 * entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect
+	 * error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void findTimeEntries_0Test() throws Exception {
@@ -99,7 +191,8 @@ class TimesheetEntriesApiTest {
 	 * <p>
 	 * Get project types.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getProjectTypesTest() throws Exception {
@@ -111,9 +204,12 @@ class TimesheetEntriesApiTest {
 	/**
 	 * Get project types for one person.
 	 * <p>
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getProjectTypesForEmployeeTest() throws Exception {
@@ -126,9 +222,55 @@ class TimesheetEntriesApiTest {
 	/**
 	 * Update historical timesheet entry.
 	 * <p>
-	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void updateTimeEntryTest() throws Exception {

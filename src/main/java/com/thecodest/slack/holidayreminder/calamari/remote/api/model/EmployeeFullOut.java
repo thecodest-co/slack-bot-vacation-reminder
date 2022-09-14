@@ -885,19 +885,61 @@ public class EmployeeFullOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		EmployeeFullOut employeeFullOut = (EmployeeFullOut) o;
-		return Objects.equals(this.id, employeeFullOut.id) && Objects.equals(this.firstName, employeeFullOut.firstName) && Objects.equals(this.lastName, employeeFullOut.lastName) && Objects.equals(this.email, employeeFullOut.email) && Objects.equals(this.externalNumber, employeeFullOut.externalNumber) && Objects.equals(this.workingWeek, employeeFullOut.workingWeek) && Objects.equals(this.approvalFlow, employeeFullOut.approvalFlow) && Objects.equals(this.position, employeeFullOut.position) && Objects.equals(this.teams, employeeFullOut.teams) && Objects.equals(this.admin, employeeFullOut.admin) && Objects.equals(this.contractType, employeeFullOut.contractType) && Objects.equals(this.language, employeeFullOut.language) && Objects.equals(this.timezone, employeeFullOut.timezone) && Objects.equals(this.directManager, employeeFullOut.directManager) && Objects.equals(this.birthDate, employeeFullOut.birthDate) && Objects.equals(this.hireDate, employeeFullOut.hireDate) && Objects.equals(this.businessPhone, employeeFullOut.businessPhone) && Objects.equals(this.homePhone, employeeFullOut.homePhone) && Objects.equals(this.personalEmail, employeeFullOut.personalEmail) && Objects.equals(this.addressStreet, employeeFullOut.addressStreet) && Objects.equals(this.addressNumber, employeeFullOut.addressNumber) && Objects.equals(this.addressCity, employeeFullOut.addressCity) && Objects.equals(this.addressPostalCode, employeeFullOut.addressPostalCode) && Objects.equals(this.addressProvinceState, employeeFullOut.addressProvinceState) && Objects.equals(this.addressCountry, employeeFullOut.addressCountry) && Objects.equals(this.emergencyContactName, employeeFullOut.emergencyContactName) && Objects.equals(this.emergencyContactRelationship, employeeFullOut.emergencyContactRelationship) && Objects.equals(this.emergencyContactPhone, employeeFullOut.emergencyContactPhone) && Objects.equals(this.holidaysCalendar, employeeFullOut.holidaysCalendar) && Objects.equals(this.maritalStatus, employeeFullOut.maritalStatus) && Objects.equals(this.probationEndDate, employeeFullOut.probationEndDate) && Objects.equals(this.plannedFiring, employeeFullOut.plannedFiring) && Objects.equals(this.seniorityBeforeHireYears, employeeFullOut.seniorityBeforeHireYears) && Objects.equals(this.seniorityBeforeHireMonths, employeeFullOut.seniorityBeforeHireMonths) && Objects.equals(this.childrenCount, employeeFullOut.childrenCount) && Objects.equals(this.youngestChildBirthDate, employeeFullOut.youngestChildBirthDate) && Objects.equals(this.customNote, employeeFullOut.customNote) && Objects.equals(this.sex, employeeFullOut.sex) && Objects.equals(this.archived, employeeFullOut.archived);
+		return Objects.equals(this.id, employeeFullOut.id) && Objects.equals(this.firstName, employeeFullOut.firstName)
+				&& Objects.equals(this.lastName, employeeFullOut.lastName)
+				&& Objects.equals(this.email, employeeFullOut.email)
+				&& Objects.equals(this.externalNumber, employeeFullOut.externalNumber)
+				&& Objects.equals(this.workingWeek, employeeFullOut.workingWeek)
+				&& Objects.equals(this.approvalFlow, employeeFullOut.approvalFlow)
+				&& Objects.equals(this.position, employeeFullOut.position)
+				&& Objects.equals(this.teams, employeeFullOut.teams)
+				&& Objects.equals(this.admin, employeeFullOut.admin)
+				&& Objects.equals(this.contractType, employeeFullOut.contractType)
+				&& Objects.equals(this.language, employeeFullOut.language)
+				&& Objects.equals(this.timezone, employeeFullOut.timezone)
+				&& Objects.equals(this.directManager, employeeFullOut.directManager)
+				&& Objects.equals(this.birthDate, employeeFullOut.birthDate)
+				&& Objects.equals(this.hireDate, employeeFullOut.hireDate)
+				&& Objects.equals(this.businessPhone, employeeFullOut.businessPhone)
+				&& Objects.equals(this.homePhone, employeeFullOut.homePhone)
+				&& Objects.equals(this.personalEmail, employeeFullOut.personalEmail)
+				&& Objects.equals(this.addressStreet, employeeFullOut.addressStreet)
+				&& Objects.equals(this.addressNumber, employeeFullOut.addressNumber)
+				&& Objects.equals(this.addressCity, employeeFullOut.addressCity)
+				&& Objects.equals(this.addressPostalCode, employeeFullOut.addressPostalCode)
+				&& Objects.equals(this.addressProvinceState, employeeFullOut.addressProvinceState)
+				&& Objects.equals(this.addressCountry, employeeFullOut.addressCountry)
+				&& Objects.equals(this.emergencyContactName, employeeFullOut.emergencyContactName)
+				&& Objects.equals(this.emergencyContactRelationship, employeeFullOut.emergencyContactRelationship)
+				&& Objects.equals(this.emergencyContactPhone, employeeFullOut.emergencyContactPhone)
+				&& Objects.equals(this.holidaysCalendar, employeeFullOut.holidaysCalendar)
+				&& Objects.equals(this.maritalStatus, employeeFullOut.maritalStatus)
+				&& Objects.equals(this.probationEndDate, employeeFullOut.probationEndDate)
+				&& Objects.equals(this.plannedFiring, employeeFullOut.plannedFiring)
+				&& Objects.equals(this.seniorityBeforeHireYears, employeeFullOut.seniorityBeforeHireYears)
+				&& Objects.equals(this.seniorityBeforeHireMonths, employeeFullOut.seniorityBeforeHireMonths)
+				&& Objects.equals(this.childrenCount, employeeFullOut.childrenCount)
+				&& Objects.equals(this.youngestChildBirthDate, employeeFullOut.youngestChildBirthDate)
+				&& Objects.equals(this.customNote, employeeFullOut.customNote)
+				&& Objects.equals(this.sex, employeeFullOut.sex)
+				&& Objects.equals(this.archived, employeeFullOut.archived);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, firstName, lastName, email, externalNumber, workingWeek, approvalFlow, position, teams, admin, contractType, language, timezone, directManager, birthDate, hireDate, businessPhone, homePhone, personalEmail, addressStreet, addressNumber, addressCity, addressPostalCode, addressProvinceState, addressCountry, emergencyContactName, emergencyContactRelationship, emergencyContactPhone, holidaysCalendar, maritalStatus, probationEndDate, plannedFiring, seniorityBeforeHireYears, seniorityBeforeHireMonths, childrenCount, youngestChildBirthDate, customNote, sex, archived);
+		return Objects.hash(id, firstName, lastName, email, externalNumber, workingWeek, approvalFlow, position, teams,
+				admin, contractType, language, timezone, directManager, birthDate, hireDate, businessPhone, homePhone,
+				personalEmail, addressStreet, addressNumber, addressCity, addressPostalCode, addressProvinceState,
+				addressCountry, emergencyContactName, emergencyContactRelationship, emergencyContactPhone,
+				holidaysCalendar, maritalStatus, probationEndDate, plannedFiring, seniorityBeforeHireYears,
+				seniorityBeforeHireMonths, childrenCount, youngestChildBirthDate, customNote, sex, archived);
 	}
 
 	@Override
@@ -931,7 +973,8 @@ public class EmployeeFullOut {
 		sb.append("    addressProvinceState: ").append(toIndentedString(addressProvinceState)).append("\n");
 		sb.append("    addressCountry: ").append(toIndentedString(addressCountry)).append("\n");
 		sb.append("    emergencyContactName: ").append(toIndentedString(emergencyContactName)).append("\n");
-		sb.append("    emergencyContactRelationship: ").append(toIndentedString(emergencyContactRelationship)).append("\n");
+		sb.append("    emergencyContactRelationship: ").append(toIndentedString(emergencyContactRelationship))
+				.append("\n");
 		sb.append("    emergencyContactPhone: ").append(toIndentedString(emergencyContactPhone)).append("\n");
 		sb.append("    holidaysCalendar: ").append(toIndentedString(holidaysCalendar)).append("\n");
 		sb.append("    maritalStatus: ").append(toIndentedString(maritalStatus)).append("\n");
@@ -953,7 +996,7 @@ public class EmployeeFullOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -964,7 +1007,8 @@ public class EmployeeFullOut {
 	 */
 	@JsonAdapter(MaritalStatusEnum.Adapter.class)
 	public enum MaritalStatusEnum {
-		SINGLE("SINGLE"), MARRIED("MARRIED"), WIDOWED("WIDOWED"), SEPARATED("SEPARATED"), DIVORCED("DIVORCED"), NOT_SET("NOT_SET");
+		SINGLE("SINGLE"), MARRIED("MARRIED"), WIDOWED("WIDOWED"), SEPARATED("SEPARATED"), DIVORCED("DIVORCED"), NOT_SET(
+				"NOT_SET");
 
 		private String value;
 
@@ -973,8 +1017,8 @@ public class EmployeeFullOut {
 		}
 
 		public static MaritalStatusEnum fromValue(String input) {
-			for(MaritalStatusEnum b : MaritalStatusEnum.values()) {
-				if(b.value.equals(input)) {
+			for (MaritalStatusEnum b : MaritalStatusEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}
@@ -1018,8 +1062,8 @@ public class EmployeeFullOut {
 		}
 
 		public static SexEnum fromValue(String input) {
-			for(SexEnum b : SexEnum.values()) {
-				if(b.value.equals(input)) {
+			for (SexEnum b : SexEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

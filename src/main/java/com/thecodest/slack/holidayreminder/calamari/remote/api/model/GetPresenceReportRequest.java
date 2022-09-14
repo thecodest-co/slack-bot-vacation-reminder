@@ -60,7 +60,7 @@ public class GetPresenceReportRequest {
 	}
 
 	/**
-	 * End date of dates range to  generate presence report in ISO format
+	 * End date of dates range to generate presence report in ISO format
 	 *
 	 * @return dateTo
 	 **/
@@ -116,14 +116,17 @@ public class GetPresenceReportRequest {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		GetPresenceReportRequest getPresenceReportRequest = (GetPresenceReportRequest) o;
-		return Objects.equals(this.dateFrom, getPresenceReportRequest.dateFrom) && Objects.equals(this.dateTo, getPresenceReportRequest.dateTo) && Objects.equals(this.page, getPresenceReportRequest.page) && Objects.equals(this.limit, getPresenceReportRequest.limit);
+		return Objects.equals(this.dateFrom, getPresenceReportRequest.dateFrom)
+				&& Objects.equals(this.dateTo, getPresenceReportRequest.dateTo)
+				&& Objects.equals(this.page, getPresenceReportRequest.page)
+				&& Objects.equals(this.limit, getPresenceReportRequest.limit);
 	}
 
 	@Override
@@ -149,7 +152,7 @@ public class GetPresenceReportRequest {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

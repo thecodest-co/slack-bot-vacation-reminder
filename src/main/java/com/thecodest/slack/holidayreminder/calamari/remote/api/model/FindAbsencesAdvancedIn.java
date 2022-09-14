@@ -106,7 +106,7 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	public FindAbsencesAdvancedIn addAbsenceTypesItem(String absenceTypesItem) {
-		if(this.absenceTypes == null) {
+		if (this.absenceTypes == null) {
 			this.absenceTypes = new ArrayList<>();
 		}
 		this.absenceTypes.add(absenceTypesItem);
@@ -114,7 +114,8 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * List of absence types names or identifiers to search. Example: [\&quot;Annual Leave\&quot;, \&quot;Remote Work\&quot;, \&quot;Sick Leave\&quot;]
+	 * List of absence types names or identifiers to search. Example: [\&quot;Annual
+	 * Leave\&quot;, \&quot;Remote Work\&quot;, \&quot;Sick Leave\&quot;]
 	 *
 	 * @return absenceTypes
 	 **/
@@ -133,7 +134,7 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	public FindAbsencesAdvancedIn addTeamsItem(String teamsItem) {
-		if(this.teams == null) {
+		if (this.teams == null) {
 			this.teams = new ArrayList<>();
 		}
 		this.teams.add(teamsItem);
@@ -141,7 +142,10 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * List of teams names or identifiers to search. As a result there will be absence requests of employees who are members of at least one of provided teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;, \&quot;Third Team\&quot;]
+	 * List of teams names or identifiers to search. As a result there will be
+	 * absence requests of employees who are members of at least one of provided
+	 * teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;,
+	 * \&quot;Third Team\&quot;]
 	 *
 	 * @return teams
 	 **/
@@ -160,7 +164,7 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	public FindAbsencesAdvancedIn addPositionsItem(String positionsItem) {
-		if(this.positions == null) {
+		if (this.positions == null) {
 			this.positions = new ArrayList<>();
 		}
 		this.positions.add(positionsItem);
@@ -168,7 +172,9 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * List of positions names or identifiers to search. As a result there will be absence requests of employees who have one of provided positions. Example: [\&quot;Developer\&quot;, \&quot;Support\&quot;, \&quot;Architect\&quot;]
+	 * List of positions names or identifiers to search. As a result there will be
+	 * absence requests of employees who have one of provided positions. Example:
+	 * [\&quot;Developer\&quot;, \&quot;Support\&quot;, \&quot;Architect\&quot;]
 	 *
 	 * @return positions
 	 **/
@@ -187,7 +193,7 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	public FindAbsencesAdvancedIn addContractTypesItem(String contractTypesItem) {
-		if(this.contractTypes == null) {
+		if (this.contractTypes == null) {
 			this.contractTypes = new ArrayList<>();
 		}
 		this.contractTypes.add(contractTypesItem);
@@ -195,7 +201,9 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * List of contract types names or identifiers to search. As a result there will be absence requests of employees who have one of contract type. Example: [\&quot;firstContract\&quot;, \&quot;secondContract\&quot;]
+	 * List of contract types names or identifiers to search. As a result there will
+	 * be absence requests of employees who have one of contract type. Example:
+	 * [\&quot;firstContract\&quot;, \&quot;secondContract\&quot;]
 	 *
 	 * @return contractTypes
 	 **/
@@ -214,7 +222,7 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	public FindAbsencesAdvancedIn addEmployeesItem(String employeesItem) {
-		if(this.employees == null) {
+		if (this.employees == null) {
 			this.employees = new ArrayList<>();
 		}
 		this.employees.add(employeesItem);
@@ -222,7 +230,8 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * List of employees e-mails or logins. Example: [\&quot;john.smith@domain.com\&quot;, \&quot;mark.small@domain.com\&quot;]
+	 * List of employees e-mails or logins. Example:
+	 * [\&quot;john.smith@domain.com\&quot;, \&quot;mark.small@domain.com\&quot;]
 	 *
 	 * @return employees
 	 **/
@@ -241,7 +250,9 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * Filter absence requests by date of creation. As a result there will be absence requests created at the provided moment or later. Please provide the date and time in ISO 8601 format with time zone.
+	 * Filter absence requests by date of creation. As a result there will be
+	 * absence requests created at the provided moment or later. Please provide the
+	 * date and time in ISO 8601 format with time zone.
 	 *
 	 * @return createdFrom
 	 **/
@@ -260,7 +271,9 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * Filter absence requests by date of creation. As a result there will be absence requests created before the provided moment. Please provide the date and time in ISO 8601 format with time zone.
+	 * Filter absence requests by date of creation. As a result there will be
+	 * absence requests created before the provided moment. Please provide the date
+	 * and time in ISO 8601 format with time zone.
 	 *
 	 * @return createdTo
 	 **/
@@ -279,7 +292,9 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * Filter absence requests by date of last update. As a result there will be absence requests updated at the provided moment or later. Please provide the date and time in ISO 8601 format with time zone.
+	 * Filter absence requests by date of last update. As a result there will be
+	 * absence requests updated at the provided moment or later. Please provide the
+	 * date and time in ISO 8601 format with time zone.
 	 *
 	 * @return updatedFrom
 	 **/
@@ -298,7 +313,9 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * Filter absence requests by date of last update. As a result there will be absence requests updated before the provided moment. Please provide the date and time in ISO 8601 format with time zone.
+	 * Filter absence requests by date of last update. As a result there will be
+	 * absence requests updated before the provided moment. Please provide the date
+	 * and time in ISO 8601 format with time zone.
 	 *
 	 * @return updatedTo
 	 **/
@@ -317,7 +334,7 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	public FindAbsencesAdvancedIn addAbsenceStatusesItem(String absenceStatusesItem) {
-		if(this.absenceStatuses == null) {
+		if (this.absenceStatuses == null) {
 			this.absenceStatuses = new ArrayList<>();
 		}
 		this.absenceStatuses.add(absenceStatusesItem);
@@ -325,7 +342,11 @@ public class FindAbsencesAdvancedIn {
 	}
 
 	/**
-	 * Filter absence requests by absence statuses. As a result there will be absence requests with chosen statuses. By default return all absence requests. Allowed values: [\&quot;PENDING\&quot;, \&quot;PENDING_CANCELLATION\&quot;, \&quot;REJECTED\&quot;, \&quot;APPROVED\&quot;, \&quot;CANCELED\&quot;, \&quot;REVOKED\&quot;]
+	 * Filter absence requests by absence statuses. As a result there will be
+	 * absence requests with chosen statuses. By default return all absence
+	 * requests. Allowed values: [\&quot;PENDING\&quot;,
+	 * \&quot;PENDING_CANCELLATION\&quot;, \&quot;REJECTED\&quot;,
+	 * \&quot;APPROVED\&quot;, \&quot;CANCELED\&quot;, \&quot;REVOKED\&quot;]
 	 *
 	 * @return absenceStatuses
 	 **/
@@ -340,19 +361,31 @@ public class FindAbsencesAdvancedIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		FindAbsencesAdvancedIn findAbsencesAdvancedIn = (FindAbsencesAdvancedIn) o;
-		return Objects.equals(this.from, findAbsencesAdvancedIn.from) && Objects.equals(this.to, findAbsencesAdvancedIn.to) && Objects.equals(this.absenceTypes, findAbsencesAdvancedIn.absenceTypes) && Objects.equals(this.teams, findAbsencesAdvancedIn.teams) && Objects.equals(this.positions, findAbsencesAdvancedIn.positions) && Objects.equals(this.contractTypes, findAbsencesAdvancedIn.contractTypes) && Objects.equals(this.employees, findAbsencesAdvancedIn.employees) && Objects.equals(this.createdFrom, findAbsencesAdvancedIn.createdFrom) && Objects.equals(this.createdTo, findAbsencesAdvancedIn.createdTo) && Objects.equals(this.updatedFrom, findAbsencesAdvancedIn.updatedFrom) && Objects.equals(this.updatedTo, findAbsencesAdvancedIn.updatedTo) && Objects.equals(this.absenceStatuses, findAbsencesAdvancedIn.absenceStatuses);
+		return Objects.equals(this.from, findAbsencesAdvancedIn.from)
+				&& Objects.equals(this.to, findAbsencesAdvancedIn.to)
+				&& Objects.equals(this.absenceTypes, findAbsencesAdvancedIn.absenceTypes)
+				&& Objects.equals(this.teams, findAbsencesAdvancedIn.teams)
+				&& Objects.equals(this.positions, findAbsencesAdvancedIn.positions)
+				&& Objects.equals(this.contractTypes, findAbsencesAdvancedIn.contractTypes)
+				&& Objects.equals(this.employees, findAbsencesAdvancedIn.employees)
+				&& Objects.equals(this.createdFrom, findAbsencesAdvancedIn.createdFrom)
+				&& Objects.equals(this.createdTo, findAbsencesAdvancedIn.createdTo)
+				&& Objects.equals(this.updatedFrom, findAbsencesAdvancedIn.updatedFrom)
+				&& Objects.equals(this.updatedTo, findAbsencesAdvancedIn.updatedTo)
+				&& Objects.equals(this.absenceStatuses, findAbsencesAdvancedIn.absenceStatuses);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(from, to, absenceTypes, teams, positions, contractTypes, employees, createdFrom, createdTo, updatedFrom, updatedTo, absenceStatuses);
+		return Objects.hash(from, to, absenceTypes, teams, positions, contractTypes, employees, createdFrom, createdTo,
+				updatedFrom, updatedTo, absenceStatuses);
 	}
 
 	@Override
@@ -381,7 +414,7 @@ public class FindAbsencesAdvancedIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

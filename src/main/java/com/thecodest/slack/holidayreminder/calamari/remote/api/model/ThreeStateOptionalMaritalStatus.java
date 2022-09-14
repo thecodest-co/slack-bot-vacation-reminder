@@ -51,10 +51,10 @@ public class ThreeStateOptionalMaritalStatus {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		ThreeStateOptionalMaritalStatus threeStateOptionalMaritalStatus = (ThreeStateOptionalMaritalStatus) o;
@@ -81,7 +81,7 @@ public class ThreeStateOptionalMaritalStatus {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -92,7 +92,8 @@ public class ThreeStateOptionalMaritalStatus {
 	 */
 	@JsonAdapter(ValueEnum.Adapter.class)
 	public enum ValueEnum {
-		SINGLE("SINGLE"), MARRIED("MARRIED"), WIDOWED("WIDOWED"), SEPARATED("SEPARATED"), DIVORCED("DIVORCED"), NOT_SET("NOT_SET");
+		SINGLE("SINGLE"), MARRIED("MARRIED"), WIDOWED("WIDOWED"), SEPARATED("SEPARATED"), DIVORCED("DIVORCED"), NOT_SET(
+				"NOT_SET");
 
 		private String value;
 
@@ -101,8 +102,8 @@ public class ThreeStateOptionalMaritalStatus {
 		}
 
 		public static ValueEnum fromValue(String input) {
-			for(ValueEnum b : ValueEnum.values()) {
-				if(b.value.equals(input)) {
+			for (ValueEnum b : ValueEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

@@ -53,13 +53,19 @@ public class PositionsApi {
 	/**
 	 * Build call for createPosition
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call createPositionCall(CreatePositionIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call createPositionCall(CreatePositionIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -74,29 +80,34 @@ public class PositionsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call createPositionValidateBeforeCall(CreatePositionIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call createPositionValidateBeforeCall(CreatePositionIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = createPositionCall(body, progressListener, progressRequestListener);
 		return call;
@@ -107,9 +118,12 @@ public class PositionsApi {
 	 * Create a position.
 	 * Create a position.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return CreatePositionOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public CreatePositionOut createPosition(CreatePositionIn body) throws ApiException {
 		ApiResponse<CreatePositionOut> resp = createPositionWithHttpInfo(body);
@@ -120,9 +134,12 @@ public class PositionsApi {
 	 * Create a position.
 	 * Create a position.
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;CreatePositionOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<CreatePositionOut> createPositionWithHttpInfo(CreatePositionIn body) throws ApiException {
 		com.squareup.okhttp.Call call = createPositionValidateBeforeCall(body, null, null);
@@ -135,17 +152,22 @@ public class PositionsApi {
 	 * Create a position. (asynchronously)
 	 * Create a position.
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call createPositionAsync(CreatePositionIn body, final ApiCallback<CreatePositionOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call createPositionAsync(CreatePositionIn body,
+			final ApiCallback<CreatePositionOut> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -161,7 +183,8 @@ public class PositionsApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = createPositionValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = createPositionValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<CreatePositionOut>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -171,12 +194,16 @@ public class PositionsApi {
 	/**
 	 * Build call for getPositions
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getPositionsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getPositionsCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -191,7 +218,7 @@ public class PositionsApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -200,22 +227,27 @@ public class PositionsApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getPositionsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getPositionsValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getPositionsCall(progressListener, progressRequestListener);
 		return call;
@@ -227,7 +259,9 @@ public class PositionsApi {
 	 * Get all positions.
 	 *
 	 * @return List&lt;PositionDto&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<PositionDto> getPositions() throws ApiException {
 		ApiResponse<List<PositionDto>> resp = getPositionsWithHttpInfo();
@@ -239,7 +273,9 @@ public class PositionsApi {
 	 * Get all positions.
 	 *
 	 * @return ApiResponse&lt;List&lt;PositionDto&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<List<PositionDto>> getPositionsWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = getPositionsValidateBeforeCall(null, null);
@@ -252,16 +288,20 @@ public class PositionsApi {
 	 * Get all positions. (asynchronously)
 	 * Get all positions.
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getPositionsAsync(final ApiCallback<List<PositionDto>> callback) throws ApiException {
+	public com.squareup.okhttp.Call getPositionsAsync(final ApiCallback<List<PositionDto>> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {

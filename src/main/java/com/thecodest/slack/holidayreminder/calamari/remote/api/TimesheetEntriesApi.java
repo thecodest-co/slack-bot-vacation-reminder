@@ -59,13 +59,19 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for addTimeEntry
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call addTimeEntryCall(CreateTimesheetEntryIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call addTimeEntryCall(CreateTimesheetEntryIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -80,29 +86,34 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call addTimeEntryValidateBeforeCall(CreateTimesheetEntryIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call addTimeEntryValidateBeforeCall(CreateTimesheetEntryIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = addTimeEntryCall(body, progressListener, progressRequestListener);
 		return call;
@@ -111,11 +122,59 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Add historical timesheet entry.
-	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return TimesheetEntryOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public TimesheetEntryOut addTimeEntry(CreateTimesheetEntryIn body) throws ApiException {
 		ApiResponse<TimesheetEntryOut> resp = addTimeEntryWithHttpInfo(body);
@@ -124,11 +183,59 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Add historical timesheet entry.
-	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;TimesheetEntryOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<TimesheetEntryOut> addTimeEntryWithHttpInfo(CreateTimesheetEntryIn body) throws ApiException {
 		com.squareup.okhttp.Call call = addTimeEntryValidateBeforeCall(body, null, null);
@@ -139,19 +246,69 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Add historical timesheet entry. (asynchronously)
-	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Add employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call addTimeEntryAsync(CreateTimesheetEntryIn body, final ApiCallback<TimesheetEntryOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call addTimeEntryAsync(CreateTimesheetEntryIn body,
+			final ApiCallback<TimesheetEntryOut> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -177,13 +334,19 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for deleteTimesheetEntryById
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call deleteTimesheetEntryByIdCall(DeleteTimesheetEntryById body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call deleteTimesheetEntryByIdCall(DeleteTimesheetEntryById body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -198,29 +361,34 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"*/*"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call deleteTimesheetEntryByIdValidateBeforeCall(DeleteTimesheetEntryById body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call deleteTimesheetEntryByIdValidateBeforeCall(DeleteTimesheetEntryById body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = deleteTimesheetEntryByIdCall(body, progressListener, progressRequestListener);
 		return call;
@@ -231,8 +399,11 @@ public class TimesheetEntriesApi {
 	 * Delete timesheet entry by id
 	 * Delete timesheet entry by id
 	 *
-	 * @param body (optional)
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @param body
+	 *            (optional)
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public void deleteTimesheetEntryById(DeleteTimesheetEntryById body) throws ApiException {
 		deleteTimesheetEntryByIdWithHttpInfo(body);
@@ -242,9 +413,12 @@ public class TimesheetEntriesApi {
 	 * Delete timesheet entry by id
 	 * Delete timesheet entry by id
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;Void&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<Void> deleteTimesheetEntryByIdWithHttpInfo(DeleteTimesheetEntryById body) throws ApiException {
 		com.squareup.okhttp.Call call = deleteTimesheetEntryByIdValidateBeforeCall(body, null, null);
@@ -255,17 +429,22 @@ public class TimesheetEntriesApi {
 	 * Delete timesheet entry by id (asynchronously)
 	 * Delete timesheet entry by id
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call deleteTimesheetEntryByIdAsync(DeleteTimesheetEntryById body, final ApiCallback<Void> callback) throws ApiException {
+	public com.squareup.okhttp.Call deleteTimesheetEntryByIdAsync(DeleteTimesheetEntryById body,
+			final ApiCallback<Void> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -281,7 +460,8 @@ public class TimesheetEntriesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = deleteTimesheetEntryByIdValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = deleteTimesheetEntryByIdValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		apiClient.executeAsync(call, callback);
 		return call;
 	}
@@ -289,13 +469,19 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for findTimeEntries
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call findTimeEntriesCall(FilterBalanceEntriesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call findTimeEntriesCall(FilterBalanceEntriesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -310,29 +496,34 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call findTimeEntriesValidateBeforeCall(FilterBalanceEntriesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call findTimeEntriesValidateBeforeCall(FilterBalanceEntriesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = findTimeEntriesCall(body, progressListener, progressRequestListener);
 		return call;
@@ -340,12 +531,37 @@ public class TimesheetEntriesApi {
 	}
 
 	/**
-	 * Find employees working time balances with advanced filtering by several parameters.
-	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find employees working time balances with advanced filtering by several
+	 * parameters.
+	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br
+	 * /&gt;If you provide more than one value in one filter attribute there is OR
+	 * relation between them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br
+	 * /&gt;When you fill more than one attribute in filter all conditions have to
+	 * be fulfilled. There is AND relation between attributes. For instance: if you
+	 * provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams:
+	 * [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and
+	 * Full-time&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return List&lt;BalanceEntryOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<BalanceEntryOut> findTimeEntries(FilterBalanceEntriesIn body) throws ApiException {
 		ApiResponse<List<BalanceEntryOut>> resp = findTimeEntriesWithHttpInfo(body);
@@ -353,14 +569,40 @@ public class TimesheetEntriesApi {
 	}
 
 	/**
-	 * Find employees working time balances with advanced filtering by several parameters.
-	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find employees working time balances with advanced filtering by several
+	 * parameters.
+	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br
+	 * /&gt;If you provide more than one value in one filter attribute there is OR
+	 * relation between them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br
+	 * /&gt;When you fill more than one attribute in filter all conditions have to
+	 * be fulfilled. There is AND relation between attributes. For instance: if you
+	 * provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams:
+	 * [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and
+	 * Full-time&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;List&lt;BalanceEntryOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
-	public ApiResponse<List<BalanceEntryOut>> findTimeEntriesWithHttpInfo(FilterBalanceEntriesIn body) throws ApiException {
+	public ApiResponse<List<BalanceEntryOut>> findTimeEntriesWithHttpInfo(FilterBalanceEntriesIn body)
+			throws ApiException {
 		com.squareup.okhttp.Call call = findTimeEntriesValidateBeforeCall(body, null, null);
 		Type localVarReturnType = new TypeToken<List<BalanceEntryOut>>() {
 		}.getType();
@@ -368,20 +610,47 @@ public class TimesheetEntriesApi {
 	}
 
 	/**
-	 * Find employees working time balances with advanced filtering by several parameters. (asynchronously)
-	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find employees working time balances with advanced filtering by several
+	 * parameters. (asynchronously)
+	 * Find employees working time balances in dates range. &lt;br /&gt;&lt;br
+	 * /&gt;If you provide more than one value in one filter attribute there is OR
+	 * relation between them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s balances.&lt;br /&gt;&lt;br
+	 * /&gt;When you fill more than one attribute in filter all conditions have to
+	 * be fulfilled. There is AND relation between attributes. For instance: if you
+	 * provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams:
+	 * [\&quot;DevTeam\&quot;]} then you receive balances of employees from Dev and
+	 * Full-time&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call findTimeEntriesAsync(FilterBalanceEntriesIn body, final ApiCallback<List<BalanceEntryOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call findTimeEntriesAsync(FilterBalanceEntriesIn body,
+			final ApiCallback<List<BalanceEntryOut>> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -397,7 +666,8 @@ public class TimesheetEntriesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = findTimeEntriesValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = findTimeEntriesValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<List<BalanceEntryOut>>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -407,13 +677,19 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for findTimeEntries_0
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call findTimeEntries_0Call(FilterTimesheetEntriesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call findTimeEntries_0Call(FilterTimesheetEntriesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -428,29 +704,34 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call findTimeEntries_0ValidateBeforeCall(FilterTimesheetEntriesIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call findTimeEntries_0ValidateBeforeCall(FilterTimesheetEntriesIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = findTimeEntries_0Call(body, progressListener, progressRequestListener);
 		return call;
@@ -459,11 +740,36 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Find timesheet entries with advanced filtering by several parameters.
-	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide
+	 * more than one value in one filter attribute there is OR relation between
+	 * them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br
+	 * /&gt;&lt;br /&gt;When you fill more than one attribute in filter all
+	 * conditions have to be fulfilled. There is AND relation between attributes.
+	 * For instance: if you provide in filter {contractTypes:
+	 * [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet
+	 * entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect
+	 * error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return List&lt;TimesheetEntryOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<TimesheetEntryOut> findTimeEntries_0(FilterTimesheetEntriesIn body) throws ApiException {
 		ApiResponse<List<TimesheetEntryOut>> resp = findTimeEntries_0WithHttpInfo(body);
@@ -472,13 +778,39 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Find timesheet entries with advanced filtering by several parameters.
-	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide
+	 * more than one value in one filter attribute there is OR relation between
+	 * them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br
+	 * /&gt;&lt;br /&gt;When you fill more than one attribute in filter all
+	 * conditions have to be fulfilled. There is AND relation between attributes.
+	 * For instance: if you provide in filter {contractTypes:
+	 * [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet
+	 * entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect
+	 * error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;List&lt;TimesheetEntryOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
-	public ApiResponse<List<TimesheetEntryOut>> findTimeEntries_0WithHttpInfo(FilterTimesheetEntriesIn body) throws ApiException {
+	public ApiResponse<List<TimesheetEntryOut>> findTimeEntries_0WithHttpInfo(FilterTimesheetEntriesIn body)
+			throws ApiException {
 		com.squareup.okhttp.Call call = findTimeEntries_0ValidateBeforeCall(body, null, null);
 		Type localVarReturnType = new TypeToken<List<TimesheetEntryOut>>() {
 		}.getType();
@@ -486,20 +818,48 @@ public class TimesheetEntriesApi {
 	}
 
 	/**
-	 * Find timesheet entries with advanced filtering by several parameters. (asynchronously)
-	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {contractTypes: [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
+	 * Find timesheet entries with advanced filtering by several parameters.
+	 * (asynchronously)
+	 * Find timesheet entries in dates range. &lt;br /&gt;&lt;br /&gt;If you provide
+	 * more than one value in one filter attribute there is OR relation between
+	 * them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s timesheet entries.&lt;br
+	 * /&gt;&lt;br /&gt;When you fill more than one attribute in filter all
+	 * conditions have to be fulfilled. There is AND relation between attributes.
+	 * For instance: if you provide in filter {contractTypes:
+	 * [\&quot;Full-time\&quot;], teams: [\&quot;DevTeam\&quot;]} then timesheet
+	 * entries of employees from Dev and Full-time&lt;br /&gt;&lt;br /&gt;Expect
+	 * error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is invalid&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call findTimeEntries_0Async(FilterTimesheetEntriesIn body, final ApiCallback<List<TimesheetEntryOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call findTimeEntries_0Async(FilterTimesheetEntriesIn body,
+			final ApiCallback<List<TimesheetEntryOut>> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -515,7 +875,8 @@ public class TimesheetEntriesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = findTimeEntries_0ValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = findTimeEntries_0ValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<List<TimesheetEntryOut>>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -525,12 +886,16 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for getProjectTypes
 	 *
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getProjectTypesCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getProjectTypesCall(final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
@@ -545,7 +910,7 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {
@@ -554,22 +919,27 @@ public class TimesheetEntriesApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getProjectTypesValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getProjectTypesValidateBeforeCall(
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getProjectTypesCall(progressListener, progressRequestListener);
 		return call;
@@ -581,7 +951,9 @@ public class TimesheetEntriesApi {
 	 * Get project types.
 	 *
 	 * @return List&lt;ProjectOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<ProjectOut> getProjectTypes() throws ApiException {
 		ApiResponse<List<ProjectOut>> resp = getProjectTypesWithHttpInfo();
@@ -593,7 +965,9 @@ public class TimesheetEntriesApi {
 	 * Get project types.
 	 *
 	 * @return ApiResponse&lt;List&lt;ProjectOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<List<ProjectOut>> getProjectTypesWithHttpInfo() throws ApiException {
 		com.squareup.okhttp.Call call = getProjectTypesValidateBeforeCall(null, null);
@@ -606,16 +980,20 @@ public class TimesheetEntriesApi {
 	 * Get project types. (asynchronously)
 	 * Get project types.
 	 *
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getProjectTypesAsync(final ApiCallback<List<ProjectOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call getProjectTypesAsync(final ApiCallback<List<ProjectOut>> callback)
+			throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -641,13 +1019,19 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for getProjectTypesForEmployee
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call getProjectTypesForEmployeeCall(PersonForProjects body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call getProjectTypesForEmployeeCall(PersonForProjects body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -662,29 +1046,34 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call getProjectTypesForEmployeeValidateBeforeCall(PersonForProjects body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call getProjectTypesForEmployeeValidateBeforeCall(PersonForProjects body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = getProjectTypesForEmployeeCall(body, progressListener, progressRequestListener);
 		return call;
@@ -693,11 +1082,16 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Get project types for one person.
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return List&lt;ProjectOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public List<ProjectOut> getProjectTypesForEmployee(PersonForProjects body) throws ApiException {
 		ApiResponse<List<ProjectOut>> resp = getProjectTypesForEmployeeWithHttpInfo(body);
@@ -706,13 +1100,19 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Get project types for one person.
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;List&lt;ProjectOut&gt;&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
-	public ApiResponse<List<ProjectOut>> getProjectTypesForEmployeeWithHttpInfo(PersonForProjects body) throws ApiException {
+	public ApiResponse<List<ProjectOut>> getProjectTypesForEmployeeWithHttpInfo(PersonForProjects body)
+			throws ApiException {
 		com.squareup.okhttp.Call call = getProjectTypesForEmployeeValidateBeforeCall(body, null, null);
 		Type localVarReturnType = new TypeToken<List<ProjectOut>>() {
 		}.getType();
@@ -721,19 +1121,26 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Get project types for one person. (asynchronously)
-	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get project types for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call getProjectTypesForEmployeeAsync(PersonForProjects body, final ApiCallback<List<ProjectOut>> callback) throws ApiException {
+	public com.squareup.okhttp.Call getProjectTypesForEmployeeAsync(PersonForProjects body,
+			final ApiCallback<List<ProjectOut>> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -749,7 +1156,8 @@ public class TimesheetEntriesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = getProjectTypesForEmployeeValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = getProjectTypesForEmployeeValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<List<ProjectOut>>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);
@@ -759,13 +1167,19 @@ public class TimesheetEntriesApi {
 	/**
 	 * Build call for updateTimeEntry
 	 *
-	 * @param body                    (optional)
-	 * @param progressListener        Progress listener
-	 * @param progressRequestListener Progress request listener
+	 * @param body
+	 *            (optional)
+	 * @param progressListener
+	 *            Progress listener
+	 * @param progressRequestListener
+	 *            Progress request listener
 	 * @return Call to execute
-	 * @throws ApiException If fail to serialize the request body object
+	 * @throws ApiException
+	 *             If fail to serialize the request body object
 	 */
-	public com.squareup.okhttp.Call updateTimeEntryCall(EditTimesheetEntryIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	public com.squareup.okhttp.Call updateTimeEntryCall(EditTimesheetEntryIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
 
 		// create path and map variables
@@ -780,29 +1194,34 @@ public class TimesheetEntriesApi {
 
 		final String[] localVarAccepts = {"application/json"};
 		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-		if(localVarAccept != null)
+		if (localVarAccept != null)
 			localVarHeaderParams.put("Accept", localVarAccept);
 
 		final String[] localVarContentTypes = {"application/json"};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
-		if(progressListener != null) {
+		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override
-				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+				public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+						throws IOException {
 					com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-					return originalResponse.newBuilder().body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
+					return originalResponse.newBuilder()
+							.body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
 				}
 			});
 		}
 
 		String[] localVarAuthNames = new String[]{"basicAuth"};
-		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
 	@SuppressWarnings("rawtypes")
-	private com.squareup.okhttp.Call updateTimeEntryValidateBeforeCall(EditTimesheetEntryIn body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+	private com.squareup.okhttp.Call updateTimeEntryValidateBeforeCall(EditTimesheetEntryIn body,
+			final ProgressResponseBody.ProgressListener progressListener,
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 		com.squareup.okhttp.Call call = updateTimeEntryCall(body, progressListener, progressRequestListener);
 		return call;
@@ -811,11 +1230,59 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Update historical timesheet entry.
-	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return TimesheetEntryOut
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public TimesheetEntryOut updateTimeEntry(EditTimesheetEntryIn body) throws ApiException {
 		ApiResponse<TimesheetEntryOut> resp = updateTimeEntryWithHttpInfo(body);
@@ -824,11 +1291,59 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Update historical timesheet entry.
-	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body (optional)
+	 * @param body
+	 *            (optional)
 	 * @return ApiResponse&lt;TimesheetEntryOut&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+	 * @throws ApiException
+	 *             If fail to call the API, e.g. server error or cannot deserialize
+	 *             the response body
 	 */
 	public ApiResponse<TimesheetEntryOut> updateTimeEntryWithHttpInfo(EditTimesheetEntryIn body) throws ApiException {
 		com.squareup.okhttp.Call call = updateTimeEntryValidateBeforeCall(body, null, null);
@@ -839,19 +1354,69 @@ public class TimesheetEntriesApi {
 
 	/**
 	 * Update historical timesheet entry. (asynchronously)
-	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt; - when invalid start of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; - when invalid finish of work time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt; - when end of work time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when shift period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; - when invalid break type id provided. You should use get-break-types method to find proper break type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -  when break type is not available for employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt; - when invalid start of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; - when invalid finish of break time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt; - when end of break time is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when break time range goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when break period is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when one break time range overlaps another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt; - when invalid project type id provided. You should use get-projects method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt; -  when project type is not available for employee. You should use get-projects-for-person method to find proper project type ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt; - when invalid start of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt; - when invalid finish of project time entry provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt; - when end of project time entry is before start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt; -  when project time entry goes beyond work time range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt; - when project time entry is shorter than one minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt; - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
+	 * Update employee shift. &lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_START&lt;/strong&gt;
+	 * - when invalid start of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SHIFT_END&lt;/strong&gt; -
+	 * when invalid finish of work time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of work time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;SHIFT_TO_SHORT&lt;/strong&gt; - when
+	 * shift period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_TYPE&lt;/strong&gt; -
+	 * when invalid break type id provided. You should use get-break-types method to
+	 * find proper break type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_FOR_USER&lt;/strong&gt; -
+	 * when break type is not available for
+	 * employee&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_START&lt;/strong&gt;
+	 * - when invalid start of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_BREAK_END&lt;/strong&gt; -
+	 * when invalid finish of break time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of break time is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when break time range goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAK_TO_SHORT&lt;/strong&gt; - when
+	 * break period is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;BREAKS_OVERLAP&lt;/strong&gt; - when
+	 * one break time range overlaps
+	 * another&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TYPE&lt;/strong&gt;
+	 * - when invalid project type id provided. You should use get-projects method
+	 * to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_FOR_USER&lt;/strong&gt;
+	 * - when project type is not available for employee. You should use
+	 * get-projects-for-person method to find proper project type
+	 * ID&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_START&lt;/strong&gt;
+	 * - when invalid start of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_PROJECT_TIME_ENTRY_END&lt;/strong&gt;
+	 * - when invalid finish of project time entry
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_END_BEFORE_START&lt;/strong&gt;
+	 * - when end of project time entry is before
+	 * start&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_IS_NOT_IN_SHIFT_RANGE&lt;/strong&gt;
+	 * - when project time entry goes beyond work time
+	 * range&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRY_TO_SHORT&lt;/strong&gt;
+	 * - when project time entry is shorter than one
+	 * minute&lt;/li&gt;&lt;li&gt;&lt;strong&gt;PROJECT_TIME_ENTRIES_OVERLAP&lt;/strong&gt;
+	 * - when one project time entry overlaps another&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @param body     (optional)
-	 * @param callback The callback to be executed when the API call finishes
+	 * @param body
+	 *            (optional)
+	 * @param callback
+	 *            The callback to be executed when the API call finishes
 	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+	 * @throws ApiException
+	 *             If fail to process the API call, e.g. serializing the request
+	 *             body object
 	 */
-	public com.squareup.okhttp.Call updateTimeEntryAsync(EditTimesheetEntryIn body, final ApiCallback<TimesheetEntryOut> callback) throws ApiException {
+	public com.squareup.okhttp.Call updateTimeEntryAsync(EditTimesheetEntryIn body,
+			final ApiCallback<TimesheetEntryOut> callback) throws ApiException {
 
 		ProgressResponseBody.ProgressListener progressListener = null;
 		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-		if(callback != null) {
+		if (callback != null) {
 			progressListener = new ProgressResponseBody.ProgressListener() {
 				@Override
 				public void update(long bytesRead, long contentLength, boolean done) {
@@ -867,7 +1432,8 @@ public class TimesheetEntriesApi {
 			};
 		}
 
-		com.squareup.okhttp.Call call = updateTimeEntryValidateBeforeCall(body, progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = updateTimeEntryValidateBeforeCall(body, progressListener,
+				progressRequestListener);
 		Type localVarReturnType = new TypeToken<TimesheetEntryOut>() {
 		}.getType();
 		apiClient.executeAsync(call, localVarReturnType, callback);

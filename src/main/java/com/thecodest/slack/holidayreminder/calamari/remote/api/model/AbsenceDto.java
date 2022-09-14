@@ -171,7 +171,8 @@ public class AbsenceDto {
 	}
 
 	/**
-	 * Absence category. TIMEOFF - regular time off. WORK - when employee is working but is not in office (eg. &#x27;Remote working day&#x27;)
+	 * Absence category. TIMEOFF - regular time off. WORK - when employee is working
+	 * but is not in office (eg. &#x27;Remote working day&#x27;)
 	 *
 	 * @return absenceCategory
 	 **/
@@ -414,19 +415,36 @@ public class AbsenceDto {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		AbsenceDto absenceDto = (AbsenceDto) o;
-		return Objects.equals(this.id, absenceDto.id) && Objects.equals(this.from, absenceDto.from) && Objects.equals(this.to, absenceDto.to) && Objects.equals(this.absenceTypeName, absenceDto.absenceTypeName) && Objects.equals(this.absenceTypeId, absenceDto.absenceTypeId) && Objects.equals(this.absenceCategory, absenceDto.absenceCategory) && Objects.equals(this.status, absenceDto.status) && Objects.equals(this.entitlementAmount, absenceDto.entitlementAmount) && Objects.equals(this.reason, absenceDto.reason) && Objects.equals(this.amountFirstDay, absenceDto.amountFirstDay) && Objects.equals(this.amountLastDay, absenceDto.amountLastDay) && Objects.equals(this.entitlementAmountUnit, absenceDto.entitlementAmountUnit) && Objects.equals(this.created, absenceDto.created) && Objects.equals(this.updated, absenceDto.updated) && Objects.equals(this.fullDayRequest, absenceDto.fullDayRequest) && Objects.equals(this.startTime, absenceDto.startTime) && Objects.equals(this.endTime, absenceDto.endTime) && Objects.equals(this.timeZone, absenceDto.timeZone);
+		return Objects.equals(this.id, absenceDto.id) && Objects.equals(this.from, absenceDto.from)
+				&& Objects.equals(this.to, absenceDto.to)
+				&& Objects.equals(this.absenceTypeName, absenceDto.absenceTypeName)
+				&& Objects.equals(this.absenceTypeId, absenceDto.absenceTypeId)
+				&& Objects.equals(this.absenceCategory, absenceDto.absenceCategory)
+				&& Objects.equals(this.status, absenceDto.status)
+				&& Objects.equals(this.entitlementAmount, absenceDto.entitlementAmount)
+				&& Objects.equals(this.reason, absenceDto.reason)
+				&& Objects.equals(this.amountFirstDay, absenceDto.amountFirstDay)
+				&& Objects.equals(this.amountLastDay, absenceDto.amountLastDay)
+				&& Objects.equals(this.entitlementAmountUnit, absenceDto.entitlementAmountUnit)
+				&& Objects.equals(this.created, absenceDto.created) && Objects.equals(this.updated, absenceDto.updated)
+				&& Objects.equals(this.fullDayRequest, absenceDto.fullDayRequest)
+				&& Objects.equals(this.startTime, absenceDto.startTime)
+				&& Objects.equals(this.endTime, absenceDto.endTime)
+				&& Objects.equals(this.timeZone, absenceDto.timeZone);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, from, to, absenceTypeName, absenceTypeId, absenceCategory, status, entitlementAmount, reason, amountFirstDay, amountLastDay, entitlementAmountUnit, created, updated, fullDayRequest, startTime, endTime, timeZone);
+		return Objects.hash(id, from, to, absenceTypeName, absenceTypeId, absenceCategory, status, entitlementAmount,
+				reason, amountFirstDay, amountLastDay, entitlementAmountUnit, created, updated, fullDayRequest,
+				startTime, endTime, timeZone);
 	}
 
 	@Override
@@ -461,14 +479,15 @@ public class AbsenceDto {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
 	}
 
 	/**
-	 * Absence category. TIMEOFF - regular time off. WORK - when employee is working but is not in office (eg. &#x27;Remote working day&#x27;)
+	 * Absence category. TIMEOFF - regular time off. WORK - when employee is working
+	 * but is not in office (eg. &#x27;Remote working day&#x27;)
 	 */
 	@JsonAdapter(AbsenceCategoryEnum.Adapter.class)
 	public enum AbsenceCategoryEnum {
@@ -481,8 +500,8 @@ public class AbsenceDto {
 		}
 
 		public static AbsenceCategoryEnum fromValue(String input) {
-			for(AbsenceCategoryEnum b : AbsenceCategoryEnum.values()) {
-				if(b.value.equals(input)) {
+			for (AbsenceCategoryEnum b : AbsenceCategoryEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}
@@ -517,7 +536,8 @@ public class AbsenceDto {
 	 */
 	@JsonAdapter(StatusEnum.Adapter.class)
 	public enum StatusEnum {
-		PENDING("PENDING"), PENDING_CANCELLATION("PENDING_CANCELLATION"), REJECTED("REJECTED"), ACCEPTED("ACCEPTED"), CANCELED("CANCELED"), REVOKED("REVOKED");
+		PENDING("PENDING"), PENDING_CANCELLATION("PENDING_CANCELLATION"), REJECTED("REJECTED"), ACCEPTED(
+				"ACCEPTED"), CANCELED("CANCELED"), REVOKED("REVOKED");
 
 		private String value;
 
@@ -526,8 +546,8 @@ public class AbsenceDto {
 		}
 
 		public static StatusEnum fromValue(String input) {
-			for(StatusEnum b : StatusEnum.values()) {
-				if(b.value.equals(input)) {
+			for (StatusEnum b : StatusEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}
@@ -571,8 +591,8 @@ public class AbsenceDto {
 		}
 
 		public static EntitlementAmountUnitEnum fromValue(String input) {
-			for(EntitlementAmountUnitEnum b : EntitlementAmountUnitEnum.values()) {
-				if(b.value.equals(input)) {
+			for (EntitlementAmountUnitEnum b : EntitlementAmountUnitEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}
@@ -590,7 +610,8 @@ public class AbsenceDto {
 
 		public static class Adapter extends TypeAdapter<EntitlementAmountUnitEnum> {
 			@Override
-			public void write(final JsonWriter jsonWriter, final EntitlementAmountUnitEnum enumeration) throws IOException {
+			public void write(final JsonWriter jsonWriter, final EntitlementAmountUnitEnum enumeration)
+					throws IOException {
 				jsonWriter.value(String.valueOf(enumeration.getValue()));
 			}
 

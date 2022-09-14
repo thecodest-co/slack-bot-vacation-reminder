@@ -23,7 +23,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for AbsenceTypeApi
  */
@@ -37,7 +36,8 @@ class AbsenceTypeApiTest {
 	 * <p>
 	 * Get absence types with duration units. &lt;br/&gt;&lt;br/&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getAbsenceTypesTest() throws Exception {
@@ -49,9 +49,18 @@ class AbsenceTypeApiTest {
 	/**
 	 * Get entitlement balance.
 	 * <p>
-	 * Get entitlement balance.&lt;br/&gt;&lt;br/&gt;The method allows you to get the entitlement balance for selected employee and absence type on a selected day.&lt;br &gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; - when invalid absence type provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid balance owner provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE&lt;/strong&gt; - when invalid date provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get entitlement balance.&lt;br/&gt;&lt;br/&gt;The method allows you to get
+	 * the entitlement balance for selected employee and absence type on a selected
+	 * day.&lt;br &gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; -
+	 * when invalid absence type
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid balance owner
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE&lt;/strong&gt; - when
+	 * invalid date provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getEntitlementBalanceTest() throws Exception {
@@ -64,9 +73,20 @@ class AbsenceTypeApiTest {
 	/**
 	 * Get entitlement balance with advanced filtering by several parameters.
 	 * <p>
-	 * Get entitlement balance.&lt;br/&gt;&lt;br/&gt;The method allows you to get the entitlement balance for selected employees and absence types on a selected day.&lt;br &gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; - when invalid absence type provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid balance owner provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when invalid team provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE&lt;/strong&gt; - when invalid date provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get entitlement balance.&lt;br/&gt;&lt;br/&gt;The method allows you to get
+	 * the entitlement balance for selected employees and absence types on a
+	 * selected day.&lt;br &gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; -
+	 * when invalid absence type
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid balance owner
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * invalid team
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE&lt;/strong&gt; - when
+	 * invalid date provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getEntitlementBalancesTest() throws Exception {
@@ -79,9 +99,22 @@ class AbsenceTypeApiTest {
 	/**
 	 * Create entitlement balance.
 	 * <p>
-	 * Create entitlement balance.&lt;br/&gt;&lt;br/&gt;The method allows you to add the entitlement balance of a selected absence type on a selected day.&lt;br &gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_AMOUNT&lt;/strong&gt; - when invalid amount provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_AS_OF_DATE&lt;/strong&gt; - when invalid date provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; - when invalid absence type provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid balance owner provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_COMMENT&lt;/strong&gt; - when invalid comment provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create entitlement balance.&lt;br/&gt;&lt;br/&gt;The method allows you to add
+	 * the entitlement balance of a selected absence type on a selected day.&lt;br
+	 * &gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_AMOUNT&lt;/strong&gt; - when
+	 * invalid amount
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_AS_OF_DATE&lt;/strong&gt;
+	 * - when invalid date
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt;
+	 * - when invalid absence type
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid balance owner
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_COMMENT&lt;/strong&gt; -
+	 * when invalid comment provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void manualCreateEntitlementBalanceTest() throws Exception {

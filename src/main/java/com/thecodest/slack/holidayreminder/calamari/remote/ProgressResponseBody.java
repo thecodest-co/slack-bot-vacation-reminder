@@ -44,7 +44,7 @@ public class ProgressResponseBody extends ResponseBody {
 
 	@Override
 	public BufferedSource source() throws IOException {
-		if(bufferedSource == null) {
+		if (bufferedSource == null) {
 			bufferedSource = Okio.buffer(source(responseBody.source()));
 		}
 		return bufferedSource;
@@ -69,5 +69,3 @@ public class ProgressResponseBody extends ResponseBody {
 		void update(long bytesRead, long contentLength, boolean done);
 	}
 }
-
-

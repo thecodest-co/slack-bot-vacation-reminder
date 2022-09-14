@@ -68,14 +68,15 @@ public class BalanceEntryOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		BalanceEntryOut balanceEntryOut = (BalanceEntryOut) o;
-		return Objects.equals(this.person, balanceEntryOut.person) && Objects.equals(this.balance, balanceEntryOut.balance);
+		return Objects.equals(this.person, balanceEntryOut.person)
+				&& Objects.equals(this.balance, balanceEntryOut.balance);
 	}
 
 	@Override
@@ -99,7 +100,7 @@ public class BalanceEntryOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

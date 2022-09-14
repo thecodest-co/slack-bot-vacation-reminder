@@ -33,7 +33,7 @@ public class ThreeStateOptionalListString {
 	}
 
 	public ThreeStateOptionalListString addValueItem(String valueItem) {
-		if(this.value == null) {
+		if (this.value == null) {
 			this.value = new ArrayList<>();
 		}
 		this.value.add(valueItem);
@@ -56,10 +56,10 @@ public class ThreeStateOptionalListString {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		ThreeStateOptionalListString threeStateOptionalListString = (ThreeStateOptionalListString) o;
@@ -86,7 +86,7 @@ public class ThreeStateOptionalListString {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

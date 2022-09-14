@@ -135,14 +135,18 @@ public class CreateBalanceIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		CreateBalanceIn createBalanceIn = (CreateBalanceIn) o;
-		return Objects.equals(this.amount, createBalanceIn.amount) && Objects.equals(this.asOfDate, createBalanceIn.asOfDate) && Objects.equals(this.absenceType, createBalanceIn.absenceType) && Objects.equals(this.comment, createBalanceIn.comment) && Objects.equals(this.balanceOwner, createBalanceIn.balanceOwner);
+		return Objects.equals(this.amount, createBalanceIn.amount)
+				&& Objects.equals(this.asOfDate, createBalanceIn.asOfDate)
+				&& Objects.equals(this.absenceType, createBalanceIn.absenceType)
+				&& Objects.equals(this.comment, createBalanceIn.comment)
+				&& Objects.equals(this.balanceOwner, createBalanceIn.balanceOwner);
 	}
 
 	@Override
@@ -169,7 +173,7 @@ public class CreateBalanceIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

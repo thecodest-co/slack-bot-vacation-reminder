@@ -97,14 +97,16 @@ public class EmployeesOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		EmployeesOut employeesOut = (EmployeesOut) o;
-		return Objects.equals(this.employees, employeesOut.employees) && Objects.equals(this.currentPage, employeesOut.currentPage) && Objects.equals(this.totalPages, employeesOut.totalPages);
+		return Objects.equals(this.employees, employeesOut.employees)
+				&& Objects.equals(this.currentPage, employeesOut.currentPage)
+				&& Objects.equals(this.totalPages, employeesOut.totalPages);
 	}
 
 	@Override
@@ -129,7 +131,7 @@ public class EmployeesOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

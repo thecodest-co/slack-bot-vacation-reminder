@@ -15,12 +15,9 @@ class AppTest {
 				"SLACK_TOKEN", "SLACK-TOKEN",
 				"CALAMARI_USERNAME", "CALAMARI-USERNAME",
 				"CALAMARI_PASSWORD", "CALAMARI-PASSWORD",
-				"DAYS_LIMIT", "5"
-		);
+				"DAYS_LIMIT", "5");
 
 		EnvironmentVariables env = new EnvironmentVariables(props);
-		assertDoesNotThrow(() ->
-				env.execute(() -> App.main(new String[]{}))
-		);
+		assertDoesNotThrow(() -> env.execute(() -> App.main(new String[]{})));
 	}
 }

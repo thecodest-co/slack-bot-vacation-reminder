@@ -15,4 +15,3 @@ public class SlackModule extends AbstractModule {
 		bind(SlackClient.class).to(SimpleSlackClient.class);
 	}
 }
-

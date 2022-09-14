@@ -43,7 +43,10 @@ public class JSON {
 	private boolean isLenientOnJson = false;
 
 	public JSON() {
-		gson = createGson().registerTypeAdapter(Date.class, dateTypeAdapter).registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter).registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter).registerTypeAdapter(LocalDate.class, localDateTypeAdapter).create();
+		gson = createGson().registerTypeAdapter(Date.class, dateTypeAdapter)
+				.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
+				.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
+				.registerTypeAdapter(LocalDate.class, localDateTypeAdapter).create();
 	}
 
 	public static GsonBuilder createGson() {
@@ -53,15 +56,16 @@ public class JSON {
 
 	private static String getDiscriminatorValue(JsonElement readElement, String discriminatorField) {
 		JsonElement element = readElement.getAsJsonObject().get(discriminatorField);
-		if(null == element) {
+		if (null == element) {
 			throw new IllegalArgumentException("missing discriminator field: <" + discriminatorField + ">");
 		}
 		return element.getAsString();
 	}
 
-	private static <T> Class<? extends T> getClassByDiscriminator(Map<String, Class<? extends T>> classByDiscriminatorValue, String discriminatorValue) {
+	private static <T> Class<? extends T> getClassByDiscriminator(
+			Map<String, Class<? extends T>> classByDiscriminatorValue, String discriminatorValue) {
 		Class<? extends T> clazz = classByDiscriminatorValue.get(discriminatorValue.toUpperCase());
-		if(null == clazz) {
+		if (null == clazz) {
 			throw new IllegalArgumentException("cannot determine model class of name: <" + discriminatorValue + ">");
 		}
 		return clazz;
@@ -79,7 +83,8 @@ public class JSON {
 	/**
 	 * Set Gson.
 	 *
-	 * @param gson Gson
+	 * @param gson
+	 *            Gson
 	 * @return JSON
 	 */
 	public JSON setGson(Gson gson) {
@@ -95,7 +100,8 @@ public class JSON {
 	/**
 	 * Serialize the given Java object into JSON string.
 	 *
-	 * @param obj Object
+	 * @param obj
+	 *            Object
 	 * @return String representation of the JSON
 	 */
 	public String serialize(Object obj) {
@@ -105,26 +111,30 @@ public class JSON {
 	/**
 	 * Deserialize the given JSON string to Java object.
 	 *
-	 * @param <T>        Type
-	 * @param body       The JSON string
-	 * @param returnType The type to deserialize into
+	 * @param <T>
+	 *            Type
+	 * @param body
+	 *            The JSON string
+	 * @param returnType
+	 *            The type to deserialize into
 	 * @return The deserialized Java object
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> T deserialize(String body, Type returnType) {
 		try {
-			if(isLenientOnJson) {
+			if (isLenientOnJson) {
 				JsonReader jsonReader = new JsonReader(new StringReader(body));
-				// see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
+				// see
+				// https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
 				jsonReader.setLenient(true);
 				return gson.fromJson(jsonReader, returnType);
 			} else {
 				return gson.fromJson(body, returnType);
 			}
-		} catch(JsonParseException e) {
+		} catch (JsonParseException e) {
 			// Fallback processing when failed to parse JSON form response body:
 			// return the response body string directly for the String return type;
-			if(returnType.equals(String.class))
+			if (returnType.equals(String.class))
 				return (T) body;
 			else
 				throw (e);
@@ -172,7 +182,7 @@ public class JSON {
 
 		@Override
 		public void write(JsonWriter out, OffsetDateTime date) throws IOException {
-			if(date == null) {
+			if (date == null) {
 				out.nullValue();
 			} else {
 				out.value(formatter.format(date));
@@ -181,12 +191,12 @@ public class JSON {
 
 		@Override
 		public OffsetDateTime read(JsonReader in) throws IOException {
-			if(in.peek() == JsonToken.NULL) {
+			if (in.peek() == JsonToken.NULL) {
 				in.nextNull();
 				return null;
 			}
 			String date = in.nextString();
-			if(date.endsWith("+0000")) {
+			if (date.endsWith("+0000")) {
 				date = date.substring(0, date.length() - 5) + "Z";
 			}
 			return OffsetDateTime.parse(date, formatter);
@@ -215,11 +225,11 @@ public class JSON {
 
 		@Override
 		public void write(JsonWriter out, java.sql.Date date) throws IOException {
-			if(date == null) {
+			if (date == null) {
 				out.nullValue();
 			} else {
 				String value;
-				if(dateFormat != null) {
+				if (dateFormat != null) {
 					value = dateFormat.format(date);
 				} else {
 					value = date.toString();
@@ -230,17 +240,17 @@ public class JSON {
 
 		@Override
 		public java.sql.Date read(JsonReader in) throws IOException {
-			if(in.peek() == JsonToken.NULL) {
+			if (in.peek() == JsonToken.NULL) {
 				in.nextNull();
 				return null;
 			}
 			String date = in.nextString();
 			try {
-				if(dateFormat != null) {
+				if (dateFormat != null) {
 					return new java.sql.Date(dateFormat.parse(date).getTime());
 				}
 				return new java.sql.Date(ISO8601Utils.parse(date, new ParsePosition(0)).getTime());
-			} catch(ParseException e) {
+			} catch (ParseException e) {
 				throw new JsonParseException(e);
 			}
 		}
@@ -267,11 +277,11 @@ public class JSON {
 
 		@Override
 		public void write(JsonWriter out, Date date) throws IOException {
-			if(date == null) {
+			if (date == null) {
 				out.nullValue();
 			} else {
 				String value;
-				if(dateFormat != null) {
+				if (dateFormat != null) {
 					value = dateFormat.format(date);
 				} else {
 					value = ISO8601Utils.format(date, true);
@@ -283,20 +293,20 @@ public class JSON {
 		@Override
 		public Date read(JsonReader in) throws IOException {
 			try {
-				if(in.peek() == JsonToken.NULL) {
+				if (in.peek() == JsonToken.NULL) {
 					in.nextNull();
 					return null;
 				}
 				String date = in.nextString();
 				try {
-					if(dateFormat != null) {
+					if (dateFormat != null) {
 						return dateFormat.parse(date);
 					}
 					return ISO8601Utils.parse(date, new ParsePosition(0));
-				} catch(ParseException e) {
+				} catch (ParseException e) {
 					throw new JsonParseException(e);
 				}
-			} catch(IllegalArgumentException e) {
+			} catch (IllegalArgumentException e) {
 				throw new JsonParseException(e);
 			}
 		}
@@ -323,7 +333,7 @@ public class JSON {
 
 		@Override
 		public void write(JsonWriter out, LocalDate date) throws IOException {
-			if(date == null) {
+			if (date == null) {
 				out.nullValue();
 			} else {
 				out.value(formatter.format(date));
@@ -332,7 +342,7 @@ public class JSON {
 
 		@Override
 		public LocalDate read(JsonReader in) throws IOException {
-			if(in.peek() == JsonToken.NULL) {
+			if (in.peek() == JsonToken.NULL) {
 				in.nextNull();
 				return null;
 			}

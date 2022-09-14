@@ -99,7 +99,8 @@ public class TimesheetEntryOut {
 	}
 
 	/**
-	 * Date and time of timesheet entry finished. Has null value if employee does not clock out
+	 * Date and time of timesheet entry finished. Has null value if employee does
+	 * not clock out
 	 *
 	 * @return finished
 	 **/
@@ -156,7 +157,8 @@ public class TimesheetEntryOut {
 	}
 
 	/**
-	 * Duration of timesheet entry in seconds. Has 0 value if employee does not clock out.
+	 * Duration of timesheet entry in seconds. Has 0 value if employee does not
+	 * clock out.
 	 *
 	 * @return duration
 	 **/
@@ -257,19 +259,28 @@ public class TimesheetEntryOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		TimesheetEntryOut timesheetEntryOut = (TimesheetEntryOut) o;
-		return Objects.equals(this.id, timesheetEntryOut.id) && Objects.equals(this.started, timesheetEntryOut.started) && Objects.equals(this.finished, timesheetEntryOut.finished) && Objects.equals(this.startedTimeZone, timesheetEntryOut.startedTimeZone) && Objects.equals(this.finishedTimeZone, timesheetEntryOut.finishedTimeZone) && Objects.equals(this.duration, timesheetEntryOut.duration) && Objects.equals(this.person, timesheetEntryOut.person) && Objects.equals(this.breaks, timesheetEntryOut.breaks) && Objects.equals(this.projects, timesheetEntryOut.projects) && Objects.equals(this.closed, timesheetEntryOut.closed);
+		return Objects.equals(this.id, timesheetEntryOut.id) && Objects.equals(this.started, timesheetEntryOut.started)
+				&& Objects.equals(this.finished, timesheetEntryOut.finished)
+				&& Objects.equals(this.startedTimeZone, timesheetEntryOut.startedTimeZone)
+				&& Objects.equals(this.finishedTimeZone, timesheetEntryOut.finishedTimeZone)
+				&& Objects.equals(this.duration, timesheetEntryOut.duration)
+				&& Objects.equals(this.person, timesheetEntryOut.person)
+				&& Objects.equals(this.breaks, timesheetEntryOut.breaks)
+				&& Objects.equals(this.projects, timesheetEntryOut.projects)
+				&& Objects.equals(this.closed, timesheetEntryOut.closed);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, started, finished, startedTimeZone, finishedTimeZone, duration, person, breaks, projects, closed);
+		return Objects.hash(id, started, finished, startedTimeZone, finishedTimeZone, duration, person, breaks,
+				projects, closed);
 	}
 
 	@Override
@@ -296,7 +307,7 @@ public class TimesheetEntryOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

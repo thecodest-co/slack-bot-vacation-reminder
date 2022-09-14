@@ -30,7 +30,7 @@ public class OAuth implements Authentication {
 
 	@Override
 	public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
-		if(accessToken != null) {
+		if (accessToken != null) {
 			headerParams.put("Authorization", "Bearer " + accessToken);
 		}
 	}

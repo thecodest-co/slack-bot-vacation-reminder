@@ -120,7 +120,8 @@ public class WorkingDay {
 	}
 
 	/**
-	 * Work duration in seconds &gt;&#x3D; 0 or has null value when specified day is not working day.
+	 * Work duration in seconds &gt;&#x3D; 0 or has null value when specified day is
+	 * not working day.
 	 *
 	 * @return duration
 	 **/
@@ -135,14 +136,18 @@ public class WorkingDay {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		WorkingDay workingDay = (WorkingDay) o;
-		return Objects.equals(this.dayName, workingDay.dayName) && Objects.equals(this.isWorkingDay, workingDay.isWorkingDay) && Objects.equals(this.startTime, workingDay.startTime) && Objects.equals(this.finishTime, workingDay.finishTime) && Objects.equals(this.duration, workingDay.duration);
+		return Objects.equals(this.dayName, workingDay.dayName)
+				&& Objects.equals(this.isWorkingDay, workingDay.isWorkingDay)
+				&& Objects.equals(this.startTime, workingDay.startTime)
+				&& Objects.equals(this.finishTime, workingDay.finishTime)
+				&& Objects.equals(this.duration, workingDay.duration);
 	}
 
 	@Override
@@ -169,7 +174,7 @@ public class WorkingDay {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -180,7 +185,8 @@ public class WorkingDay {
 	 */
 	@JsonAdapter(DayNameEnum.Adapter.class)
 	public enum DayNameEnum {
-		MONDAY("MONDAY"), TUESDAY("TUESDAY"), WEDNESDAY("WEDNESDAY"), THURSDAY("THURSDAY"), FRIDAY("FRIDAY"), SATURDAY("SATURDAY"), SUNDAY("SUNDAY");
+		MONDAY("MONDAY"), TUESDAY("TUESDAY"), WEDNESDAY("WEDNESDAY"), THURSDAY("THURSDAY"), FRIDAY("FRIDAY"), SATURDAY(
+				"SATURDAY"), SUNDAY("SUNDAY");
 
 		private String value;
 
@@ -189,8 +195,8 @@ public class WorkingDay {
 		}
 
 		public static DayNameEnum fromValue(String input) {
-			for(DayNameEnum b : DayNameEnum.values()) {
-				if(b.value.equals(input)) {
+			for (DayNameEnum b : DayNameEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

@@ -91,14 +91,16 @@ public class GetBalanceOfEmployeeAndAbsenceType {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		GetBalanceOfEmployeeAndAbsenceType getBalanceOfEmployeeAndAbsenceType = (GetBalanceOfEmployeeAndAbsenceType) o;
-		return Objects.equals(this.absenceTypeId, getBalanceOfEmployeeAndAbsenceType.absenceTypeId) && Objects.equals(this.employee, getBalanceOfEmployeeAndAbsenceType.employee) && Objects.equals(this.date, getBalanceOfEmployeeAndAbsenceType.date);
+		return Objects.equals(this.absenceTypeId, getBalanceOfEmployeeAndAbsenceType.absenceTypeId)
+				&& Objects.equals(this.employee, getBalanceOfEmployeeAndAbsenceType.employee)
+				&& Objects.equals(this.date, getBalanceOfEmployeeAndAbsenceType.date);
 	}
 
 	@Override
@@ -123,7 +125,7 @@ public class GetBalanceOfEmployeeAndAbsenceType {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

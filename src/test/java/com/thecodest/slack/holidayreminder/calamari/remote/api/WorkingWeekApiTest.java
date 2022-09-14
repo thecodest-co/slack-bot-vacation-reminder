@@ -17,7 +17,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for WorkingWeekApi
  */
@@ -31,7 +30,8 @@ class WorkingWeekApiTest {
 	 * <p>
 	 * Get all working weeks.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getWorkingWeeksTest() throws Exception {

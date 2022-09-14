@@ -20,7 +20,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for CurrentShiftStatusApi
  */
@@ -34,7 +33,8 @@ class CurrentShiftStatusApiTest {
 	 * <p>
 	 * Get current shift status for all employees.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getCurrentShiftStatusForAllTest() throws Exception {
@@ -46,9 +46,12 @@ class CurrentShiftStatusApiTest {
 	/**
 	 * Get current shift status for one person.
 	 * <p>
-	 * Get current shift status for one person.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
+	 * Get current shift status for one person.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getCurrentShiftStatusForOnePersonTest() throws Exception {
@@ -61,9 +64,19 @@ class CurrentShiftStatusApiTest {
 	/**
 	 * Get current presence report for all employees
 	 * <p>
-	 * Get current presence report for all employees. Results are paged by employees number.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PAGE&lt;/strong&gt; - when invalid page provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LIMIT&lt;/strong&gt; - when invalid limit provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid date provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid date provided&lt;/li&gt;
+	 * Get current presence report for all employees. Results are paged by employees
+	 * number.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_PAGE&lt;/strong&gt; - when
+	 * invalid page
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_LIMIT&lt;/strong&gt; -
+	 * when invalid limit
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid date
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid date provided&lt;/li&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getPresenceReportTest() throws Exception {

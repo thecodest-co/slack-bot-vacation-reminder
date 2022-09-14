@@ -51,10 +51,10 @@ public class ModifyBalanceOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		ModifyBalanceOut modifyBalanceOut = (ModifyBalanceOut) o;
@@ -81,7 +81,7 @@ public class ModifyBalanceOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -101,8 +101,8 @@ public class ModifyBalanceOut {
 		}
 
 		public static ResultEnum fromValue(String input) {
-			for(ResultEnum b : ResultEnum.values()) {
-				if(b.value.equals(input)) {
+			for (ResultEnum b : ResultEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

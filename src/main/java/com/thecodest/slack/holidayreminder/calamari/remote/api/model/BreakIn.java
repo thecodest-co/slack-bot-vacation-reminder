@@ -90,14 +90,15 @@ public class BreakIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		BreakIn breakIn = (BreakIn) o;
-		return Objects.equals(this.person, breakIn.person) && Objects.equals(this.time, breakIn.time) && Objects.equals(this.breakType, breakIn.breakType);
+		return Objects.equals(this.person, breakIn.person) && Objects.equals(this.time, breakIn.time)
+				&& Objects.equals(this.breakType, breakIn.breakType);
 	}
 
 	@Override
@@ -122,7 +123,7 @@ public class BreakIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

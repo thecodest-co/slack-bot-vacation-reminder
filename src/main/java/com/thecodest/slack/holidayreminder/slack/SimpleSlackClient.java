@@ -29,18 +29,14 @@ class SimpleSlackClient implements SlackClient {
 
 	@Override
 	public List<SlackUser> getUsersByEmails(List<String> emails) {
-		return Try.of(() ->
-						methods
-								.usersList(UsersListRequest.builder().build())
-				)
+		return Try.of(() -> methods
+				.usersList(UsersListRequest.builder().build()))
 				.onFailure(Throwable::printStackTrace)
 				.map(UsersListResponse::getMembers)
 				.getOrElse(Collections.emptyList())
 				.stream()
 				.filter(u -> u.getProfile().getEmail() != null)
-				.map(u ->
-						new SlackUser(u.getId(), u.getName(), u.getProfile().getEmail())
-				)
+				.map(u -> new SlackUser(u.getId(), u.getName(), u.getProfile().getEmail()))
 				.filter(su -> emails.contains(su.normalizedEmail()))
 				.toList();
 	}

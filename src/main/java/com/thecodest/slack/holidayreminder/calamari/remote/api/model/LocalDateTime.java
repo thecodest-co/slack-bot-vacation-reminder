@@ -413,7 +413,7 @@ public class LocalDateTime {
 	}
 
 	public LocalDateTime addFieldsItem(DateTimeField fieldsItem) {
-		if(this.fields == null) {
+		if (this.fields == null) {
 			this.fields = new ArrayList<>();
 		}
 		this.fields.add(fieldsItem);
@@ -440,7 +440,7 @@ public class LocalDateTime {
 	}
 
 	public LocalDateTime addValuesItem(Integer valuesItem) {
-		if(this.values == null) {
+		if (this.values == null) {
 			this.values = new ArrayList<>();
 		}
 		this.values.add(valuesItem);
@@ -467,7 +467,7 @@ public class LocalDateTime {
 	}
 
 	public LocalDateTime addFieldTypesItem(DateTimeFieldType fieldTypesItem) {
-		if(this.fieldTypes == null) {
+		if (this.fieldTypes == null) {
 			this.fieldTypes = new ArrayList<>();
 		}
 		this.fieldTypes.add(fieldTypesItem);
@@ -490,19 +490,40 @@ public class LocalDateTime {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		LocalDateTime localDateTime = (LocalDateTime) o;
-		return Objects.equals(this.year, localDateTime.year) && Objects.equals(this.dayOfMonth, localDateTime.dayOfMonth) && Objects.equals(this.chronology, localDateTime.chronology) && Objects.equals(this.dayOfWeek, localDateTime.dayOfWeek) && Objects.equals(this.dayOfYear, localDateTime.dayOfYear) && Objects.equals(this.era, localDateTime.era) && Objects.equals(this.millisOfDay, localDateTime.millisOfDay) && Objects.equals(this.centuryOfEra, localDateTime.centuryOfEra) && Objects.equals(this.yearOfEra, localDateTime.yearOfEra) && Objects.equals(this.yearOfCentury, localDateTime.yearOfCentury) && Objects.equals(this.weekyear, localDateTime.weekyear) && Objects.equals(this.monthOfYear, localDateTime.monthOfYear) && Objects.equals(this.weekOfWeekyear, localDateTime.weekOfWeekyear) && Objects.equals(this.hourOfDay, localDateTime.hourOfDay) && Objects.equals(this.minuteOfHour, localDateTime.minuteOfHour) && Objects.equals(this.secondOfMinute, localDateTime.secondOfMinute) && Objects.equals(this.millisOfSecond, localDateTime.millisOfSecond) && Objects.equals(this.fields, localDateTime.fields) && Objects.equals(this.values, localDateTime.values) && Objects.equals(this.fieldTypes, localDateTime.fieldTypes);
+		return Objects.equals(this.year, localDateTime.year)
+				&& Objects.equals(this.dayOfMonth, localDateTime.dayOfMonth)
+				&& Objects.equals(this.chronology, localDateTime.chronology)
+				&& Objects.equals(this.dayOfWeek, localDateTime.dayOfWeek)
+				&& Objects.equals(this.dayOfYear, localDateTime.dayOfYear)
+				&& Objects.equals(this.era, localDateTime.era)
+				&& Objects.equals(this.millisOfDay, localDateTime.millisOfDay)
+				&& Objects.equals(this.centuryOfEra, localDateTime.centuryOfEra)
+				&& Objects.equals(this.yearOfEra, localDateTime.yearOfEra)
+				&& Objects.equals(this.yearOfCentury, localDateTime.yearOfCentury)
+				&& Objects.equals(this.weekyear, localDateTime.weekyear)
+				&& Objects.equals(this.monthOfYear, localDateTime.monthOfYear)
+				&& Objects.equals(this.weekOfWeekyear, localDateTime.weekOfWeekyear)
+				&& Objects.equals(this.hourOfDay, localDateTime.hourOfDay)
+				&& Objects.equals(this.minuteOfHour, localDateTime.minuteOfHour)
+				&& Objects.equals(this.secondOfMinute, localDateTime.secondOfMinute)
+				&& Objects.equals(this.millisOfSecond, localDateTime.millisOfSecond)
+				&& Objects.equals(this.fields, localDateTime.fields)
+				&& Objects.equals(this.values, localDateTime.values)
+				&& Objects.equals(this.fieldTypes, localDateTime.fieldTypes);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(year, dayOfMonth, chronology, dayOfWeek, dayOfYear, era, millisOfDay, centuryOfEra, yearOfEra, yearOfCentury, weekyear, monthOfYear, weekOfWeekyear, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, fields, values, fieldTypes);
+		return Objects.hash(year, dayOfMonth, chronology, dayOfWeek, dayOfYear, era, millisOfDay, centuryOfEra,
+				yearOfEra, yearOfCentury, weekyear, monthOfYear, weekOfWeekyear, hourOfDay, minuteOfHour,
+				secondOfMinute, millisOfSecond, fields, values, fieldTypes);
 	}
 
 	@Override
@@ -539,7 +560,7 @@ public class LocalDateTime {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

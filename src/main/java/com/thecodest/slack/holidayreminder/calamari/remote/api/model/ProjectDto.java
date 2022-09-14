@@ -60,7 +60,8 @@ public class ProjectDto {
 	}
 
 	/**
-	 * Date and time when employee finished working on project. Has null value if work on project was not finished
+	 * Date and time when employee finished working on project. Has null value if
+	 * work on project was not finished
 	 *
 	 * @return to
 	 **/
@@ -79,7 +80,8 @@ public class ProjectDto {
 	}
 
 	/**
-	 * Duration of time spent on a project in seconds. Has null value if work on project was not finished
+	 * Duration of time spent on a project in seconds. Has null value if work on
+	 * project was not finished
 	 *
 	 * @return duration
 	 **/
@@ -113,14 +115,16 @@ public class ProjectDto {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		ProjectDto projectDto = (ProjectDto) o;
-		return Objects.equals(this.from, projectDto.from) && Objects.equals(this.to, projectDto.to) && Objects.equals(this.duration, projectDto.duration) && Objects.equals(this.project, projectDto.project);
+		return Objects.equals(this.from, projectDto.from) && Objects.equals(this.to, projectDto.to)
+				&& Objects.equals(this.duration, projectDto.duration)
+				&& Objects.equals(this.project, projectDto.project);
 	}
 
 	@Override
@@ -146,7 +150,7 @@ public class ProjectDto {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

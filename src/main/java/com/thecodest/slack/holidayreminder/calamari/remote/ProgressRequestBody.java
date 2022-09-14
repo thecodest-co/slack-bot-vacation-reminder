@@ -57,7 +57,7 @@ public class ProgressRequestBody extends RequestBody {
 			@Override
 			public void write(Buffer source, long byteCount) throws IOException {
 				super.write(source, byteCount);
-				if(contentLength == 0) {
+				if (contentLength == 0) {
 					contentLength = contentLength();
 				}
 

@@ -48,7 +48,8 @@ public class EditTimesheetEntryIn {
 	}
 
 	/**
-	 * Employee identifier. You can use e-mail or external identifier in format (externalNumber:ABC123)
+	 * Employee identifier. You can use e-mail or external identifier in format
+	 * (externalNumber:ABC123)
 	 *
 	 * @return person
 	 **/
@@ -105,7 +106,7 @@ public class EditTimesheetEntryIn {
 	}
 
 	public EditTimesheetEntryIn addBreaksItem(BreakDtoIn breaksItem) {
-		if(this.breaks == null) {
+		if (this.breaks == null) {
 			this.breaks = new ArrayList<>();
 		}
 		this.breaks.add(breaksItem);
@@ -132,7 +133,7 @@ public class EditTimesheetEntryIn {
 	}
 
 	public EditTimesheetEntryIn addProjectsItem(ProjectDtoIn projectsItem) {
-		if(this.projects == null) {
+		if (this.projects == null) {
 			this.projects = new ArrayList<>();
 		}
 		this.projects.add(projectsItem);
@@ -174,14 +175,19 @@ public class EditTimesheetEntryIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		EditTimesheetEntryIn editTimesheetEntryIn = (EditTimesheetEntryIn) o;
-		return Objects.equals(this.person, editTimesheetEntryIn.person) && Objects.equals(this.shiftStart, editTimesheetEntryIn.shiftStart) && Objects.equals(this.shiftEnd, editTimesheetEntryIn.shiftEnd) && Objects.equals(this.breaks, editTimesheetEntryIn.breaks) && Objects.equals(this.projects, editTimesheetEntryIn.projects) && Objects.equals(this.id, editTimesheetEntryIn.id);
+		return Objects.equals(this.person, editTimesheetEntryIn.person)
+				&& Objects.equals(this.shiftStart, editTimesheetEntryIn.shiftStart)
+				&& Objects.equals(this.shiftEnd, editTimesheetEntryIn.shiftEnd)
+				&& Objects.equals(this.breaks, editTimesheetEntryIn.breaks)
+				&& Objects.equals(this.projects, editTimesheetEntryIn.projects)
+				&& Objects.equals(this.id, editTimesheetEntryIn.id);
 	}
 
 	@Override
@@ -209,7 +215,7 @@ public class EditTimesheetEntryIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

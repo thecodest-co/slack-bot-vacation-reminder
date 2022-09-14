@@ -19,7 +19,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for TeamsApi
  */
@@ -33,7 +32,8 @@ class TeamsApiTest {
 	 * <p>
 	 * Create a team.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void createTeamTest() throws Exception {
@@ -48,7 +48,8 @@ class TeamsApiTest {
 	 * <p>
 	 * Get all teams.
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void getTeamsTest() throws Exception {

@@ -102,14 +102,15 @@ public class CreateTeamIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		CreateTeamIn createTeamIn = (CreateTeamIn) o;
-		return Objects.equals(this.name, createTeamIn.name) && Objects.equals(this.members, createTeamIn.members) && Objects.equals(this.managers, createTeamIn.managers);
+		return Objects.equals(this.name, createTeamIn.name) && Objects.equals(this.members, createTeamIn.members)
+				&& Objects.equals(this.managers, createTeamIn.managers);
 	}
 
 	@Override
@@ -134,7 +135,7 @@ public class CreateTeamIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

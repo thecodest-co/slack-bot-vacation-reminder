@@ -93,14 +93,15 @@ public class BalanceOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		BalanceOut balanceOut = (BalanceOut) o;
-		return Objects.equals(this.unit, balanceOut.unit) && Objects.equals(this.unlimited, balanceOut.unlimited) && Objects.equals(this.amount, balanceOut.amount);
+		return Objects.equals(this.unit, balanceOut.unit) && Objects.equals(this.unlimited, balanceOut.unlimited)
+				&& Objects.equals(this.amount, balanceOut.amount);
 	}
 
 	@Override
@@ -125,7 +126,7 @@ public class BalanceOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -145,8 +146,8 @@ public class BalanceOut {
 		}
 
 		public static UnitEnum fromValue(String input) {
-			for(UnitEnum b : UnitEnum.values()) {
-				if(b.value.equals(input)) {
+			for (UnitEnum b : UnitEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

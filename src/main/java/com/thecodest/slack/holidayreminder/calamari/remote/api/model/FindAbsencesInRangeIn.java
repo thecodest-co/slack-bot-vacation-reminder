@@ -91,14 +91,16 @@ public class FindAbsencesInRangeIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		FindAbsencesInRangeIn findAbsencesInRangeIn = (FindAbsencesInRangeIn) o;
-		return Objects.equals(this.employee, findAbsencesInRangeIn.employee) && Objects.equals(this.from, findAbsencesInRangeIn.from) && Objects.equals(this.to, findAbsencesInRangeIn.to);
+		return Objects.equals(this.employee, findAbsencesInRangeIn.employee)
+				&& Objects.equals(this.from, findAbsencesInRangeIn.from)
+				&& Objects.equals(this.to, findAbsencesInRangeIn.to);
 	}
 
 	@Override
@@ -123,7 +125,7 @@ public class FindAbsencesInRangeIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

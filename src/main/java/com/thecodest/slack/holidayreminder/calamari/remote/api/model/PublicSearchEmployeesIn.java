@@ -45,7 +45,8 @@ public class PublicSearchEmployeesIn {
 	}
 
 	/**
-	 * Employee identifier. You can use e-mail or external identifier in format (externalNumber:ABC123)
+	 * Employee identifier. You can use e-mail or external identifier in format
+	 * (externalNumber:ABC123)
 	 *
 	 * @return employee
 	 **/
@@ -64,7 +65,7 @@ public class PublicSearchEmployeesIn {
 	}
 
 	public PublicSearchEmployeesIn addContractTypesItem(String contractTypesItem) {
-		if(this.contractTypes == null) {
+		if (this.contractTypes == null) {
 			this.contractTypes = new ArrayList<>();
 		}
 		this.contractTypes.add(contractTypesItem);
@@ -91,7 +92,7 @@ public class PublicSearchEmployeesIn {
 	}
 
 	public PublicSearchEmployeesIn addPositionsItem(String positionsItem) {
-		if(this.positions == null) {
+		if (this.positions == null) {
 			this.positions = new ArrayList<>();
 		}
 		this.positions.add(positionsItem);
@@ -118,7 +119,7 @@ public class PublicSearchEmployeesIn {
 	}
 
 	public PublicSearchEmployeesIn addTeamsItem(String teamsItem) {
-		if(this.teams == null) {
+		if (this.teams == null) {
 			this.teams = new ArrayList<>();
 		}
 		this.teams.add(teamsItem);
@@ -160,14 +161,18 @@ public class PublicSearchEmployeesIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		PublicSearchEmployeesIn publicSearchEmployeesIn = (PublicSearchEmployeesIn) o;
-		return Objects.equals(this.employee, publicSearchEmployeesIn.employee) && Objects.equals(this.contractTypes, publicSearchEmployeesIn.contractTypes) && Objects.equals(this.positions, publicSearchEmployeesIn.positions) && Objects.equals(this.teams, publicSearchEmployeesIn.teams) && Objects.equals(this.withArchived, publicSearchEmployeesIn.withArchived);
+		return Objects.equals(this.employee, publicSearchEmployeesIn.employee)
+				&& Objects.equals(this.contractTypes, publicSearchEmployeesIn.contractTypes)
+				&& Objects.equals(this.positions, publicSearchEmployeesIn.positions)
+				&& Objects.equals(this.teams, publicSearchEmployeesIn.teams)
+				&& Objects.equals(this.withArchived, publicSearchEmployeesIn.withArchived);
 	}
 
 	@Override
@@ -194,7 +199,7 @@ public class PublicSearchEmployeesIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

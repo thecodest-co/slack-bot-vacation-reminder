@@ -9,7 +9,8 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 /**
- * Setup of Calamari module. We looking for named Strings <samp>calamari-username</samp>
+ * Setup of Calamari module. We looking for named Strings
+ * <samp>calamari-username</samp>
  * and <samp>calamari-username</samp>.
  */
 public class CalamariModule extends AbstractModule {
@@ -25,14 +26,16 @@ public class CalamariModule extends AbstractModule {
 	/**
 	 * Main {@link ApiClient} provider.
 	 *
-	 * @param username named String <samp>calamari-username</samp>.
-	 * @param password named String <samp>calamari-password</samp>.
+	 * @param username
+	 *            named String <samp>calamari-username</samp>.
+	 * @param password
+	 *            named String <samp>calamari-password</samp>.
 	 * @return instance that is singleton.
 	 */
 	@Provides
 	@Singleton
 	public ApiClient apiClient(@Named("calamari-username") String username,
-	                           @Named("calamari-password") String password) {
+			@Named("calamari-password") String password) {
 		var apiClient = new ApiClient();
 		apiClient.setUsername(username);
 		apiClient.setPassword(password);
@@ -42,7 +45,8 @@ public class CalamariModule extends AbstractModule {
 	/**
 	 * Provides {@link EmployeesApi} client instance.
 	 *
-	 * @param apiClient main calamari client.
+	 * @param apiClient
+	 *            main calamari client.
 	 * @return instance that is singleton.
 	 */
 	@Provides
@@ -54,7 +58,8 @@ public class CalamariModule extends AbstractModule {
 	/**
 	 * Provides {@link AbsenceTypeApi} client instance.
 	 *
-	 * @param apiClient main calamari client.
+	 * @param apiClient
+	 *            main calamari client.
 	 * @return instance that is singleton.
 	 */
 	@Provides

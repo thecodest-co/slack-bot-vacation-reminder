@@ -115,14 +115,16 @@ public class GetAbsenceTypeOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		GetAbsenceTypeOut getAbsenceTypeOut = (GetAbsenceTypeOut) o;
-		return Objects.equals(this.id, getAbsenceTypeOut.id) && Objects.equals(this.name, getAbsenceTypeOut.name) && Objects.equals(this.durationUnit, getAbsenceTypeOut.durationUnit) && Objects.equals(this.externalId, getAbsenceTypeOut.externalId);
+		return Objects.equals(this.id, getAbsenceTypeOut.id) && Objects.equals(this.name, getAbsenceTypeOut.name)
+				&& Objects.equals(this.durationUnit, getAbsenceTypeOut.durationUnit)
+				&& Objects.equals(this.externalId, getAbsenceTypeOut.externalId);
 	}
 
 	@Override
@@ -148,7 +150,7 @@ public class GetAbsenceTypeOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
@@ -168,8 +170,8 @@ public class GetAbsenceTypeOut {
 		}
 
 		public static DurationUnitEnum fromValue(String input) {
-			for(DurationUnitEnum b : DurationUnitEnum.values()) {
-				if(b.value.equals(input)) {
+			for (DurationUnitEnum b : DurationUnitEnum.values()) {
+				if (b.value.equals(input)) {
 					return b;
 				}
 			}

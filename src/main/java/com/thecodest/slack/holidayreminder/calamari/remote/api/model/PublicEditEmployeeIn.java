@@ -816,19 +816,59 @@ public class PublicEditEmployeeIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		PublicEditEmployeeIn publicEditEmployeeIn = (PublicEditEmployeeIn) o;
-		return Objects.equals(this.employee, publicEditEmployeeIn.employee) && Objects.equals(this.firstName, publicEditEmployeeIn.firstName) && Objects.equals(this.lastName, publicEditEmployeeIn.lastName) && Objects.equals(this.email, publicEditEmployeeIn.email) && Objects.equals(this.workingWeek, publicEditEmployeeIn.workingWeek) && Objects.equals(this.approvalFlow, publicEditEmployeeIn.approvalFlow) && Objects.equals(this.position, publicEditEmployeeIn.position) && Objects.equals(this.teams, publicEditEmployeeIn.teams) && Objects.equals(this.holidaysCalendar, publicEditEmployeeIn.holidaysCalendar) && Objects.equals(this.sex, publicEditEmployeeIn.sex) && Objects.equals(this.maritalStatus, publicEditEmployeeIn.maritalStatus) && Objects.equals(this.admin, publicEditEmployeeIn.admin) && Objects.equals(this.contractType, publicEditEmployeeIn.contractType) && Objects.equals(this.externalNumber, publicEditEmployeeIn.externalNumber) && Objects.equals(this.directManager, publicEditEmployeeIn.directManager) && Objects.equals(this.birthDate, publicEditEmployeeIn.birthDate) && Objects.equals(this.hireDate, publicEditEmployeeIn.hireDate) && Objects.equals(this.businessPhone, publicEditEmployeeIn.businessPhone) && Objects.equals(this.homePhone, publicEditEmployeeIn.homePhone) && Objects.equals(this.personalEmail, publicEditEmployeeIn.personalEmail) && Objects.equals(this.addressStreet, publicEditEmployeeIn.addressStreet) && Objects.equals(this.addressNumber, publicEditEmployeeIn.addressNumber) && Objects.equals(this.addressCity, publicEditEmployeeIn.addressCity) && Objects.equals(this.addressPostalCode, publicEditEmployeeIn.addressPostalCode) && Objects.equals(this.addressProvinceState, publicEditEmployeeIn.addressProvinceState) && Objects.equals(this.addressCountry, publicEditEmployeeIn.addressCountry) && Objects.equals(this.emergencyContactName, publicEditEmployeeIn.emergencyContactName) && Objects.equals(this.emergencyContactRelationship, publicEditEmployeeIn.emergencyContactRelationship) && Objects.equals(this.emergencyContactPhone, publicEditEmployeeIn.emergencyContactPhone) && Objects.equals(this.probationEndDate, publicEditEmployeeIn.probationEndDate) && Objects.equals(this.plannedFiring, publicEditEmployeeIn.plannedFiring) && Objects.equals(this.seniorityBeforeHireYears, publicEditEmployeeIn.seniorityBeforeHireYears) && Objects.equals(this.seniorityBeforeHireMonths, publicEditEmployeeIn.seniorityBeforeHireMonths) && Objects.equals(this.childrenCount, publicEditEmployeeIn.childrenCount) && Objects.equals(this.youngestChildBirthDate, publicEditEmployeeIn.youngestChildBirthDate) && Objects.equals(this.customNote, publicEditEmployeeIn.customNote);
+		return Objects.equals(this.employee, publicEditEmployeeIn.employee)
+				&& Objects.equals(this.firstName, publicEditEmployeeIn.firstName)
+				&& Objects.equals(this.lastName, publicEditEmployeeIn.lastName)
+				&& Objects.equals(this.email, publicEditEmployeeIn.email)
+				&& Objects.equals(this.workingWeek, publicEditEmployeeIn.workingWeek)
+				&& Objects.equals(this.approvalFlow, publicEditEmployeeIn.approvalFlow)
+				&& Objects.equals(this.position, publicEditEmployeeIn.position)
+				&& Objects.equals(this.teams, publicEditEmployeeIn.teams)
+				&& Objects.equals(this.holidaysCalendar, publicEditEmployeeIn.holidaysCalendar)
+				&& Objects.equals(this.sex, publicEditEmployeeIn.sex)
+				&& Objects.equals(this.maritalStatus, publicEditEmployeeIn.maritalStatus)
+				&& Objects.equals(this.admin, publicEditEmployeeIn.admin)
+				&& Objects.equals(this.contractType, publicEditEmployeeIn.contractType)
+				&& Objects.equals(this.externalNumber, publicEditEmployeeIn.externalNumber)
+				&& Objects.equals(this.directManager, publicEditEmployeeIn.directManager)
+				&& Objects.equals(this.birthDate, publicEditEmployeeIn.birthDate)
+				&& Objects.equals(this.hireDate, publicEditEmployeeIn.hireDate)
+				&& Objects.equals(this.businessPhone, publicEditEmployeeIn.businessPhone)
+				&& Objects.equals(this.homePhone, publicEditEmployeeIn.homePhone)
+				&& Objects.equals(this.personalEmail, publicEditEmployeeIn.personalEmail)
+				&& Objects.equals(this.addressStreet, publicEditEmployeeIn.addressStreet)
+				&& Objects.equals(this.addressNumber, publicEditEmployeeIn.addressNumber)
+				&& Objects.equals(this.addressCity, publicEditEmployeeIn.addressCity)
+				&& Objects.equals(this.addressPostalCode, publicEditEmployeeIn.addressPostalCode)
+				&& Objects.equals(this.addressProvinceState, publicEditEmployeeIn.addressProvinceState)
+				&& Objects.equals(this.addressCountry, publicEditEmployeeIn.addressCountry)
+				&& Objects.equals(this.emergencyContactName, publicEditEmployeeIn.emergencyContactName)
+				&& Objects.equals(this.emergencyContactRelationship, publicEditEmployeeIn.emergencyContactRelationship)
+				&& Objects.equals(this.emergencyContactPhone, publicEditEmployeeIn.emergencyContactPhone)
+				&& Objects.equals(this.probationEndDate, publicEditEmployeeIn.probationEndDate)
+				&& Objects.equals(this.plannedFiring, publicEditEmployeeIn.plannedFiring)
+				&& Objects.equals(this.seniorityBeforeHireYears, publicEditEmployeeIn.seniorityBeforeHireYears)
+				&& Objects.equals(this.seniorityBeforeHireMonths, publicEditEmployeeIn.seniorityBeforeHireMonths)
+				&& Objects.equals(this.childrenCount, publicEditEmployeeIn.childrenCount)
+				&& Objects.equals(this.youngestChildBirthDate, publicEditEmployeeIn.youngestChildBirthDate)
+				&& Objects.equals(this.customNote, publicEditEmployeeIn.customNote);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(employee, firstName, lastName, email, workingWeek, approvalFlow, position, teams, holidaysCalendar, sex, maritalStatus, admin, contractType, externalNumber, directManager, birthDate, hireDate, businessPhone, homePhone, personalEmail, addressStreet, addressNumber, addressCity, addressPostalCode, addressProvinceState, addressCountry, emergencyContactName, emergencyContactRelationship, emergencyContactPhone, probationEndDate, plannedFiring, seniorityBeforeHireYears, seniorityBeforeHireMonths, childrenCount, youngestChildBirthDate, customNote);
+		return Objects.hash(employee, firstName, lastName, email, workingWeek, approvalFlow, position, teams,
+				holidaysCalendar, sex, maritalStatus, admin, contractType, externalNumber, directManager, birthDate,
+				hireDate, businessPhone, homePhone, personalEmail, addressStreet, addressNumber, addressCity,
+				addressPostalCode, addressProvinceState, addressCountry, emergencyContactName,
+				emergencyContactRelationship, emergencyContactPhone, probationEndDate, plannedFiring,
+				seniorityBeforeHireYears, seniorityBeforeHireMonths, childrenCount, youngestChildBirthDate, customNote);
 	}
 
 	@Override
@@ -863,7 +903,8 @@ public class PublicEditEmployeeIn {
 		sb.append("    addressProvinceState: ").append(toIndentedString(addressProvinceState)).append("\n");
 		sb.append("    addressCountry: ").append(toIndentedString(addressCountry)).append("\n");
 		sb.append("    emergencyContactName: ").append(toIndentedString(emergencyContactName)).append("\n");
-		sb.append("    emergencyContactRelationship: ").append(toIndentedString(emergencyContactRelationship)).append("\n");
+		sb.append("    emergencyContactRelationship: ").append(toIndentedString(emergencyContactRelationship))
+				.append("\n");
 		sb.append("    emergencyContactPhone: ").append(toIndentedString(emergencyContactPhone)).append("\n");
 		sb.append("    probationEndDate: ").append(toIndentedString(probationEndDate)).append("\n");
 		sb.append("    plannedFiring: ").append(toIndentedString(plannedFiring)).append("\n");
@@ -881,7 +922,7 @@ public class PublicEditEmployeeIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -342,6 +342,23 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>2.19.0</version>
+                <configuration>
+                    <configFile>${project.basedir}/eclipse-formatter.xml</configFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>format-validation</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

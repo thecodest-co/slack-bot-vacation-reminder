@@ -24,7 +24,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * API tests for AbsenceRequestsApi
  */
@@ -36,9 +35,30 @@ class AbsenceRequestsApiTest {
 	/**
 	 * Create an absence request.
 	 * <p>
-	 * Create an absence request.Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TIME&lt;/strong&gt; - when invalid absence time provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_ALLOWANCE&lt;/strong&gt; - when employee absence allowance is not enough&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HIRE_DATE&lt;/strong&gt; - when employee hire date is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;REQUESTING_RULES_VIOLATED&lt;/strong&gt; - when requesting rules violated&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_APPROVAL_FLOW&lt;/strong&gt; - when approval flow is not configured&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; - when invalid absence type provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_REASON&lt;/strong&gt; - when invalid reason provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SUBSTITUTE&lt;/strong&gt; - when invalid substitute provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_COMMENT&lt;/strong&gt; - when invalid comment provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME_PART&lt;/strong&gt; - when invalid time part provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create an absence request.Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TIME&lt;/strong&gt; -
+	 * when invalid absence time
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_ALLOWANCE&lt;/strong&gt;
+	 * - when employee absence allowance is not
+	 * enough&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_HIRE_DATE&lt;/strong&gt; -
+	 * when employee hire date is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;REQUESTING_RULES_VIOLATED&lt;/strong&gt;
+	 * - when requesting rules
+	 * violated&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_APPROVAL_FLOW&lt;/strong&gt;
+	 * - when approval flow is not
+	 * configured&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt;
+	 * - when invalid absence type
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_REASON&lt;/strong&gt; -
+	 * when invalid reason
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_SUBSTITUTE&lt;/strong&gt;
+	 * - when invalid substitute
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_COMMENT&lt;/strong&gt; -
+	 * when invalid comment
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TIME_PART&lt;/strong&gt; -
+	 * when invalid time part provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void createAbsenceRequestTest() throws Exception {
@@ -51,9 +71,16 @@ class AbsenceRequestsApiTest {
 	/**
 	 * Create comment for chosen request.
 	 * <p>
-	 * Create comment for chosen request.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTENT&lt;/strong&gt; - when invalid content provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_REQUEST&lt;/strong&gt; - when invalid absence request provided&lt;/li&gt;&lt;/ol&gt;
+	 * Create comment for chosen request.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTENT&lt;/strong&gt; -
+	 * when invalid content
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_REQUEST&lt;/strong&gt; -
+	 * when invalid absence request provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void createCommentTest() throws Exception {
@@ -66,9 +93,17 @@ class AbsenceRequestsApiTest {
 	/**
 	 * Find absence requests of employee in dates range.
 	 * <p>
-	 * Find absence requests of employee in dates range.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when invalid employee id provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid date from in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid date to in filter provided&lt;/li&gt;&lt;/ol&gt;
+	 * Find absence requests of employee in dates range.&lt;br /&gt;&lt;br
+	 * /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when invalid employee id
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid date from in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid date to in filter provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void findTest() throws Exception {
@@ -81,9 +116,41 @@ class AbsenceRequestsApiTest {
 	/**
 	 * Find absence requests with advanced filtering by several parameters.
 	 * <p>
-	 * Find absence requests in dates range. &lt;br /&gt;&lt;br /&gt;If you provide more than one value in one filter attribute there is OR relation between them.  For instance: if you put in a filter: {employees: [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it returns all John&#x27;s and all Kevin&#x27;s requests.&lt;br /&gt;&lt;br /&gt;When you fill more than one attribute in filter all conditions have to be fulfilled. There is AND relation between attributes. For instance: if you provide in filter {absenceTypes: [\&quot;PTO\&quot;], teams: [\&quot;DevTeam\&quot;]} then will be returned PTO requests of employees who are in team DevTeam.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; - when one of provided employees is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt; - when one of provided absence types is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when one of provided teams is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; - when one of provided positions is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt; - when one of provided contract types is invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_DATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_DATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_UPDATE_FROM&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_UPDATE_TO&lt;/strong&gt; - when invalid time in filter provided&lt;/li&gt;&lt;/ol&gt;
+	 * Find absence requests in dates range. &lt;br /&gt;&lt;br /&gt;If you provide
+	 * more than one value in one filter attribute there is OR relation between
+	 * them. For instance: if you put in a filter: {employees:
+	 * [\&quot;john@mycompany.com\&quot;, \&quot;kevin@mycompany.com\&quot;]} it
+	 * returns all John&#x27;s and all Kevin&#x27;s requests.&lt;br /&gt;&lt;br
+	 * /&gt;When you fill more than one attribute in filter all conditions have to
+	 * be fulfilled. There is AND relation between attributes. For instance: if you
+	 * provide in filter {absenceTypes: [\&quot;PTO\&quot;], teams:
+	 * [\&quot;DevTeam\&quot;]} then will be returned PTO requests of employees who
+	 * are in team DevTeam.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_FROM&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_DATE_TO&lt;/strong&gt; -
+	 * when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_EMPLOYEE&lt;/strong&gt; -
+	 * when one of provided employees is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_ABSENCE_TYPE&lt;/strong&gt;
+	 * - when one of provided absence types is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_TEAM&lt;/strong&gt; - when
+	 * one of provided teams is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_POSITION&lt;/strong&gt; -
+	 * when one of provided positions is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CONTRACT_TYPE&lt;/strong&gt;
+	 * - when one of provided contract types is
+	 * invalid&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_DATE_FROM&lt;/strong&gt;
+	 * - when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_DATE_TO&lt;/strong&gt;
+	 * - when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_UPDATE_FROM&lt;/strong&gt;
+	 * - when invalid time in filter
+	 * provided&lt;/li&gt;&lt;li&gt;&lt;strong&gt;INVALID_CREATE_UPDATE_TO&lt;/strong&gt;
+	 * - when invalid time in filter provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void findExtendedTest() throws Exception {
@@ -96,9 +163,12 @@ class AbsenceRequestsApiTest {
 	/**
 	 * Remove chosen absence request.
 	 * <p>
-	 * Remove chosen absence request.&lt;br /&gt;&lt;br /&gt;Expect error codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_REQUEST&lt;/strong&gt; - when invalid absence request provided&lt;/li&gt;&lt;/ol&gt;
+	 * Remove chosen absence request.&lt;br /&gt;&lt;br /&gt;Expect error
+	 * codes:&lt;ol&gt;&lt;li&gt;&lt;strong&gt;INVALID_REQUEST&lt;/strong&gt; - when
+	 * invalid absence request provided&lt;/li&gt;&lt;/ol&gt;
 	 *
-	 * @throws Exception if the Api call fails
+	 * @throws Exception
+	 *             if the Api call fails
 	 */
 	@Test
 	void removeRequestTest() throws Exception {

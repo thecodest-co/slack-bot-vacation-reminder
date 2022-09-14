@@ -68,14 +68,15 @@ public class GetHolidayCalendarOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		GetHolidayCalendarOut getHolidayCalendarOut = (GetHolidayCalendarOut) o;
-		return Objects.equals(this.id, getHolidayCalendarOut.id) && Objects.equals(this.name, getHolidayCalendarOut.name);
+		return Objects.equals(this.id, getHolidayCalendarOut.id)
+				&& Objects.equals(this.name, getHolidayCalendarOut.name);
 	}
 
 	@Override
@@ -99,7 +100,7 @@ public class GetHolidayCalendarOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

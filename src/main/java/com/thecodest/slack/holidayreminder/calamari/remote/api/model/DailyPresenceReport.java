@@ -75,14 +75,15 @@ public class DailyPresenceReport {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		DailyPresenceReport dailyPresenceReport = (DailyPresenceReport) o;
-		return Objects.equals(this.date, dailyPresenceReport.date) && Objects.equals(this.dailyPresenceReport, dailyPresenceReport.dailyPresenceReport);
+		return Objects.equals(this.date, dailyPresenceReport.date)
+				&& Objects.equals(this.dailyPresenceReport, dailyPresenceReport.dailyPresenceReport);
 	}
 
 	@Override
@@ -106,7 +107,7 @@ public class DailyPresenceReport {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

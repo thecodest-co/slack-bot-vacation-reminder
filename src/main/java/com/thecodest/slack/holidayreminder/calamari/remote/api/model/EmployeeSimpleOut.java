@@ -112,14 +112,17 @@ public class EmployeeSimpleOut {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		EmployeeSimpleOut employeeSimpleOut = (EmployeeSimpleOut) o;
-		return Objects.equals(this.firstName, employeeSimpleOut.firstName) && Objects.equals(this.lastName, employeeSimpleOut.lastName) && Objects.equals(this.email, employeeSimpleOut.email) && Objects.equals(this.externalId, employeeSimpleOut.externalId);
+		return Objects.equals(this.firstName, employeeSimpleOut.firstName)
+				&& Objects.equals(this.lastName, employeeSimpleOut.lastName)
+				&& Objects.equals(this.email, employeeSimpleOut.email)
+				&& Objects.equals(this.externalId, employeeSimpleOut.externalId);
 	}
 
 	@Override
@@ -145,7 +148,7 @@ public class EmployeeSimpleOut {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

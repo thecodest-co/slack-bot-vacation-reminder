@@ -90,14 +90,16 @@ public class BreakDtoIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		BreakDtoIn breakDtoIn = (BreakDtoIn) o;
-		return Objects.equals(this.breakType, breakDtoIn.breakType) && Objects.equals(this.breakStart, breakDtoIn.breakStart) && Objects.equals(this.breakEnd, breakDtoIn.breakEnd);
+		return Objects.equals(this.breakType, breakDtoIn.breakType)
+				&& Objects.equals(this.breakStart, breakDtoIn.breakStart)
+				&& Objects.equals(this.breakEnd, breakDtoIn.breakEnd);
 	}
 
 	@Override
@@ -122,7 +124,7 @@ public class BreakDtoIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -87,7 +87,7 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	public FilterTimesheetEntriesIn addTeamsItem(String teamsItem) {
-		if(this.teams == null) {
+		if (this.teams == null) {
 			this.teams = new ArrayList<>();
 		}
 		this.teams.add(teamsItem);
@@ -95,7 +95,9 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	/**
-	 * List of teams names or identifiers to search. As a result there will be timesheet entries of employees who are members of at least one of provided teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;]
+	 * List of teams names or identifiers to search. As a result there will be
+	 * timesheet entries of employees who are members of at least one of provided
+	 * teams. Example: [\&quot;First Team\&quot;, \&quot;Second Team\&quot;]
 	 *
 	 * @return teams
 	 **/
@@ -114,7 +116,7 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	public FilterTimesheetEntriesIn addPositionsItem(String positionsItem) {
-		if(this.positions == null) {
+		if (this.positions == null) {
 			this.positions = new ArrayList<>();
 		}
 		this.positions.add(positionsItem);
@@ -122,7 +124,9 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	/**
-	 * List of positions names or identifiers to search. As a result there will be timesheet entries of employees who have one of provided positions. Example: [\&quot;Developer\&quot;, \&quot;Support\&quot;]
+	 * List of positions names or identifiers to search. As a result there will be
+	 * timesheet entries of employees who have one of provided positions. Example:
+	 * [\&quot;Developer\&quot;, \&quot;Support\&quot;]
 	 *
 	 * @return positions
 	 **/
@@ -141,7 +145,7 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	public FilterTimesheetEntriesIn addContractTypesItem(String contractTypesItem) {
-		if(this.contractTypes == null) {
+		if (this.contractTypes == null) {
 			this.contractTypes = new ArrayList<>();
 		}
 		this.contractTypes.add(contractTypesItem);
@@ -149,7 +153,9 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	/**
-	 * List of contract types names or identifiers to search. As a result there will be timesheet entries of employees who have one of contract type. Example: [\&quot;Full Time\&quot;]
+	 * List of contract types names or identifiers to search. As a result there will
+	 * be timesheet entries of employees who have one of contract type. Example:
+	 * [\&quot;Full Time\&quot;]
 	 *
 	 * @return contractTypes
 	 **/
@@ -168,7 +174,7 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	public FilterTimesheetEntriesIn addEmployeesItem(String employeesItem) {
-		if(this.employees == null) {
+		if (this.employees == null) {
 			this.employees = new ArrayList<>();
 		}
 		this.employees.add(employeesItem);
@@ -176,7 +182,8 @@ public class FilterTimesheetEntriesIn {
 	}
 
 	/**
-	 * List of employees e-mails or logins. Example: [\&quot;john.white@domain.com\&quot;, \&quot;mark.smith@domain.com\&quot;]
+	 * List of employees e-mails or logins. Example:
+	 * [\&quot;john.white@domain.com\&quot;, \&quot;mark.smith@domain.com\&quot;]
 	 *
 	 * @return employees
 	 **/
@@ -191,14 +198,19 @@ public class FilterTimesheetEntriesIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		FilterTimesheetEntriesIn filterTimesheetEntriesIn = (FilterTimesheetEntriesIn) o;
-		return Objects.equals(this.from, filterTimesheetEntriesIn.from) && Objects.equals(this.to, filterTimesheetEntriesIn.to) && Objects.equals(this.teams, filterTimesheetEntriesIn.teams) && Objects.equals(this.positions, filterTimesheetEntriesIn.positions) && Objects.equals(this.contractTypes, filterTimesheetEntriesIn.contractTypes) && Objects.equals(this.employees, filterTimesheetEntriesIn.employees);
+		return Objects.equals(this.from, filterTimesheetEntriesIn.from)
+				&& Objects.equals(this.to, filterTimesheetEntriesIn.to)
+				&& Objects.equals(this.teams, filterTimesheetEntriesIn.teams)
+				&& Objects.equals(this.positions, filterTimesheetEntriesIn.positions)
+				&& Objects.equals(this.contractTypes, filterTimesheetEntriesIn.contractTypes)
+				&& Objects.equals(this.employees, filterTimesheetEntriesIn.employees);
 	}
 
 	@Override
@@ -226,7 +238,7 @@ public class FilterTimesheetEntriesIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

@@ -75,14 +75,15 @@ public class CreatePositionIn {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) {
+		if (this == o) {
 			return true;
 		}
-		if(o == null || getClass() != o.getClass()) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
 		CreatePositionIn createPositionIn = (CreatePositionIn) o;
-		return Objects.equals(this.positionName, createPositionIn.positionName) && Objects.equals(this.members, createPositionIn.members);
+		return Objects.equals(this.positionName, createPositionIn.positionName)
+				&& Objects.equals(this.members, createPositionIn.members);
 	}
 
 	@Override
@@ -106,7 +107,7 @@ public class CreatePositionIn {
 	 * (except the first line).
 	 */
 	private String toIndentedString(Object o) {
-		if(o == null) {
+		if (o == null) {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");

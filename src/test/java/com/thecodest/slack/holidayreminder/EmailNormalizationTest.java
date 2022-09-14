@@ -79,4 +79,3 @@ class EmailNormalizationTest {
 		assertThatThrownBy(() -> normalize("@Some random text")).isInstanceOf(ParseException.class);
 	}
 }
-
