@@ -230,51 +230,59 @@
 <a class="jxr_linenumber" name="L222" href="#L222">222</a> 
 <a class="jxr_linenumber" name="L223" href="#L223">223</a> 	@Override
 <a class="jxr_linenumber" name="L224" href="#L224">224</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> equals(Object o) {
-<a class="jxr_linenumber" name="L225" href="#L225">225</a> 		<strong class="jxr_keyword">if</strong>(<strong class="jxr_keyword">this</strong> == o) {
+<a class="jxr_linenumber" name="L225" href="#L225">225</a> 		<strong class="jxr_keyword">if</strong> (<strong class="jxr_keyword">this</strong> == o) {
 <a class="jxr_linenumber" name="L226" href="#L226">226</a> 			<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L227" href="#L227">227</a> 		}
-<a class="jxr_linenumber" name="L228" href="#L228">228</a> 		<strong class="jxr_keyword">if</strong>(o == <strong class="jxr_keyword">null</strong> || getClass() != o.getClass()) {
+<a class="jxr_linenumber" name="L228" href="#L228">228</a> 		<strong class="jxr_keyword">if</strong> (o == <strong class="jxr_keyword">null</strong> || getClass() != o.getClass()) {
 <a class="jxr_linenumber" name="L229" href="#L229">229</a> 			<strong class="jxr_keyword">return</strong> false;
 <a class="jxr_linenumber" name="L230" href="#L230">230</a> 		}
 <a class="jxr_linenumber" name="L231" href="#L231">231</a> 		DateTimeField dateTimeField = (<a name="DateTimeField" href="../../../../../../../../com/thecodest/slack/holidayreminder/calamari/remote/api/model/DateTimeField.html#DateTimeField">DateTimeField</a>) o;
-<a class="jxr_linenumber" name="L232" href="#L232">232</a> 		<strong class="jxr_keyword">return</strong> Objects.equals(<strong class="jxr_keyword">this</strong>.name, dateTimeField.name) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.type, dateTimeField.type) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.supported, dateTimeField.supported) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.lenient, dateTimeField.lenient) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.minimumValue, dateTimeField.minimumValue) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.maximumValue, dateTimeField.maximumValue) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.durationField, dateTimeField.durationField) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.rangeDurationField, dateTimeField.rangeDurationField) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.leapDurationField, dateTimeField.leapDurationField);
-<a class="jxr_linenumber" name="L233" href="#L233">233</a> 	}
-<a class="jxr_linenumber" name="L234" href="#L234">234</a> 
-<a class="jxr_linenumber" name="L235" href="#L235">235</a> 	@Override
-<a class="jxr_linenumber" name="L236" href="#L236">236</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> hashCode() {
-<a class="jxr_linenumber" name="L237" href="#L237">237</a> 		<strong class="jxr_keyword">return</strong> Objects.hash(name, type, supported, lenient, minimumValue, maximumValue, durationField, rangeDurationField, leapDurationField);
-<a class="jxr_linenumber" name="L238" href="#L238">238</a> 	}
-<a class="jxr_linenumber" name="L239" href="#L239">239</a> 
-<a class="jxr_linenumber" name="L240" href="#L240">240</a> 	@Override
-<a class="jxr_linenumber" name="L241" href="#L241">241</a> 	<strong class="jxr_keyword">public</strong> String toString() {
-<a class="jxr_linenumber" name="L242" href="#L242">242</a> 		StringBuilder sb = <strong class="jxr_keyword">new</strong> StringBuilder();
-<a class="jxr_linenumber" name="L243" href="#L243">243</a> 		sb.append(<span class="jxr_string">"class DateTimeField {\n"</span>);
-<a class="jxr_linenumber" name="L244" href="#L244">244</a> 
-<a class="jxr_linenumber" name="L245" href="#L245">245</a> 		sb.append(<span class="jxr_string">"    name: "</span>).append(toIndentedString(name)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L246" href="#L246">246</a> 		sb.append(<span class="jxr_string">"    type: "</span>).append(toIndentedString(type)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L247" href="#L247">247</a> 		sb.append(<span class="jxr_string">"    supported: "</span>).append(toIndentedString(supported)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L248" href="#L248">248</a> 		sb.append(<span class="jxr_string">"    lenient: "</span>).append(toIndentedString(lenient)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L249" href="#L249">249</a> 		sb.append(<span class="jxr_string">"    minimumValue: "</span>).append(toIndentedString(minimumValue)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L250" href="#L250">250</a> 		sb.append(<span class="jxr_string">"    maximumValue: "</span>).append(toIndentedString(maximumValue)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L251" href="#L251">251</a> 		sb.append(<span class="jxr_string">"    durationField: "</span>).append(toIndentedString(durationField)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L252" href="#L252">252</a> 		sb.append(<span class="jxr_string">"    rangeDurationField: "</span>).append(toIndentedString(rangeDurationField)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L253" href="#L253">253</a> 		sb.append(<span class="jxr_string">"    leapDurationField: "</span>).append(toIndentedString(leapDurationField)).append(<span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L254" href="#L254">254</a> 		sb.append(<span class="jxr_string">"}"</span>);
-<a class="jxr_linenumber" name="L255" href="#L255">255</a> 		<strong class="jxr_keyword">return</strong> sb.toString();
-<a class="jxr_linenumber" name="L256" href="#L256">256</a> 	}
-<a class="jxr_linenumber" name="L257" href="#L257">257</a> 
-<a class="jxr_linenumber" name="L258" href="#L258">258</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L259" href="#L259">259</a> <em class="jxr_javadoccomment">	 * Convert the given object to string with each line indented by 4 spaces</em>
-<a class="jxr_linenumber" name="L260" href="#L260">260</a> <em class="jxr_javadoccomment">	 * (except the first line).</em>
-<a class="jxr_linenumber" name="L261" href="#L261">261</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="L262" href="#L262">262</a> 	<strong class="jxr_keyword">private</strong> String toIndentedString(Object o) {
-<a class="jxr_linenumber" name="L263" href="#L263">263</a> 		<strong class="jxr_keyword">if</strong>(o == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L264" href="#L264">264</a> 			<strong class="jxr_keyword">return</strong> <span class="jxr_string">"null"</span>;
-<a class="jxr_linenumber" name="L265" href="#L265">265</a> 		}
-<a class="jxr_linenumber" name="L266" href="#L266">266</a> 		<strong class="jxr_keyword">return</strong> o.toString().replace(<span class="jxr_string">"\n"</span>, <span class="jxr_string">"\n    "</span>);
-<a class="jxr_linenumber" name="L267" href="#L267">267</a> 	}
-<a class="jxr_linenumber" name="L268" href="#L268">268</a> 
-<a class="jxr_linenumber" name="L269" href="#L269">269</a> }
+<a class="jxr_linenumber" name="L232" href="#L232">232</a> 		<strong class="jxr_keyword">return</strong> Objects.equals(<strong class="jxr_keyword">this</strong>.name, dateTimeField.name) &amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.type, dateTimeField.type)
+<a class="jxr_linenumber" name="L233" href="#L233">233</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.supported, dateTimeField.supported)
+<a class="jxr_linenumber" name="L234" href="#L234">234</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.lenient, dateTimeField.lenient)
+<a class="jxr_linenumber" name="L235" href="#L235">235</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.minimumValue, dateTimeField.minimumValue)
+<a class="jxr_linenumber" name="L236" href="#L236">236</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.maximumValue, dateTimeField.maximumValue)
+<a class="jxr_linenumber" name="L237" href="#L237">237</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.durationField, dateTimeField.durationField)
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.rangeDurationField, dateTimeField.rangeDurationField)
+<a class="jxr_linenumber" name="L239" href="#L239">239</a> 				&amp;&amp; Objects.equals(<strong class="jxr_keyword">this</strong>.leapDurationField, dateTimeField.leapDurationField);
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> 	}
+<a class="jxr_linenumber" name="L241" href="#L241">241</a> 
+<a class="jxr_linenumber" name="L242" href="#L242">242</a> 	@Override
+<a class="jxr_linenumber" name="L243" href="#L243">243</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> hashCode() {
+<a class="jxr_linenumber" name="L244" href="#L244">244</a> 		<strong class="jxr_keyword">return</strong> Objects.hash(name, type, supported, lenient, minimumValue, maximumValue, durationField,
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> 				rangeDurationField, leapDurationField);
+<a class="jxr_linenumber" name="L246" href="#L246">246</a> 	}
+<a class="jxr_linenumber" name="L247" href="#L247">247</a> 
+<a class="jxr_linenumber" name="L248" href="#L248">248</a> 	@Override
+<a class="jxr_linenumber" name="L249" href="#L249">249</a> 	<strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="L250" href="#L250">250</a> 		StringBuilder sb = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="L251" href="#L251">251</a> 		sb.append(<span class="jxr_string">"class DateTimeField {\n"</span>);
+<a class="jxr_linenumber" name="L252" href="#L252">252</a> 
+<a class="jxr_linenumber" name="L253" href="#L253">253</a> 		sb.append(<span class="jxr_string">"    name: "</span>).append(toIndentedString(name)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L254" href="#L254">254</a> 		sb.append(<span class="jxr_string">"    type: "</span>).append(toIndentedString(type)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> 		sb.append(<span class="jxr_string">"    supported: "</span>).append(toIndentedString(supported)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L256" href="#L256">256</a> 		sb.append(<span class="jxr_string">"    lenient: "</span>).append(toIndentedString(lenient)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L257" href="#L257">257</a> 		sb.append(<span class="jxr_string">"    minimumValue: "</span>).append(toIndentedString(minimumValue)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L258" href="#L258">258</a> 		sb.append(<span class="jxr_string">"    maximumValue: "</span>).append(toIndentedString(maximumValue)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> 		sb.append(<span class="jxr_string">"    durationField: "</span>).append(toIndentedString(durationField)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L260" href="#L260">260</a> 		sb.append(<span class="jxr_string">"    rangeDurationField: "</span>).append(toIndentedString(rangeDurationField)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L261" href="#L261">261</a> 		sb.append(<span class="jxr_string">"    leapDurationField: "</span>).append(toIndentedString(leapDurationField)).append(<span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L262" href="#L262">262</a> 		sb.append(<span class="jxr_string">"}"</span>);
+<a class="jxr_linenumber" name="L263" href="#L263">263</a> 		<strong class="jxr_keyword">return</strong> sb.toString();
+<a class="jxr_linenumber" name="L264" href="#L264">264</a> 	}
+<a class="jxr_linenumber" name="L265" href="#L265">265</a> 
+<a class="jxr_linenumber" name="L266" href="#L266">266</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L267" href="#L267">267</a> <em class="jxr_javadoccomment">	 * Convert the given object to string with each line indented by 4 spaces</em>
+<a class="jxr_linenumber" name="L268" href="#L268">268</a> <em class="jxr_javadoccomment">	 * (except the first line).</em>
+<a class="jxr_linenumber" name="L269" href="#L269">269</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> 	<strong class="jxr_keyword">private</strong> String toIndentedString(Object o) {
+<a class="jxr_linenumber" name="L271" href="#L271">271</a> 		<strong class="jxr_keyword">if</strong> (o == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L272" href="#L272">272</a> 			<strong class="jxr_keyword">return</strong> <span class="jxr_string">"null"</span>;
+<a class="jxr_linenumber" name="L273" href="#L273">273</a> 		}
+<a class="jxr_linenumber" name="L274" href="#L274">274</a> 		<strong class="jxr_keyword">return</strong> o.toString().replace(<span class="jxr_string">"\n"</span>, <span class="jxr_string">"\n    "</span>);
+<a class="jxr_linenumber" name="L275" href="#L275">275</a> 	}
+<a class="jxr_linenumber" name="L276" href="#L276">276</a> 
+<a class="jxr_linenumber" name="L277" href="#L277">277</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2022. All rights reserved.</div>

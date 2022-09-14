@@ -52,7 +52,7 @@
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  	@Override
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  	<strong class="jxr_keyword">public</strong> BufferedSource source() <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		<strong class="jxr_keyword">if</strong>(bufferedSource == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		<strong class="jxr_keyword">if</strong> (bufferedSource == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  			bufferedSource = Okio.buffer(source(responseBody.source()));
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>  		}
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  		<strong class="jxr_keyword">return</strong> bufferedSource;
@@ -77,8 +77,6 @@
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  		<strong class="jxr_keyword">void</strong> update(<strong class="jxr_keyword">long</strong> bytesRead, <strong class="jxr_keyword">long</strong> contentLength, <strong class="jxr_keyword">boolean</strong> done);
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  	}
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>  }
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>  
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2022. All rights reserved.</div>

@@ -13,13 +13,13 @@ import com.thecodest.slack.holidayreminder.slack.SlackModule;
 	/**
 	 * No params.
 	 *
-	 * @param args empty array
+	 * @param args
+	 *            empty array
 	 */
 	public static void main(String[] args) {
-<span class="fc" id="L19">		var injector = Guice.createInjector(</span>
+<span class="fc" id="L20">		var injector = Guice.createInjector(</span>
 				new MasterModule(), new AuthViaEnvModule(),
-				new SlackModule(), new CalamariModule()
-		);
+				new SlackModule(), new CalamariModule());
 <span class="fc" id="L23">		var app = injector.getInstance(VacationReminder.class);</span>
 <span class="fc" id="L24">		app.run();</span>
 <span class="fc" id="L25">	}</span>

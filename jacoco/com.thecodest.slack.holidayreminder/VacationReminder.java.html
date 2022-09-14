@@ -14,9 +14,8 @@ import javax.inject.Inject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
-
-<span class="fc" id="L18">@Log</span>
-<span class="fc" id="L19">@RequiredArgsConstructor(onConstructor_ = {@Inject})</span>
+<span class="fc" id="L17">@Log</span>
+<span class="fc" id="L18">@RequiredArgsConstructor(onConstructor_ = {@Inject})</span>
 class VacationReminder implements Runnable {
 
 	private final Message message;
@@ -27,32 +26,31 @@ class VacationReminder implements Runnable {
 
 	@Override
 	public void run() {
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">		if(!runningCalculator.shouldItRun()) {</span>
-<span class="fc" id="L31">			log.info(&quot;Not today&quot;);</span>
-<span class="fc" id="L32">			return;</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">		if (!runningCalculator.shouldItRun()) {</span>
+<span class="fc" id="L30">			log.info(&quot;Not today&quot;);</span>
+<span class="fc" id="L31">			return;</span>
 		}
-<span class="nc" id="L34">		sendMessage();</span>
-<span class="nc" id="L35">	}</span>
+<span class="nc" id="L33">		sendMessage();</span>
+<span class="nc" id="L34">	}</span>
 
 	@VisibleForTesting
 	void sendMessage() {
-<span class="fc" id="L39">		assemblerOf(Coder.class)</span>
-<span class="fc" id="L40">				.withIdExtractor(CalamariEmployee::email)</span>
-<span class="fc" id="L41">				.withAssemblerRules(</span>
-<span class="fc" id="L42">						oneToOne(slackClient::getUsersByEmails, SlackUser::normalizedEmail),</span>
-						Coder::new
-				)
-<span class="fc" id="L45">				.using(streamAdapter())</span>
-<span class="fc" id="L46">				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))</span>
-<span class="fc bfc" id="L47" title="All 2 branches covered.">				.filter(coder -&gt; coder.slackUser() != null)</span>
-<span class="fc" id="L48">				.toList()</span>
-<span class="fc" id="L49">				.stream()</span>
-<span class="fc" id="L50">				.map(this::sendMessage)</span>
-<span class="fc" id="L51">				.forEach(c -&gt; log.info(String.valueOf(c)));</span>
-<span class="fc" id="L52">	}</span>
+<span class="fc" id="L38">		assemblerOf(Coder.class)</span>
+<span class="fc" id="L39">				.withIdExtractor(CalamariEmployee::email)</span>
+<span class="fc" id="L40">				.withAssemblerRules(</span>
+<span class="fc" id="L41">						oneToOne(slackClient::getUsersByEmails, SlackUser::normalizedEmail),</span>
+						Coder::new)
+<span class="fc" id="L43">				.using(streamAdapter())</span>
+<span class="fc" id="L44">				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">				.filter(coder -&gt; coder.slackUser() != null)</span>
+<span class="fc" id="L46">				.toList()</span>
+<span class="fc" id="L47">				.stream()</span>
+<span class="fc" id="L48">				.map(this::sendMessage)</span>
+<span class="fc" id="L49">				.forEach(c -&gt; log.info(String.valueOf(c)));</span>
+<span class="fc" id="L50">	}</span>
 
 	private ChatPostMessageResponse sendMessage(Coder coder) {
-<span class="fc" id="L55">		return slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));</span>
+<span class="fc" id="L53">		return slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

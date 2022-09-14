@@ -6,11 +6,14 @@ import io.vavr.control.Try;
 /**
  * This record represents The Codest employee on Slack.
  *
- * @param slackId internal Slack id.
- * @param name full name as it is set on Slack.
- * @param email email as it is set on Slack.
+ * @param slackId
+ *            internal Slack id.
+ * @param name
+ *            full name as it is set on Slack.
+ * @param email
+ *            email as it is set on Slack.
  */
-<span class="pc" id="L13">public record SlackUser(String slackId, String name, String email) {</span>
+<span class="pc" id="L16">public record SlackUser(String slackId, String name, String email) {</span>
 
 	/**
 	 * Return user email in normalized form. See @{@link EmailNormalization}.
@@ -18,10 +21,10 @@ import io.vavr.control.Try;
 	 * @return normalized email
 	 */
 	public String normalizedEmail() {
-<span class="fc" id="L21">		return Try.success(email())</span>
-<span class="fc" id="L22">				.mapTry(EmailNormalization::normalize)</span>
-<span class="fc" id="L23">				.map(EmailNormalization.NormalizedEmail::normalForm)</span>
-<span class="pc" id="L24">				.getOrElseThrow(t -&gt; new RuntimeException(t));</span>
+<span class="fc" id="L24">		return Try.success(email())</span>
+<span class="fc" id="L25">				.mapTry(EmailNormalization::normalize)</span>
+<span class="fc" id="L26">				.map(EmailNormalization.NormalizedEmail::normalForm)</span>
+<span class="pc" id="L27">				.getOrElseThrow(t -&gt; new RuntimeException(t));</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
