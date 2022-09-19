@@ -114,3 +114,5 @@ That's all! You should see function with trigger
 - [x] Configure GH workflows.
 - [ ] Optional integration with abstractapi.com to extends our working day calculation.
 - [ ] Add trigger configuration into actions
+- [ ] Add central logger configuration
+- [ ] Improve test coverage 
