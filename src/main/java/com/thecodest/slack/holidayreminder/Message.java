@@ -13,7 +13,7 @@ class Message {
 	Message() {
 		this.message = """
 				Hi %s,
-				
+
 				Famous American scientists have proven that work-life balance is damn necessary to keep you job satisfaction high. Just to name a few advantages from taking a break:
 
 				1. You have more time to fight with your family and friends :family:
@@ -23,11 +23,11 @@ class Message {
 				5. You could also travel a world and see something cool or smth :globe_with_meridians:
 
 				I have spied in Calamari that you've got plenty of days off to take, do you need any more arguments to enjoy your holiday?
-				
+
 				You deserve it! <https://www.youtube.com/watch?v=bVRnMrl2oj8|Chill out like a BOSS> :cool-doge:
-				
+
 				Peace :peace-out:
-				
+
 				Cody
 				""";
 	}
