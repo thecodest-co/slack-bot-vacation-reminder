@@ -29,9 +29,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class RunningCalculatorTest {
+class LocalRunningCalculatorTest {
 
-	private final RunningCalculator sut = new RunningCalculator();
+	private final LocalRunningCalculator sut = new LocalRunningCalculator();
 
 	static Stream<Arguments> validDates() {
 		return Stream.of(

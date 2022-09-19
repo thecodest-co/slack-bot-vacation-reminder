@@ -21,7 +21,7 @@ class VacationReminderTest {
 	@Spy
 	private Message message;
 	@Spy
-	private RunningCalculator runningCalculator;
+	private LocalRunningCalculator localRunningCalculator;
 
 	@Mock
 	private SlackClient slackClient;

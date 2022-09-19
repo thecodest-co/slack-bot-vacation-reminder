@@ -1,19 +1,5 @@
 package com.thecodest.slack.holidayreminder;
 
-import static java.time.DayOfWeek.MONDAY;
-import static java.time.DayOfWeek.SATURDAY;
-import static java.time.DayOfWeek.SUNDAY;
-import static java.time.DayOfWeek.TUESDAY;
-import static java.time.Month.APRIL;
-import static java.time.Month.JANUARY;
-import static java.time.Month.JULY;
-import static java.time.Month.OCTOBER;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.Month;
-
 /**
  * For requirement, run on second working day of first month of each quarter.
  *
@@ -54,56 +40,11 @@ import java.time.Month;
  * <li>July 2022 – 4th is Monday</li>
  * </ul>
  */
-class RunningCalculator {
-
+public interface RunningCalculator {
 	/**
 	 * Check if current local date is valid.
 	 *
 	 * @return true if date match to the rules. Otherwise, return false.
 	 */
-	public boolean shouldItRun() {
-		LocalDate date = LocalDate.now();
-		var month = date.getMonth();
-		var day = date.getDayOfMonth();
-		var dayOfWeek = date.getDayOfWeek();
-		return shouldItRun(month, day, dayOfWeek);
-	}
-
-	@VisibleForTesting
-	boolean shouldItRun(Month month, int day, DayOfWeek dayOfWeek) {
-		return isFirstMonthOfQuarter(month)
-				&& isBetween2ndAnd4th(day)
-				&& isNotWeekend(dayOfWeek)
-				&& matchDayRules(day, dayOfWeek);
-	}
-
-	private boolean matchDayRules(int day, DayOfWeek dayOfWeek) {
-		return ruleFor2nd(day, dayOfWeek)
-				|| ruleFor3rd(day, dayOfWeek)
-				|| ruleFor4th(day, dayOfWeek);
-	}
-
-	private boolean isFirstMonthOfQuarter(Month month) {
-		return month == JANUARY || month == APRIL || month == JULY || month == OCTOBER;
-	}
-
-	private boolean isBetween2ndAnd4th(int day) {
-		return day > 1 && day <= 4;
-	}
-
-	private boolean isNotWeekend(DayOfWeek dayOfWeek) {
-		return dayOfWeek != SATURDAY && dayOfWeek != SUNDAY;
-	}
-
-	private boolean ruleFor2nd(int day, DayOfWeek dayOfWeek) {
-		return day == 2 && dayOfWeek != MONDAY;
-	}
-
-	private boolean ruleFor3rd(int day, DayOfWeek dayOfWeek) {
-		return day == 3 && dayOfWeek == TUESDAY;
-	}
-
-	private boolean ruleFor4th(int day, DayOfWeek dayOfWeek) {
-		return day == 4 && (dayOfWeek == MONDAY || dayOfWeek == TUESDAY);
-	}
+	boolean shouldItRun();
 }

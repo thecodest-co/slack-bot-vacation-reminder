@@ -10,7 +10,7 @@ class MasterModule extends AbstractModule {
 		bind(Integer.class)
 				.annotatedWith(Names.named("days-limit"))
 				.toInstance(Integer.valueOf(System.getenv("DAYS_LIMIT")));
-
+		bind(RunningCalculator.class).toProvider(RunningCalculatorProvider.class);
 		bind(Configuration.class);
 	}
 }
