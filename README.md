@@ -26,7 +26,7 @@ this will build application and docker image in your local registry.
 
 ## Running
 
-By default this app works as AWS Lambda function and all deployment to AWS is handled by github actions.
+By default, this app works as AWS Lambda function and almost all deployment steps to AWS are handled by github actions.
 
 ### As jar
 
@@ -80,20 +80,19 @@ aws ecr create-repository \
     --image-tag-mutability MUTABLE
 ```
 
-Repository name should be the same as name in env var `ECR_REPOSITORY` in GH action file.
-Flag `MUTABLE` gives possibility to redeploy image with the same TAG.
+Repository name should be the same as name in env var `ECR_REPOSITORY` in GH action file. Flag `MUTABLE` gives
+possibility to redeploy image with the same TAG.
 
 ## Installation
 
 Installation process is very easy. When you have configured all secrets and create ECR registry, just
-run `prod-deploymant` workflow. It will create docker Image, push it to registry and register new lambda function based
+run `prod-deployment` workflow. It will create docker Image, push it to registry and register new lambda function based
 on this image.
 
 ### Post installation steps
 
 After first installation you need to setup trigger that will be apply function. For this log in to AWS Lambda, and
-select `holiday-reminder` function.
-Then click `Add trigger` button
+select `holiday-reminder` function. Then click `Add trigger` button:
 
 ![](/img/lambda1.png)
 
