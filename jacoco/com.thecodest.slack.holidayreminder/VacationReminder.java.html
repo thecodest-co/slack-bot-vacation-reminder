@@ -21,12 +21,12 @@ class VacationReminder implements Runnable {
 	private final Message message;
 	private final SlackClient slackClient;
 	private final CalamariApi calamariApi;
-	private final RunningCalculator runningCalculator;
+	private final RunningCalculator localRunningCalculator;
 	private final Configuration configuration;
 
 	@Override
 	public void run() {
-<span class="pc bpc" id="L29" title="1 of 2 branches missed.">		if (!runningCalculator.shouldItRun()) {</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">		if (!localRunningCalculator.shouldItRun()) {</span>
 <span class="fc" id="L30">			log.info(&quot;Not today&quot;);</span>
 <span class="fc" id="L31">			return;</span>
 		}

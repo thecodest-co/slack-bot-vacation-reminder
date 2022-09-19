@@ -18,7 +18,7 @@
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  		bind(Integer.<strong class="jxr_keyword">class</strong>)
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  				.annotatedWith(Names.named(<span class="jxr_string">"days-limit"</span>))
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  				.toInstance(Integer.valueOf(System.getenv(<span class="jxr_string">"DAYS_LIMIT"</span>)));
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  		bind(RunningCalculator.<strong class="jxr_keyword">class</strong>).toProvider(RunningCalculatorProvider.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  		bind(Configuration.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  	}
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  }
