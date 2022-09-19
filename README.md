@@ -95,19 +95,19 @@ After first installation you need to setup trigger that will be apply function. 
 select `holiday-reminder` function.
 Then click `Add trigger` button
 
-![](/home/koziolek/workspace/codest/internal-stuff/holiday-reminder/img/lambda1.png)
+![](/img/lambda1.png)
 
 Select a source `EventBrige (CloudWatch Events)`:
 
-![](/home/koziolek/workspace/codest/internal-stuff/holiday-reminder/img/lambda2.png)
+![](/img/lambda2.png)
 
 Then create new rule. Name it as you like and set `Schedule expression` to `rate(1 day)` and click add:
 
-![](/home/koziolek/workspace/codest/internal-stuff/holiday-reminder/img/lambda3.png)
+![](/img/lambda3.png)
 
 That's all! You should see function with trigger
 
-![](/home/koziolek/workspace/codest/internal-stuff/holiday-reminder/img/lambda4.png)
+![](/img/lambda4.png)
 
 ## TODO
 
