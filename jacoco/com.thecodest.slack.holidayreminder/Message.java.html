@@ -13,6 +13,7 @@ class Message {
 <span class="fc" id="L13">	Message() {</span>
 <span class="fc" id="L14">		this.message = &quot;&quot;&quot;</span>
 				Hi %s,
+
 				Famous American scientists have proven that work-life balance is damn necessary to keep you job satisfaction high. Just to name a few advantages from taking a break:
 
 				1. You have more time to fight with your family and friends :family:
@@ -22,15 +23,18 @@ class Message {
 				5. You could also travel a world and see something cool or smth :globe_with_meridians:
 
 				I have spied in Calamari that you've got plenty of days off to take, do you need any more arguments to enjoy your holiday?
+
 				You deserve it! &lt;https://www.youtube.com/watch?v=bVRnMrl2oj8|Chill out like a BOSS&gt; :cool-doge:
+
 				Peace :peace-out:
+
 				Cody
 				&quot;&quot;&quot;;
-<span class="fc" id="L29">	}</span>
+<span class="fc" id="L33">	}</span>
 	// CHECKSTYLE:ON
 
 	public String getMessage(CalamariEmployee calamariEmployee) {
-<span class="fc" id="L33">		return String.format(message, calamariEmployee.name(), calamariEmployee.balanceOut());</span>
+<span class="fc" id="L37">		return String.format(message, calamariEmployee.name(), calamariEmployee.balanceOut());</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
