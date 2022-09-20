@@ -1,7 +1,12 @@
 # holiday-reminder
 
+[![Build & deploy to prod](https://github.com/thecodest-co/slack-bot-vacation-reminder/actions/workflows/prod-deployment.yml/badge.svg)](https://github.com/thecodest-co/slack-bot-vacation-reminder/actions/workflows/prod-deployment.yml)
+[![Build update page](https://github.com/thecodest-co/slack-bot-vacation-reminder/actions/workflows/page.yml/badge.svg)](https://github.com/thecodest-co/slack-bot-vacation-reminder/actions/workflows/page.yml)
+
 This is plugin to our slack-bot named Cody. On second working day of every quarter it send reminder to people that have
 more than 5 days of vacation. We use Calamari HR software as our data source.
+
+Technical page (maven reports etc.) [here](https://thecodest-co.github.io/slack-bot-vacation-reminder/)
 
 ## Configuration
 
