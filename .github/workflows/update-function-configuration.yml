@@ -1,6 +1,9 @@
 name: Update function configuration
 
 on:
+  push:
+    branches:
+      - 'non-op'
 
 env:
   IAM_ROLE: lambda_exe
