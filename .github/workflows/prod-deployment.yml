@@ -99,7 +99,7 @@ jobs:
           aws lambda publish-version --function-name $IMAGE_TAG
           aws lambda wait function-updated --function-name $fun_arn
       - name: Test run
-        if: $TEST_RUN == "true"
+        if: ${{ env.TEST_RUN }}
         run: |
           fun_arn=$(aws lambda list-functions --query "Functions[?FunctionName == '$IMAGE_TAG'].FunctionArn" --output text)
           aws lambda invoke --function-name $fun_arn /tmp/out.json
