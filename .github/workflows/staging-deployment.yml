@@ -8,7 +8,6 @@ on:
 env:
   ECR_REPOSITORY: codest
   IMAGE_TAG: holiday-reminder
-  FUNCTION_NAME: ${{ secrets.AWS_FUNCTION_ARN }}
 
 jobs:
   build:
@@ -47,4 +46,4 @@ jobs:
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
-          aws lambda update-function-code --function-name $FUNCTION_NAME --image-uri $IMAGE_URI > /dev/null
+          aws lambda update-function-code --function-name holiday-reminder --image-uri $IMAGE_URI > /dev/null
