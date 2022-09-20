@@ -55,4 +55,4 @@ jobs:
         if: ${{ env.TEST_RUN }}
         run: |
           fun_arn=$(aws lambda list-functions --query "Functions[?FunctionName == '$IMAGE_TAG'].FunctionArn" --output text)
-          aws lambda invoke --function-name $fun_arn /tmp/out.json
+          aws lambda invoke --function-name $fun_arn --log-type Tail /tmp/out.json && cat /tmp/out.json
