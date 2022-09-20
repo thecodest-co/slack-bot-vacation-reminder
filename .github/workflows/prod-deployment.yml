@@ -12,6 +12,7 @@ env:
   CALAMARI_USERNAME: ${{ secrets.CALAMARI_USERNAME }}
   CALAMARI_PASSWORD: ${{ secrets.CALAMARI_PASSWORD }}
   DAYS_LIMIT: ${{ secrets.DAYS_LIMIT }}
+  TEST_RUN: false
 
 jobs:
   build:
@@ -37,7 +38,7 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Create repository if not exist
+      - name: Maybe create repository
         id: create-repository
         run: |
           status=x-$(aws ecr describe-repositories --query 'repositories[?repositoryName == `codest`].repositoryName' --output text)
@@ -50,16 +51,16 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-      - name: Check role state
+      - name: Maybe create role
         id: role-state
         run: |
           status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
-          echo "::set-output name=role-exist::$status"
-      - name: Maybe create role
-        id: create-role
-        if: steps.role-state.outputs.role-exist == 'x-'
-        run: |
-          aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
+          if [ "x-" == $status ] ; then
+            echo "Creating role lambda-exe";
+            aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}';
+          else
+            echo "Role lambda-exe already exists";
+          fi
       - name: Check function state
         id: function-state
         run: |
@@ -72,7 +73,7 @@ jobs:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
           role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
-          aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT}"
+          aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT,TEST_RUN=$TEST_RUN}"
           aws lambda wait function-updated --function-name $fun_arn          
           aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression 'rate(1 day)' 
           rule_arn=$(aws events list-rules --query 'Rules[?Name == `$IMAGE_TAG-trigger`].Arn' --output text)
