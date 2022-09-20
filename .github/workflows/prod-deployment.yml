@@ -35,6 +35,16 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_CODY_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
+      - name: Maybe create role
+        id: role-state
+        run: |
+          status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
+          if [ "x-" == $status ] ; then
+            echo "Creating role lambda-exe";
+            aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}';
+          else
+            echo "Role lambda-exe already exists";
+          fi
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -51,16 +61,6 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-      - name: Maybe create role
-        id: role-state
-        run: |
-          status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
-          if [ "x-" == $status ] ; then
-            echo "Creating role lambda-exe";
-            aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}';
-          else
-            echo "Role lambda-exe already exists";
-          fi
       - name: Check function state
         id: function-state
         run: |
