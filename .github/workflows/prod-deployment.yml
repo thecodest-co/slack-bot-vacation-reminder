@@ -7,6 +7,7 @@ on:
 
 env:
   ECR_REPOSITORY: codest
+  IAM_ROLE: lambda_exe
   IMAGE_TAG: holiday-reminder
   SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
   CALAMARI_USERNAME: ${{ secrets.CALAMARI_USERNAME }}
@@ -38,10 +39,10 @@ jobs:
       - name: Maybe create role
         id: role-state
         run: |
-          status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
+          status=x-$(aws iam list-roles --query "Roles[?RoleName == '$IAM_ROLE'].Arn" --output text)
           if [ "x-" == $status ] ; then
             echo "Creating role lambda-exe";
-            aws iam create-role --role-name lambda-exe --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}';
+            aws iam create-role --role-name $IAM_ROLE --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}';
           else
             echo "Role lambda-exe already exists";
           fi
@@ -51,7 +52,7 @@ jobs:
       - name: Maybe create repository
         id: create-repository
         run: |
-          status=x-$(aws ecr describe-repositories --query 'repositories[?repositoryName == `codest`].repositoryName' --output text)
+          status=x-$(aws ecr describe-repositories --query "repositories[?repositoryName == '$ECR_REPOSITORY'].repositoryName" --output text)
           if [ "x-" == $status ] ; then echo "Creating repository $ECR_REPOSITORY"; aws ecr create-repository --repository-name $ECR_REPOSITORY; else echo "Repository $ECR_REPOSITORY already exists"; fi
       - name: Push image to Amazon ECR
         id: build-push-ecr
@@ -64,7 +65,7 @@ jobs:
       - name: Check function state
         id: function-state
         run: |
-          status=x-$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionName' --output text)
+          status=x-$(aws lambda list-functions --query "Functions[?FunctionName == '$IMAGE_TAG'].FunctionName" --output text)
           echo "::set-output name=fun-exist::$status"
       - name: Create Lambda function
         id: create-lambda
@@ -73,13 +74,10 @@ jobs:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
           role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
-          echo $role
           fun_arn=$(aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT,TEST_RUN=$TEST_RUN}" --query 'FunctionArn' --output text)
-          echo $fun_arn
           aws lambda wait function-updated --function-name $fun_arn          
           aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression 'rate(1 day)' 
           rule_arn=$(aws events list-rules --query "Rules[?Name == '$IMAGE_TAG-trigger'].Arn" --output text)
-          echo $rule_arn
           aws lambda add-permission --function-name $IMAGE_TAG --statement-id $IMAGE_TAG-trigger --action 'lambda:InvokeFunction' --principal events.amazonaws.com --source-arn $rule_arn
           aws lambda wait function-updated --function-name $fun_arn          
           aws lambda publish-version --function-name $IMAGE_TAG
@@ -89,7 +87,7 @@ jobs:
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
-          fun_arn=$(aws lambda list-functions --query 'Functions[?FunctionName == `holiday-reminder`].FunctionArn' --output text)
+          fun_arn=$(aws lambda list-functions --query "Functions[?FunctionName == '$IMAGE_TAG'].FunctionArn" --output text)
           aws lambda update-function-code --function-name $fun_arn --image-uri $IMAGE_URI > /dev/null
           aws lambda wait function-updated --function-name $fun_arn
           aws lambda update-function-configuration --function-name $fun_arn --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT}" > /dev/null
