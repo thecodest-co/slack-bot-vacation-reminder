@@ -41,7 +41,7 @@ jobs:
         id: create-repository
         run: |
           status=x-$(aws ecr describe-repositories --query 'repositories[?repositoryName == `codest`].repositoryName' --output text)
-          if [ "x-" == $status ] ; then echo "Creating repository $ECR_REPOSITORY"; aws ecr create-repository --repository-name $ECR_REPOSITORY; fi
+          if [ "x-" == $status ] ; then echo "Creating repository $ECR_REPOSITORY"; aws ecr create-repository --repository-name $ECR_REPOSITORY; else echo "Repository $ECR_REPOSITORY already exists" fi
       - name: Push image to Amazon ECR
         id: build-push-ecr
         env:
@@ -55,7 +55,7 @@ jobs:
         run: |
           status=x-$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
           echo "::set-output name=role-exist::$status"
-      - name: Create role if not exist
+      - name: Maybe create role
         id: create-role
         if: steps.role-state.outputs.role-exist == 'x-'
         run: |
