@@ -1,6 +1,7 @@
 name: Update function configuration
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'non-op'
