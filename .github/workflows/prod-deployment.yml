@@ -73,7 +73,8 @@ jobs:
         env:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
-          role=$(aws iam list-roles --query 'Roles[?RoleName == `lambda-exe`].Arn' --output text)
+          echo $IAM_ROLE
+          role=$(aws iam list-roles --query "Roles[?RoleName == '$IAM_ROLE'].Arn" --output text)
           echo $role
           fun_arn=$(aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT,TEST_RUN=$TEST_RUN}" --query 'FunctionArn' --output text)
           echo $fun_arn
