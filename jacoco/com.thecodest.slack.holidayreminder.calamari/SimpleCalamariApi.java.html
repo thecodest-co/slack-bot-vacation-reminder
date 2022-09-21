@@ -15,8 +15,10 @@ import java.util.List;
 import java.util.function.Predicate;
 import javax.inject.Inject;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 
-<span class="fc" id="L19">@RequiredArgsConstructor(onConstructor_ = {@Inject})</span>
+<span class="fc" id="L20">@Log</span>
+<span class="fc" id="L21">@RequiredArgsConstructor(onConstructor_ = {@Inject})</span>
 class SimpleCalamariApi implements CalamariApi {
 
 	private final EmployeesApi employeesApi;
@@ -24,31 +26,34 @@ class SimpleCalamariApi implements CalamariApi {
 
 	@Override
 	public List&lt;CalamariEmployee&gt; employeesWithToMuchFreeDays(int limit) {
-<span class="fc bfc" id="L27" title="All 2 branches covered.">		final Predicate&lt;CalamariEmployee&gt; tooMuchFreedomPredicate = emp -&gt; emp.balanceOut() &gt;= limit;</span>
-<span class="fc" id="L28">		return Try.success(new PublicEmployeesIn())</span>
-<span class="fc" id="L29">				.mapTry(employeesApi::getEmployees)</span>
-<span class="fc" id="L30">				.map(EmployeesOut::getEmployees)</span>
-<span class="fc" id="L31">				.getOrElse(Collections::emptyList)</span>
-<span class="fc" id="L32">				.stream()</span>
-<span class="fc" id="L33">				.map(efo -&gt; new CalamariEmployee(efo.getFirstName(), efo.getEmail(), 0))</span>
-<span class="fc" id="L34">				.map(employee -&gt; {</span>
-<span class="fc" id="L35">					var employeeAbsence = new GetBalanceOfEmployeeAndAbsenceType();</span>
-<span class="fc" id="L36">					employeeAbsence.employee(employee.email());</span>
-<span class="fc" id="L37">					employeeAbsence.absenceTypeId(&quot;7&quot;);</span>
-<span class="fc" id="L38">					employeeAbsence.date(LocalDate.now());</span>
-<span class="fc" id="L39">					return Try.of(() -&gt; absenceTypeApi.getEntitlementBalance(employeeAbsence))</span>
-<span class="fc" id="L40">							.onFailure(Throwable::printStackTrace)</span>
-<span class="fc" id="L41">							.mapTry(bo -&gt; new CalamariEmployee(employee.name(),</span>
-<span class="fc" id="L42">									normalize(employee.email()).normalForm(),</span>
-<span class="fc" id="L43">									bo.getAmount()))</span>
-<span class="fc" id="L44">							.toEither();</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">		final Predicate&lt;CalamariEmployee&gt; tooMuchFreedomPredicate = emp -&gt; emp.balanceOut() &gt;= limit;</span>
+<span class="fc" id="L30">		return Try.success(new PublicEmployeesIn())</span>
+<span class="fc" id="L31">				.mapTry(employeesApi::getEmployees)</span>
+<span class="fc" id="L32">				.map(EmployeesOut::getEmployees)</span>
+<span class="fc" id="L33">				.getOrElse(Collections::emptyList)</span>
+<span class="fc" id="L34">				.stream()</span>
+<span class="fc" id="L35">				.map(efo -&gt; new CalamariEmployee(efo.getFirstName(), efo.getEmail(), 0))</span>
+<span class="fc" id="L36">				.map(employee -&gt; {</span>
+<span class="fc" id="L37">					var employeeAbsence = new GetBalanceOfEmployeeAndAbsenceType();</span>
+<span class="fc" id="L38">					employeeAbsence.employee(employee.email());</span>
+<span class="fc" id="L39">					employeeAbsence.absenceTypeId(&quot;7&quot;);</span>
+<span class="fc" id="L40">					employeeAbsence.date(LocalDate.now());</span>
+<span class="fc" id="L41">					return Try.of(() -&gt; absenceTypeApi.getEntitlementBalance(employeeAbsence))</span>
+<span class="fc" id="L42">							.onFailure(t -&gt; {</span>
+<span class="nc" id="L43">								log.warning(t.getMessage());</span>
+<span class="nc" id="L44">								t.printStackTrace();</span>
+<span class="nc" id="L45">							})</span>
+<span class="fc" id="L46">							.mapTry(bo -&gt; new CalamariEmployee(employee.name(),</span>
+<span class="fc" id="L47">									normalize(employee.email()).normalForm(),</span>
+<span class="fc" id="L48">									bo.getAmount()))</span>
+<span class="fc" id="L49">							.toEither();</span>
 				})
-<span class="fc" id="L46">				.filter(Either::isRight)</span>
-<span class="fc" id="L47">				.map(Either::get)</span>
-<span class="fc" id="L48">				.toList()</span>
-<span class="fc" id="L49">				.stream()</span>
-<span class="fc" id="L50">				.filter(tooMuchFreedomPredicate)</span>
-<span class="fc" id="L51">				.toList();</span>
+<span class="fc" id="L51">				.filter(Either::isRight)</span>
+<span class="fc" id="L52">				.map(Either::get)</span>
+<span class="fc" id="L53">				.toList()</span>
+<span class="fc" id="L54">				.stream()</span>
+<span class="fc" id="L55">				.filter(tooMuchFreedomPredicate)</span>
+<span class="fc" id="L56">				.toList();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
