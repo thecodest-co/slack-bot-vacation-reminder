@@ -47,7 +47,7 @@ jobs:
           IMAGE_URI: ${{ steps.build-push-ecr.outputs.image }}
         run: |
           fun_arn=$(aws lambda list-functions --query "Functions[?FunctionName == '$IMAGE_TAG'].FunctionArn" --output text)
-          aws lambda update-function-configuration --function-name $fun_arn --timeout 60 --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT}" > /dev/null
+          aws lambda update-function-configuration --function-name $fun_arn --timeout 60 --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT,TEST_RUN=$TEST_RUN}" > /dev/null
           aws lambda wait function-updated --function-name $fun_arn
           aws lambda publish-version --function-name $IMAGE_TAG
           aws lambda wait function-updated --function-name $fun_arn
