@@ -39,7 +39,7 @@ class SimpleCalamariApi implements CalamariApi {
 					employeeAbsence.absenceTypeId("7");
 					employeeAbsence.date(LocalDate.now());
 					return Try.of(() -> absenceTypeApi.getEntitlementBalance(employeeAbsence))
-							.onFailure(t->{
+							.onFailure(t -> {
 								log.warning(t.getMessage());
 								t.printStackTrace();
 							})
