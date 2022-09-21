@@ -2,14 +2,19 @@
 
 import java.util.Optional;
 import javax.inject.Provider;
+import lombok.extern.java.Log;
 
-<span class="fc" id="L6">class RunningCalculatorProvider implements Provider&lt;RunningCalculator&gt; {</span>
+<span class="fc" id="L7">@Log</span>
+<span class="fc" id="L8">class RunningCalculatorProvider implements Provider&lt;RunningCalculator&gt; {</span>
 	@Override
 	public RunningCalculator get() {
-<span class="fc" id="L9">		return Optional.ofNullable(Boolean.valueOf(System.getenv(&quot;TEST_RUN&quot;)))</span>
-<span class="pc" id="L10">				.or(() -&gt; Optional.of(Boolean.FALSE))</span>
-<span class="pc bpc" id="L11" title="1 of 2 branches missed.">				.map(b -&gt; b ? new FakeRunningCalculator() : new LocalRunningCalculator())</span>
-<span class="fc" id="L12">				.get();</span>
+<span class="fc" id="L11">		return Optional.ofNullable(Boolean.valueOf(System.getenv(&quot;TEST_RUN&quot;)))</span>
+<span class="pc" id="L12">				.or(() -&gt; Optional.of(Boolean.FALSE))</span>
+<span class="fc" id="L13">				.stream()</span>
+<span class="fc" id="L14">				.peek(b -&gt; log.warning(&quot;TEST_RUN is set to &quot; + b))</span>
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">				.map(b -&gt; b ? new FakeRunningCalculator() : new LocalRunningCalculator())</span>
+<span class="fc" id="L16">				.findFirst()</span>
+<span class="fc" id="L17">				.get();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
