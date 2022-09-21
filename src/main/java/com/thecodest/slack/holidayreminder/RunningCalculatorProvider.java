@@ -13,6 +13,7 @@ class RunningCalculatorProvider implements Provider<RunningCalculator> {
 				.stream()
 				.peek(b -> log.warning("TEST_RUN is set to " + b))
 				.map(b -> b ? new FakeRunningCalculator() : new LocalRunningCalculator())
+				.findFirst()
 				.get();
 	}
 }
