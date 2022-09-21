@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.function.Predicate;
 import javax.inject.Inject;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 
+@Log
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 class SimpleCalamariApi implements CalamariApi {
 
@@ -37,7 +39,10 @@ class SimpleCalamariApi implements CalamariApi {
 					employeeAbsence.absenceTypeId("7");
 					employeeAbsence.date(LocalDate.now());
 					return Try.of(() -> absenceTypeApi.getEntitlementBalance(employeeAbsence))
-							.onFailure(Throwable::printStackTrace)
+							.onFailure(t->{
+								log.warning(t.getMessage());
+								t.printStackTrace();
+							})
 							.mapTry(bo -> new CalamariEmployee(employee.name(),
 									normalize(employee.email()).normalForm(),
 									bo.getAmount()))
