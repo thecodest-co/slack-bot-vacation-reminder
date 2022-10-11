@@ -42,6 +42,7 @@ class VacationReminder implements Runnable {
 						Coder::new)
 				.using(streamAdapter())
 				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))
+				.peek(System.out::println)
 				.filter(coder -> coder.slackUser() != null)
 				.toList()
 				.stream()

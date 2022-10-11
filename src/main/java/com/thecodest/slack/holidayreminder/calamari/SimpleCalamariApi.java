@@ -26,16 +26,16 @@ class SimpleCalamariApi implements CalamariApi {
 
 	@Override
 	public List<CalamariEmployee> employeesWithToMuchFreeDays(int limit) {
+		log.info("Get employees with vacation over limit " + limit);
 		final Predicate<CalamariEmployee> tooMuchFreedomPredicate = emp -> emp.balanceOut() >= limit;
 		return Try.success(new PublicEmployeesIn())
 				.mapTry(employeesApi::getEmployees)
 				.map(EmployeesOut::getEmployees)
 				.getOrElse(Collections::emptyList)
 				.stream()
-				.map(efo -> new CalamariEmployee(efo.getFirstName(), efo.getEmail(), 0))
-				.map(employee -> {
+				.map(efo -> {
 					var employeeAbsence = new GetBalanceOfEmployeeAndAbsenceType();
-					employeeAbsence.employee(employee.email());
+					employeeAbsence.employee(efo.getEmail());
 					employeeAbsence.absenceTypeId("7");
 					employeeAbsence.date(LocalDate.now());
 					return Try.of(() -> absenceTypeApi.getEntitlementBalance(employeeAbsence))
@@ -43,8 +43,8 @@ class SimpleCalamariApi implements CalamariApi {
 								log.warning(t.getMessage());
 								t.printStackTrace();
 							})
-							.mapTry(bo -> new CalamariEmployee(employee.name(),
-									normalize(employee.email()).normalForm(),
+							.mapTry(bo -> new CalamariEmployee(efo.getFirstName(),
+									normalize(efo.getEmail()).normalForm(),
 									bo.getAmount()))
 							.toEither();
 				})

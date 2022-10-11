@@ -14,6 +14,7 @@ env:
   CALAMARI_PASSWORD: ${{ secrets.CALAMARI_PASSWORD }}
   DAYS_LIMIT: ${{ secrets.DAYS_LIMIT }}
   TEST_RUN: ${{ secrets.TEST_RUN }}
+  RUN_RULE: cron(0 9 * * ? *)
 
 jobs:
   build:
@@ -79,7 +80,7 @@ jobs:
           fun_arn=$(aws lambda create-function --function-name $IMAGE_TAG --role $role --code ImageUri=$IMAGE_URI --package-type Image --timeout 60 --environment "Variables={SLACK_TOKEN=$SLACK_TOKEN,CALAMARI_USERNAME=$CALAMARI_USERNAME,CALAMARI_PASSWORD=$CALAMARI_PASSWORD,DAYS_LIMIT=$DAYS_LIMIT,TEST_RUN=$TEST_RUN}" --query 'FunctionArn' --output text)
           echo $fun_arn
           aws lambda wait function-updated --function-name $fun_arn          
-          aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression 'rate(1 day)' 
+          aws events put-rule --name $IMAGE_TAG-trigger --schedule-expression $RUN_RULE 
           rule_arn=$(aws events list-rules --query "Rules[?Name == '$IMAGE_TAG-trigger'].Arn" --output text)
           echo $rule_arn
           aws lambda add-permission --function-name $IMAGE_TAG --statement-id $IMAGE_TAG-trigger --action 'lambda:InvokeFunction' --principal events.amazonaws.com --source-arn $rule_arn
