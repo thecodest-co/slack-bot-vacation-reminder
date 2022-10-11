@@ -50,17 +50,18 @@
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  						Coder::<strong class="jxr_keyword">new</strong>)
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  				.using(streamAdapter())
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  				.filter(coder -&gt; coder.slackUser() != <strong class="jxr_keyword">null</strong>)
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  				.toList()
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  				.stream()
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  				.map(<strong class="jxr_keyword">this</strong>::sendMessage)
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  				.forEach(c -&gt; log.info(String.valueOf(c)));
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  	}
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  	<strong class="jxr_keyword">private</strong> ChatPostMessageResponse sendMessage(Coder coder) {
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		<strong class="jxr_keyword">return</strong> slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  	}
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  }
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  				.peek(System.out::println)
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  				.filter(coder -&gt; coder.slackUser() != <strong class="jxr_keyword">null</strong>)
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  				.toList()
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  				.stream()
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  				.map(<strong class="jxr_keyword">this</strong>::sendMessage)
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  				.forEach(c -&gt; log.info(String.valueOf(c)));
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  	}
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  	<strong class="jxr_keyword">private</strong> ChatPostMessageResponse sendMessage(Coder coder) {
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		<strong class="jxr_keyword">return</strong> slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  	}
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2022. All rights reserved.</div>

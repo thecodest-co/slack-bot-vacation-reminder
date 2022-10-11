@@ -42,15 +42,16 @@ class VacationReminder implements Runnable {
 						Coder::new)
 <span class="fc" id="L43">				.using(streamAdapter())</span>
 <span class="fc" id="L44">				.assemble(calamariApi.employeesWithToMuchFreeDays(configuration.daysLimit()))</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">				.filter(coder -&gt; coder.slackUser() != null)</span>
-<span class="fc" id="L46">				.toList()</span>
-<span class="fc" id="L47">				.stream()</span>
-<span class="fc" id="L48">				.map(this::sendMessage)</span>
-<span class="fc" id="L49">				.forEach(c -&gt; log.info(String.valueOf(c)));</span>
-<span class="fc" id="L50">	}</span>
+<span class="fc" id="L45">				.peek(System.out::println)</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">				.filter(coder -&gt; coder.slackUser() != null)</span>
+<span class="fc" id="L47">				.toList()</span>
+<span class="fc" id="L48">				.stream()</span>
+<span class="fc" id="L49">				.map(this::sendMessage)</span>
+<span class="fc" id="L50">				.forEach(c -&gt; log.info(String.valueOf(c)));</span>
+<span class="fc" id="L51">	}</span>
 
 	private ChatPostMessageResponse sendMessage(Coder coder) {
-<span class="fc" id="L53">		return slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));</span>
+<span class="fc" id="L54">		return slackClient.sendMessageToUser(coder.slackUser(), message.getMessage(coder.calamariEmployee()));</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

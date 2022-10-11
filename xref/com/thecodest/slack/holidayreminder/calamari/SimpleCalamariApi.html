@@ -34,16 +34,16 @@
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  	@Override
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  	<strong class="jxr_keyword">public</strong> List&lt;CalamariEmployee&gt; employeesWithToMuchFreeDays(<strong class="jxr_keyword">int</strong> limit) {
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		<strong class="jxr_keyword">final</strong> Predicate&lt;CalamariEmployee&gt; tooMuchFreedomPredicate = emp -&gt; emp.balanceOut() &gt;= limit;
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		<strong class="jxr_keyword">return</strong> Try.success(<strong class="jxr_keyword">new</strong> <a name="PublicEmployeesIn" href="../../../../../com/thecodest/slack/holidayreminder/calamari/remote/api/model/PublicEmployeesIn.html#PublicEmployeesIn">PublicEmployeesIn</a>())
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  				.mapTry(employeesApi::getEmployees)
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  				.map(EmployeesOut::getEmployees)
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  				.getOrElse(Collections::emptyList)
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  				.stream()
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  				.map(efo -&gt; <strong class="jxr_keyword">new</strong> CalamariEmployee(efo.getFirstName(), efo.getEmail(), 0))
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  				.map(employee -&gt; {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		log.info(<span class="jxr_string">"Get employees with vacation over limit "</span> + limit);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		<strong class="jxr_keyword">final</strong> Predicate&lt;CalamariEmployee&gt; tooMuchFreedomPredicate = emp -&gt; emp.balanceOut() &gt;= limit;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		<strong class="jxr_keyword">return</strong> Try.success(<strong class="jxr_keyword">new</strong> <a name="PublicEmployeesIn" href="../../../../../com/thecodest/slack/holidayreminder/calamari/remote/api/model/PublicEmployeesIn.html#PublicEmployeesIn">PublicEmployeesIn</a>())
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  				.mapTry(employeesApi::getEmployees)
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  				.map(EmployeesOut::getEmployees)
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  				.getOrElse(Collections::emptyList)
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  				.stream()
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  				.map(efo -&gt; {
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  					<strong class="jxr_keyword">var</strong> employeeAbsence = <strong class="jxr_keyword">new</strong> <a name="GetBalanceOfEmployeeAndAbsenceType" href="../../../../../com/thecodest/slack/holidayreminder/calamari/remote/api/model/GetBalanceOfEmployeeAndAbsenceType.html#GetBalanceOfEmployeeAndAbsenceType">GetBalanceOfEmployeeAndAbsenceType</a>();
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  					employeeAbsence.employee(employee.email());
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  					employeeAbsence.employee(efo.getEmail());
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  					employeeAbsence.absenceTypeId(<span class="jxr_string">"7"</span>);
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  					employeeAbsence.date(LocalDate.now());
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  					<strong class="jxr_keyword">return</strong> Try.of(() -&gt; absenceTypeApi.getEntitlementBalance(employeeAbsence))
@@ -51,8 +51,8 @@
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  								log.warning(t.getMessage());
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  								t.printStackTrace();
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  							})
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  							.mapTry(bo -&gt; <strong class="jxr_keyword">new</strong> CalamariEmployee(employee.name(),
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  									normalize(employee.email()).normalForm(),
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  							.mapTry(bo -&gt; <strong class="jxr_keyword">new</strong> CalamariEmployee(efo.getFirstName(),
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  									normalize(efo.getEmail()).normalForm(),
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  									bo.getAmount()))
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>  							.toEither();
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  				})

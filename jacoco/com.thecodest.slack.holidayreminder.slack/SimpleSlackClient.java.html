@@ -10,35 +10,42 @@ import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
+import lombok.extern.java.Log;
 
+<span class="fc" id="L15">@Log</span>
 class SimpleSlackClient implements SlackClient {
 
 	private final MethodsClient methods;
 
 	@Inject
-<span class="fc" id="L19">	SimpleSlackClient(@Named(&quot;slack-token&quot;) String token) {</span>
-<span class="fc" id="L20">		this.methods = Slack.getInstance().methods(token);</span>
-<span class="fc" id="L21">	}</span>
+<span class="fc" id="L21">	SimpleSlackClient(@Named(&quot;slack-token&quot;) String token) {</span>
+<span class="fc" id="L22">		System.out.println(token);</span>
+<span class="fc" id="L23">		this.methods = Slack.getInstance().methods(token);</span>
+<span class="fc" id="L24">	}</span>
 
 	@Override
 	public ChatPostMessageResponse sendMessageToUser(SlackUser slackUser, String message) {
-<span class="nc" id="L25">		return Try.of(() -&gt; methods.chatPostMessage(req -&gt; req.channel(slackUser.slackId()).text(message)))</span>
-<span class="nc" id="L26">				.onFailure(Throwable::printStackTrace)</span>
-<span class="nc" id="L27">				.get();</span>
+<span class="nc" id="L28">		log.info(&quot;Send message to &quot; + slackUser.normalizedEmail());</span>
+<span class="nc" id="L29">		return Try.of(() -&gt; methods.chatPostMessage(req -&gt; req.channel(slackUser.slackId()).text(message)))</span>
+<span class="nc" id="L30">				.onFailure(Throwable::printStackTrace)</span>
+<span class="nc" id="L31">				.get();</span>
 	}
 
 	@Override
 	public List&lt;SlackUser&gt; getUsersByEmails(List&lt;String&gt; emails) {
-<span class="nc" id="L32">		return Try.of(() -&gt; methods</span>
-<span class="nc" id="L33">				.usersList(UsersListRequest.builder().build()))</span>
-<span class="nc" id="L34">				.onFailure(Throwable::printStackTrace)</span>
-<span class="nc" id="L35">				.map(UsersListResponse::getMembers)</span>
-<span class="nc" id="L36">				.getOrElse(Collections.emptyList())</span>
-<span class="nc" id="L37">				.stream()</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">				.filter(u -&gt; u.getProfile().getEmail() != null)</span>
-<span class="nc" id="L39">				.map(u -&gt; new SlackUser(u.getId(), u.getName(), u.getProfile().getEmail()))</span>
-<span class="nc" id="L40">				.filter(su -&gt; emails.contains(su.normalizedEmail()))</span>
-<span class="nc" id="L41">				.toList();</span>
+<span class="nc" id="L36">		log.info(&quot;Get users from slack&quot;);</span>
+<span class="nc" id="L37">		log.info(emails.toString());</span>
+<span class="nc" id="L38">		return Try.of(() -&gt; methods</span>
+<span class="nc" id="L39">				.usersList(UsersListRequest.builder().build()))</span>
+<span class="nc" id="L40">				.onFailure(Throwable::printStackTrace)</span>
+<span class="nc" id="L41">				.map(UsersListResponse::getMembers)</span>
+<span class="nc" id="L42">				.getOrElse(Collections.emptyList())</span>
+<span class="nc" id="L43">				.stream()</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">				.filter(u -&gt; u.getProfile().getEmail() != null)</span>
+<span class="nc" id="L45">				.peek(System.out::println)</span>
+<span class="nc" id="L46">				.map(u -&gt; new SlackUser(u.getId(), u.getName(), u.getProfile().getEmail()))</span>
+<span class="nc" id="L47">				.filter(su -&gt; emails.contains(su.normalizedEmail()))</span>
+<span class="nc" id="L48">				.toList();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
